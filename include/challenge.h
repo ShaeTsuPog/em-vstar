@@ -1,0 +1,6 @@
+#ifndef GUARD_DIFFICULTY_H
+#define GUARD_DIFFICULTY_H
+
+#define CHALLENGE_LEVEL_CAP 0
+
+#endif

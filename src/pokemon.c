@@ -5892,7 +5892,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
 
             // Rare Candy / EXP Candy
             if ((itemEffect[i] & ITEM3_LEVEL_UP)
-             && GetMonData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL)
+             && GetMonData(mon, MON_DATA_LEVEL, NULL) != GetCurrentPartyLevelCap())
             {
                 u8 param = ItemId_GetHoldEffectParam(item);
                 dataUnsigned = 0;
@@ -5905,8 +5905,8 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                 {
                     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
                     dataUnsigned = sExpCandyExperienceTable[param - 1] + GetMonData(mon, MON_DATA_EXP, NULL);
-                    if (dataUnsigned > gExperienceTables[gSpeciesInfo[species].growthRate][MAX_LEVEL])
-                        dataUnsigned = gExperienceTables[gSpeciesInfo[species].growthRate][MAX_LEVEL];
+                    if (dataUnsigned > gExperienceTables[gSpeciesInfo[species].growthRate][GetCurrentPartyLevelCap()])
+                        dataUnsigned = gExperienceTables[gSpeciesInfo[species].growthRate][GetCurrentPartyLevelCap()];
                 }
 
                 if (dataUnsigned != 0) // Failsafe
@@ -7470,12 +7470,12 @@ bool8 TryIncrementMonLevel(struct Pokemon *mon)
     u16 species = GetMonData(mon, MON_DATA_SPECIES, 0);
     u8 nextLevel = GetMonData(mon, MON_DATA_LEVEL, 0) + 1;
     u32 expPoints = GetMonData(mon, MON_DATA_EXP, 0);
-    if (expPoints > gExperienceTables[gSpeciesInfo[species].growthRate][MAX_LEVEL])
+    if (expPoints > gExperienceTables[gSpeciesInfo[species].growthRate][GetCurrentPartyLevelCap()])
     {
-        expPoints = gExperienceTables[gSpeciesInfo[species].growthRate][MAX_LEVEL];
+        expPoints = gExperienceTables[gSpeciesInfo[species].growthRate][GetCurrentPartyLevelCap()];
         SetMonData(mon, MON_DATA_EXP, &expPoints);
     }
-    if (nextLevel > MAX_LEVEL || expPoints < gExperienceTables[gSpeciesInfo[species].growthRate][nextLevel])
+    if (nextLevel > GetCurrentPartyLevelCap() || expPoints < gExperienceTables[gSpeciesInfo[species].growthRate][nextLevel])
     {
         return FALSE;
     }
@@ -8708,4 +8708,50 @@ void UpdateMonPersonality(struct BoxPokemon *boxMon, u32 personality)
     *new3 = *old3;
     boxMon->checksum = CalculateBoxMonChecksum(boxMon);
     EncryptBoxMon(boxMon);
+}
+
+// Challenge
+
+enum LevelCap {
+    LEVEL_CAP_NO_BADGES,
+    LEVEL_CAP_BADGE_1,
+    LEVEL_CAP_BADGE_2,
+    LEVEL_CAP_BADGE_3,
+    LEVEL_CAP_BADGE_4,
+    LEVEL_CAP_BADGE_5,
+    LEVEL_CAP_BADGE_6,
+    LEVEL_CAP_BADGE_7,
+    LEVEL_CAP_BADGE_8
+};
+
+const u8 gLevelCapTable[] =
+{
+    [LEVEL_CAP_NO_BADGES] = 15,
+    [LEVEL_CAP_BADGE_1] = 19,
+    [LEVEL_CAP_BADGE_2] = 24,
+    [LEVEL_CAP_BADGE_3] = 29,
+    [LEVEL_CAP_BADGE_4] = 31,
+    [LEVEL_CAP_BADGE_5] = 33,
+    [LEVEL_CAP_BADGE_6] = 42,
+    [LEVEL_CAP_BADGE_7] = 46,
+    [LEVEL_CAP_BADGE_8] = 58
+};
+
+u8 GetCurrentPartyLevelCap(void)
+{
+    u16 i, badgeCount = 0;
+
+    if (FlagGet(FLAG_IS_CHAMPION))
+        return MAX_LEVEL;
+
+    for (i = FLAG_BADGE01_GET; i < FLAG_BADGE01_GET + NUM_BADGES; i++) // count badges
+    {
+        if (FlagGet(i))
+            badgeCount++;
+    }
+
+    if (gSaveBlock1Ptr->challengeLevelCap == 0) // hard level cap
+        return gLevelCapTable[badgeCount];
+
+    return MAX_LEVEL;
 }
