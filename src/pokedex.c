@@ -48,9 +48,6 @@
 #include "constants/party_menu.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
-#ifdef TX_RANDOMIZER_AND_CHALLENGES
-    //#include "tx_randomizer_and_challenges.h"
-#endif
 
 enum
 {
@@ -5408,7 +5405,7 @@ static int DoPokedexSearch(u8 dexMode, u8 order, u8 abcGroup, u8 bodyColor, u8 t
                 continue;
             }
 
-            /*
+            
             //TMHM
             if (CanLearnTeachableMove(species, move))
             {
@@ -5417,6 +5414,7 @@ static int DoPokedexSearch(u8 dexMode, u8 order, u8 abcGroup, u8 bodyColor, u8 t
                 continue;
             }
             
+            /*
             //Tutor
             if (CanLearnTutorMove(species, tutorMoveId))
             {
@@ -6756,10 +6754,11 @@ static bool8 CalculateMoves(void)
         movesTotal++;
     }
 
+    
     //TMHM moves
     for (j = 0; j < NUM_TECHNICAL_MACHINES + NUM_HIDDEN_MACHINES; j++)
     {
-        if (CanLearnTeachableMove(species, j))
+        if (CanLearnTeachableMove(species, ItemIdToBattleMoveId(ITEM_TM01_FOCUS_PUNCH + j)))
         {
             sStatsMoves[movesTotal] = ItemIdToBattleMoveId(ITEM_TM01_FOCUS_PUNCH + j);
             movesTotal++;

@@ -1272,6 +1272,7 @@ static const u16 sNidokingTeachableLearnset[] = {
     MOVE_SHADOW_BALL,
     MOVE_SHOCK_WAVE,
     MOVE_SLUDGE_BOMB,
+    MOVE_SLUDGE_WAVE,
     MOVE_STRENGTH,
     MOVE_SUNNY_DAY,
     MOVE_SURF,
