@@ -579,7 +579,7 @@ static const struct SpriteTemplate sStatusSummaryBallsSpriteTemplates[2] =
 static const u8 sEmptyWhiteText_GrayHighlight[] = __("{COLOR WHITE}{HIGHLIGHT DARK_GRAY}              ");
 static const u8 sEmptyWhiteText_TransparentHighlight[] = __("{COLOR WHITE}{HIGHLIGHT TRANSPARENT}              ");
 
-enum
+/*enum
 {
     PAL_STATUS_PSN,
     PAL_STATUS_PAR,
@@ -595,7 +595,7 @@ static const u16 sStatusIconColors[] =
     [PAL_STATUS_SLP] = RGB(20, 20, 17),
     [PAL_STATUS_FRZ] = RGB(17, 22, 28),
     [PAL_STATUS_BRN] = RGB(28, 14, 10),
-};
+};*/
 
 static const struct WindowTemplate sHealthboxWindowTemplate = {
     .bg = 0,
@@ -2101,8 +2101,16 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     if (illusionMon != NULL)
         mon = illusionMon;
 
-    StringCopy(gDisplayedStringBattle, gText_HealthboxNickname);
     GetMonData(mon, MON_DATA_NICKNAME, nickname);
+    if (!IsMonShiny(mon))
+    {
+        StringCopy(gDisplayedStringBattle, gText_HealthboxNickname);
+    }
+    else
+    {
+        StringCopy(gDisplayedStringBattle, gText_ShinyNickname);
+    }
+
     StringGet_Nickname(nickname);
     ptr = StringAppend(gDisplayedStringBattle, nickname);
 
@@ -2114,21 +2122,22 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
 
     // AddTextPrinterAndCreateWindowOnHealthbox's arguments are the same in all 3 cases.
     // It's possible they may have been different in early development phases.
-    switch (gender)
-    {
-    default:
-        StringCopy(ptr, gText_HealthboxGender_None);
-        windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, 0, &windowId);
-        break;
-    case MON_MALE:
-        StringCopy(ptr, gText_HealthboxGender_Male);
-        windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, 0, &windowId);
-        break;
-    case MON_FEMALE:
-        StringCopy(ptr, gText_HealthboxGender_Female);
-        windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, 0, &windowId);
-        break;
-    }
+
+        switch (gender)
+        {
+            default:
+                StringCopy(ptr, gText_HealthboxGender_None);
+                windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, 0, &windowId);
+                break;
+            case MON_MALE:
+                StringCopy(ptr, gText_HealthboxGender_Male);
+                windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, 0, &windowId);
+                break;
+            case MON_FEMALE:
+                StringCopy(ptr, gText_HealthboxGender_Female);
+                windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, 0, &windowId);
+                break;
+        }
 
     spriteTileNum = gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP;
 
@@ -2168,9 +2177,9 @@ static void TryAddPokeballIconToHealthbox(u8 healthboxSpriteId, bool8 noStatus)
     healthBarSpriteId = gSprites[healthboxSpriteId].hMain_HealthBarSpriteId;
 
     //if (noStatus)
-        CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_STATUS_BALL_CAUGHT), (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 32);
+    CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_STATUS_BALL_CAUGHT), (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 32);
     /*else
-        CpuFill32(0, (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 32);*/
+    CpuFill32(0, (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 32);*/
 }
 
 static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
@@ -2201,37 +2210,51 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
     if (status & STATUS1_SLEEP)
     {
         statusGfxPtr = GetHealthboxElementGfxPtr(GetStatusIconForBattlerId(HEALTHBOX_GFX_STATUS_SLP_BATTLER0, battlerId));
-        statusPalId = PAL_STATUS_SLP;
+        //statusPalId = PAL_STATUS_SLP;
     }
     else if (status & STATUS1_PSN_ANY)
     {
         statusGfxPtr = GetHealthboxElementGfxPtr(GetStatusIconForBattlerId(HEALTHBOX_GFX_STATUS_PSN_BATTLER0, battlerId));
-        statusPalId = PAL_STATUS_PSN;
+        //statusPalId = PAL_STATUS_PSN;
     }
     else if (status & STATUS1_BURN)
     {
         statusGfxPtr = GetHealthboxElementGfxPtr(GetStatusIconForBattlerId(HEALTHBOX_GFX_STATUS_BRN_BATTLER0, battlerId));
-        statusPalId = PAL_STATUS_BRN;
+        //statusPalId = PAL_STATUS_BRN;
     }
     else if (status & STATUS1_FREEZE)
     {
         statusGfxPtr = GetHealthboxElementGfxPtr(GetStatusIconForBattlerId(HEALTHBOX_GFX_STATUS_FRZ_BATTLER0, battlerId));
-        statusPalId = PAL_STATUS_FRZ;
+        //statusPalId = PAL_STATUS_FRZ;
     }
     else if (status & STATUS1_PARALYSIS)
     {
         statusGfxPtr = GetHealthboxElementGfxPtr(GetStatusIconForBattlerId(HEALTHBOX_GFX_STATUS_PRZ_BATTLER0, battlerId));
-        statusPalId = PAL_STATUS_PAR;
+        //statusPalId = PAL_STATUS_PAR;
     }
+    
     else
     {
-        statusGfxPtr = GetHealthboxElementGfxPtr(HEALTHBOX_GFX_39);
+        for (i = 0; i < 1; i++)
+        if (WhichBattleCoords(battlerId) == 0)
+        {
+            if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
+            {
+                statusGfxPtr = GetHealthboxElementGfxPtr(HEALTHBOX_GFX_39);
+                CpuCopy32(statusGfxPtr, (void *)(OBJ_VRAM0 + ((gSprites[healthboxSpriteId].oam.tileNum + 2, 6) + tileNumAdder + i) * TILE_SIZE_4BPP), 64);
+            }
+            else
+            {
+                statusGfxPtr = GetHealthboxElementGfxPtr(HEALTHBOX_GFX_41);
+                CpuCopy32(statusGfxPtr, (void *)(OBJ_VRAM0 + ((gSprites[healthboxSpriteId].oam.tileNum + 2) + tileNumAdder + i) * TILE_SIZE_4BPP), 64);
+            }
+        }
 
-        for (i = 0; i < 0; i++)
-            CpuCopy32(statusGfxPtr, (void *)(OBJ_VRAM0 + (gSprites[healthboxSpriteId].oam.tileNum + tileNumAdder + i) * TILE_SIZE_4BPP), 32);
-
-        if (!gBattleSpritesDataPtr->battlerData[battlerId].hpNumbersNoBars)
-            CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_1), (void *)(OBJ_VRAM0 + gSprites[healthBarSpriteId].oam.tileNum * TILE_SIZE_4BPP), 64);
+        else
+        {
+            statusGfxPtr = GetHealthboxElementGfxPtr(HEALTHBOX_GFX_41);
+            CpuCopy32(statusGfxPtr, (void *)(OBJ_VRAM0 + ((gSprites[healthboxSpriteId].oam.tileNum + 2) + tileNumAdder + i) * TILE_SIZE_4BPP), 64);
+        }
 
         TryAddPokeballIconToHealthbox(healthboxSpriteId, TRUE);
         return;
@@ -2240,26 +2263,33 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
     pltAdder = PLTT_ID(gSprites[healthboxSpriteId].oam.paletteNum);
     pltAdder += battlerId + 12;
 
-    FillPalette(sStatusIconColors[statusPalId], OBJ_PLTT_OFFSET + pltAdder, PLTT_SIZEOF(1));
-    CpuCopy16(gPlttBufferUnfaded + OBJ_PLTT_OFFSET + pltAdder, (u16 *)OBJ_PLTT + pltAdder, PLTT_SIZEOF(1));
+    //FillPalette(sStatusIconColors[statusPalId], OBJ_PLTT_OFFSET + pltAdder, PLTT_SIZEOF(1));
+    //CpuCopy16(gPlttBufferUnfaded + OBJ_PLTT_OFFSET + pltAdder, (u16 *)OBJ_PLTT + pltAdder, PLTT_SIZEOF(1));
 
-    if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
+    if (WhichBattleCoords(battlerId) == 0)
     {
-        CpuCopy32(statusGfxPtr, (void *)(OBJ_VRAM0 + ((gSprites[healthboxSpriteId].oam.tileNum + 2, 6) + tileNumAdder) * TILE_SIZE_4BPP), 64);
+        if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
+        {
+            CpuCopy32(statusGfxPtr, (void *)(OBJ_VRAM0 + ((gSprites[healthboxSpriteId].oam.tileNum + 2, 6) + tileNumAdder) * TILE_SIZE_4BPP), 64);
+        }
+        else
+        {
+            CpuCopy32(statusGfxPtr, (void *)(OBJ_VRAM0 + ((gSprites[healthboxSpriteId].oam.tileNum + 2) + tileNumAdder) * TILE_SIZE_4BPP), 64);
+        }
     }
     else
     {
         CpuCopy32(statusGfxPtr, (void *)(OBJ_VRAM0 + ((gSprites[healthboxSpriteId].oam.tileNum + 2) + tileNumAdder) * TILE_SIZE_4BPP), 64);
     }
 
-    if (WhichBattleCoords(battlerId) == 1 || GetBattlerSide(battlerId) == B_SIDE_OPPONENT)
+    /*if (WhichBattleCoords(battlerId) == 1 || GetBattlerSide(battlerId) == B_SIDE_OPPONENT)
     {
         if (!gBattleSpritesDataPtr->battlerData[battlerId].hpNumbersNoBars)
         {
             CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_0), (void *)(OBJ_VRAM0 + gSprites[healthBarSpriteId].oam.tileNum * TILE_SIZE_4BPP), 32);
             CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_65), (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 1) * TILE_SIZE_4BPP), 32);
         }
-    }
+    }*/
     TryAddPokeballIconToHealthbox(healthboxSpriteId, FALSE);
 }
 
@@ -2267,7 +2297,73 @@ static u8 GetStatusIconForBattlerId(u8 statusElementId, u8 battlerId)
 {
     u8 ret = statusElementId;
 
-    switch (statusElementId)
+    if (WhichBattleCoords(battlerId) == 0)
+    {
+        switch (statusElementId)
+        {
+            case HEALTHBOX_GFX_STATUS_PSN_BATTLER0:
+                if (battlerId == 0)
+                    ret = HEALTHBOX_GFX_STATUS_PSN_BATTLER0;
+                else if (battlerId == 1)
+                    ret = HEALTHBOX_GFX_STATUS_PSN_BATTLER1;
+                break;
+
+            case HEALTHBOX_GFX_STATUS_PRZ_BATTLER0:
+                if (battlerId == 0)
+                    ret = HEALTHBOX_GFX_STATUS_PRZ_BATTLER0;
+                else if (battlerId == 1)
+                    ret = HEALTHBOX_GFX_STATUS_PRZ_BATTLER1;
+                break;
+
+            case HEALTHBOX_GFX_STATUS_SLP_BATTLER0:
+                if (battlerId == 0)
+                    ret = HEALTHBOX_GFX_STATUS_SLP_BATTLER0;
+                else if (battlerId == 1)
+                    ret = HEALTHBOX_GFX_STATUS_SLP_BATTLER1;
+                break;
+
+            case HEALTHBOX_GFX_STATUS_FRZ_BATTLER0:
+                if (battlerId == 0)
+                    ret = HEALTHBOX_GFX_STATUS_FRZ_BATTLER0;
+                else if (battlerId == 1)
+                    ret = HEALTHBOX_GFX_STATUS_FRZ_BATTLER1;
+                break;
+
+            case HEALTHBOX_GFX_STATUS_BRN_BATTLER0:
+                if (battlerId == 0)
+                    ret = HEALTHBOX_GFX_STATUS_BRN_BATTLER0;
+                else if (battlerId == 1)
+                    ret = HEALTHBOX_GFX_STATUS_BRN_BATTLER1;
+                break;
+        }
+    }
+    else
+    {
+        switch (statusElementId)
+        {
+            case HEALTHBOX_GFX_STATUS_PSN_BATTLER0:
+                ret = HEALTHBOX_GFX_STATUS_PSN_BATTLER1;
+            break;
+
+            case HEALTHBOX_GFX_STATUS_PRZ_BATTLER0:
+                ret = HEALTHBOX_GFX_STATUS_PRZ_BATTLER1;
+            break;
+
+            case HEALTHBOX_GFX_STATUS_SLP_BATTLER0:
+                ret = HEALTHBOX_GFX_STATUS_SLP_BATTLER1;
+            break;
+
+            case HEALTHBOX_GFX_STATUS_FRZ_BATTLER0:
+                ret = HEALTHBOX_GFX_STATUS_FRZ_BATTLER1;
+            break;
+
+            case HEALTHBOX_GFX_STATUS_BRN_BATTLER0:
+                ret = HEALTHBOX_GFX_STATUS_BRN_BATTLER1;
+            break;
+        }
+    }
+
+    /*switch (statusElementId)
     {
     case HEALTHBOX_GFX_STATUS_PSN_BATTLER0:
         if (battlerId == 0)
@@ -2319,7 +2415,8 @@ static u8 GetStatusIconForBattlerId(u8 statusElementId, u8 battlerId)
         else
             ret = HEALTHBOX_GFX_STATUS_BRN_BATTLER3;
         break;
-    }
+    }*/
+
     return ret;
 }
 
