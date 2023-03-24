@@ -1061,3 +1061,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/text/birch_speech.inc"
     .include "data/scripts/dexnav.inc"
     
+
+	.include "data/maps/ArboreaTown/scripts.inc"
