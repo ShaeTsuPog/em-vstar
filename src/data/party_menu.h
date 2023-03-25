@@ -71,12 +71,12 @@ static const struct PartyMenuBoxInfoRects sPartyBoxInfoRects[] =
         BlitBitmapToPartyWindow_Equal, 
         {
             //The below are the x, y, width, and height for each of the following info
-            33,  1, 40, 13, // Nickname
-            3, 25, 32,  8, // Level 85,  1, 32,  8,
+            33,  2, 40, 13, // Nickname
+             3, 25, 32,  8, // Level 85,  1, 32,  8,
            100,  1,  8,  8, // Gender 79,  1,  8,  8, 
-            33, 11, 24,  8, // HP
-            48, 11, 24,  8, // Max HP
-            48, 26, 56,  3  // HP bar
+            48, 25, 24,  8, // HP
+            63, 25, 24,  8, // Max HP
+            48, 18, 56,  3  // HP bar
         }, 
         33, 13, 64, 16      // Description text (e.g. NO USE)
     },//
@@ -90,12 +90,12 @@ static const u8 sPartyMenuSpriteCoords[PARTY_LAYOUT_COUNT][PARTY_SIZE][4 * 2] =
 {
     [PARTY_LAYOUT_SINGLE] =
     {
-        { 24,  14,  38,  33, 104,  19,  24,  18},
-        {136,  22, 150,  41, 216,  27, 136,  26},
-        { 24,  54,  38,  73, 104,  59,  24,  58},
-        {136,  62, 150,  81, 216,  67, 136,  66},
-        { 24,  94,  38, 113, 104,  99,  24,  98},
-        {136, 102, 150, 121, 216, 107, 136, 106},
+        { 24,  14,  38,  33, 105,  33,  24,  18},
+        {136,  22, 150,  41, 217,  41, 136,  26},
+        { 24,  54,  38,  73, 105,  73,  24,  58},
+        {136,  62, 150,  81, 217,  81, 136,  66},
+        { 24,  94,  38, 113, 105, 113,  24,  98},
+        {136, 102, 150, 121, 217, 121, 136, 106},
     },
     [PARTY_LAYOUT_DOUBLE] =
     {
@@ -691,8 +691,8 @@ static const u8 sSlotTilemap_WideEmpty[] = INCBIN_U8("graphics/party_menu/slot_w
  //Custom party menu
 static const u8 sEqualMainSlotTileNums[] =      {43, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 45,
                                                  49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
-                                                 49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
                                                  49, 33, 33, 33, 52, 53, 51, 51, 51, 51, 51, 51, 51, 54,
+                                                 49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
                                                  55, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 57};
 
 static const u8 sEqualMainSlotTileNums_Egg[] =  {43, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 45,
