@@ -601,8 +601,10 @@ static const u16 sStatBarPalette[16] = {
     [COLOR_ID_FILL + COLOR_WORST * 2] = RGB(25, 4, 2),
     [COLOR_ID_FILL_SHADOW + COLOR_WORST * 2] = RGB(27, 15, 13),
 
-    [COLOR_ID_FONT] = RGB_BLACK,
-    [COLOR_ID_FONT_SHADOW] = RGB(22, 22, 22),
+    [COLOR_ID_FONT] = RGB_WHITE,
+    [COLOR_ID_FONT_SHADOW] = RGB_BLACK,
+    //[COLOR_ID_FONT] = RGB_BLACK,
+    //[COLOR_ID_FONT_SHADOW] = RGB(22, 22, 22),
 };
 static const struct SpritePalette sStatBarSpritePal[] = //{sStatBarPalette, TAG_STAT_BAR};
 {
@@ -2820,8 +2822,10 @@ static void PrintMonDexNumAndName(u8 windowId, u8 fontId, const u8 *str, u8 left
     u8 color[3];
 
     color[0] = TEXT_COLOR_TRANSPARENT;
-    color[1] = TEXT_DYNAMIC_COLOR_6;
-    color[2] = TEXT_COLOR_LIGHT_GRAY;
+    //color[1] = TEXT_DYNAMIC_COLOR_6;
+    //color[2] = TEXT_COLOR_LIGHT_GRAY;
+    color[1] = TEXT_COLOR_WHITE;
+    color[2] = TEXT_DYNAMIC_COLOR_6;
     AddTextPrinterParameterized4(windowId, fontId, left * 8, (top * 8) + 1, 0, 0, color, TEXT_SKIP_DRAW, str);
 }
 
@@ -2830,8 +2834,10 @@ static void PrintMonDexNumAndName_2(u8 windowId, u8 fontId, const u8* str, u8 le
     u8 color[3];
 
     color[0] = TEXT_COLOR_TRANSPARENT;
-    color[1] = TEXT_DYNAMIC_COLOR_6;
-    color[2] = TEXT_COLOR_LIGHT_GRAY;
+    //color[1] = TEXT_DYNAMIC_COLOR_6;
+    //color[2] = TEXT_COLOR_LIGHT_GRAY;
+    color[1] = TEXT_COLOR_WHITE;
+    color[2] = TEXT_DYNAMIC_COLOR_6;
     AddTextPrinterParameterized4(windowId, fontId, left * 8 - 3, (top * 8) + 1, 0, 0, color, -1, str);
 }
 
@@ -2936,7 +2942,7 @@ static void CreateMonDexNum(u16 entryNum, u8 left, u8 top, u16 unused)
     text[2] = CHAR_0 + dexNum / 100;
     text[3] = CHAR_0 + (dexNum % 100) / 10;
     text[4] = CHAR_0 + (dexNum % 100) % 10;
-    PrintMonDexNumAndName(0, FONT_NARROW, text, left, top);
+    PrintMonDexNumAndName(0, FONT_BW, text, left, top);
 }
 
 static void CreateCaughtBall(bool16 owned, u8 x, u8 y, u16 unused)
@@ -2956,7 +2962,7 @@ static u8 CreateMonName(u16 num, u8 left, u8 top)
         str = gSpeciesNames[num];
     else
         str = sText_TenDashes;
-    PrintMonDexNumAndName_2(0, FONT_NARROW, str, left, top);
+    PrintMonDexNumAndName_2(0, FONT_BW, str, left, top);
     return StringLength(str);
 }
 
