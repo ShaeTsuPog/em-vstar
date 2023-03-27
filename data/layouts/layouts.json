@@ -4414,12 +4414,32 @@
     {
       "id": "LAYOUT_ARBOREA_TOWN",
       "name": "ArboreaTown_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 50,
+      "height": 60,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Fortree",
+      "secondary_tileset": "gTileset_Mossdeep",
       "border_filepath": "data/layouts/ArboreaTown/border.bin",
       "blockdata_filepath": "data/layouts/ArboreaTown/map.bin"
+    },
+    {
+      "id": "LAYOUT_ARBOREA_TOWN_PLAYERS_HOUSE",
+      "name": "ArboreaTown_PlayersHouse_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/ArboreaTown_PlayersHouse/border.bin",
+      "blockdata_filepath": "data/layouts/ArboreaTown_PlayersHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_ARBOREA_TOWN_PLAYERS_HOUSE_FLOOR2",
+      "name": "ArboreaTown_PlayersHouse_Floor2_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/ArboreaTown_PlayersHouse_Floor2/border.bin",
+      "blockdata_filepath": "data/layouts/ArboreaTown_PlayersHouse_Floor2/map.bin"
     }
   ]
 }
