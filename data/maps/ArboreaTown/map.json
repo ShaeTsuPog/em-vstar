@@ -81,7 +81,13 @@
     }
   ],
   "warp_events": [
-
+    {
+      "x": 37,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_ARBOREA_TOWN_PLAYERS_HOUSE",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
 

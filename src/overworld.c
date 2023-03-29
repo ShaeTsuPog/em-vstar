@@ -175,6 +175,8 @@ static u8 GetAdjustedInitialTransitionFlags(struct InitialPlayerAvatarState *, u
 static u8 GetAdjustedInitialDirection(struct InitialPlayerAvatarState *, u8, u16, u8);
 static u16 GetCenterScreenMetatileBehavior(void);
 
+static const u8 sMapsecToRegion[];
+
 static void *sUnusedOverworldCallback;
 static u8 sPlayerLinkStates[MAX_LINK_PLAYERS];
 // This callback is called with a player's key code. It then returns an
@@ -601,12 +603,14 @@ static void LoadCurrentMapData(void)
     gMapHeader = *Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
     gSaveBlock1Ptr->mapLayoutId = gMapHeader.mapLayoutId;
     gMapHeader.mapLayout = GetMapLayout();
+    gMapHeader.region = sMapsecToRegion[gMapHeader.regionMapSectionId];
 }
 
 static void LoadSaveblockMapHeader(void)
 {
     gMapHeader = *Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
     gMapHeader.mapLayout = GetMapLayout();
+    gMapHeader.region = sMapsecToRegion[gMapHeader.regionMapSectionId];
 }
 
 static void SetPlayerCoordsFromWarp(void)
@@ -3223,3 +3227,108 @@ static void SpriteCB_LinkPlayer(struct Sprite *sprite)
         sprite->data[7]++;
     }
 }
+
+static const u8 sMapsecToRegion[] = {
+    [MAPSEC_LITTLEROOT_TOWN]            = REGION_HOENN,
+    [MAPSEC_OLDALE_TOWN]                = REGION_HOENN,
+    [MAPSEC_DEWFORD_TOWN]               = REGION_HOENN,
+    [MAPSEC_LAVARIDGE_TOWN]             = REGION_HOENN,
+    [MAPSEC_FALLARBOR_TOWN]             = REGION_HOENN,
+    [MAPSEC_VERDANTURF_TOWN]            = REGION_HOENN,
+    [MAPSEC_PACIFIDLOG_TOWN]            = REGION_HOENN,
+    [MAPSEC_PETALBURG_CITY]             = REGION_HOENN,
+    [MAPSEC_SLATEPORT_CITY]             = REGION_HOENN,
+    [MAPSEC_MAUVILLE_CITY]              = REGION_HOENN,
+    [MAPSEC_RUSTBORO_CITY]              = REGION_HOENN,
+    [MAPSEC_FORTREE_CITY]               = REGION_HOENN,
+    [MAPSEC_LILYCOVE_CITY]              = REGION_HOENN,
+    [MAPSEC_MOSSDEEP_CITY]              = REGION_HOENN,
+    [MAPSEC_SOOTOPOLIS_CITY]            = REGION_HOENN,
+    [MAPSEC_EVER_GRANDE_CITY]           = REGION_HOENN,
+    [MAPSEC_ROUTE_101]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_102]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_103]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_104]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_105]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_106]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_107]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_108]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_109]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_110]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_111]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_112]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_113]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_114]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_115]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_116]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_117]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_118]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_119]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_120]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_121]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_122]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_123]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_124]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_125]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_126]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_127]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_128]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_129]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_130]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_131]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_132]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_133]                  = REGION_HOENN,
+    [MAPSEC_ROUTE_134]                  = REGION_HOENN,
+    [MAPSEC_UNDERWATER_124]             = REGION_HOENN,
+    [MAPSEC_UNDERWATER_126]             = REGION_HOENN,
+    [MAPSEC_UNDERWATER_127]             = REGION_HOENN,
+    [MAPSEC_UNDERWATER_128]             = REGION_HOENN,
+    [MAPSEC_UNDERWATER_SOOTOPOLIS]      = REGION_HOENN,
+    [MAPSEC_GRANITE_CAVE]               = REGION_HOENN,
+    [MAPSEC_MT_CHIMNEY]                 = REGION_HOENN,
+    [MAPSEC_SAFARI_ZONE]                = REGION_HOENN,
+    [MAPSEC_BATTLE_FRONTIER]            = REGION_HOENN,
+    [MAPSEC_PETALBURG_WOODS]            = REGION_HOENN,
+    [MAPSEC_RUSTURF_TUNNEL]             = REGION_HOENN,
+    [MAPSEC_ABANDONED_SHIP]             = REGION_HOENN,
+    [MAPSEC_NEW_MAUVILLE]               = REGION_HOENN,
+    [MAPSEC_METEOR_FALLS]               = REGION_HOENN,
+    [MAPSEC_METEOR_FALLS2]              = REGION_HOENN,
+    [MAPSEC_MT_PYRE]                    = REGION_HOENN,
+    [MAPSEC_AQUA_HIDEOUT_OLD]           = REGION_HOENN,
+    [MAPSEC_SHOAL_CAVE]                 = REGION_HOENN,
+    [MAPSEC_SEAFLOOR_CAVERN]            = REGION_HOENN,
+    [MAPSEC_UNDERWATER_SEAFLOOR_CAVERN] = REGION_HOENN,
+    [MAPSEC_VICTORY_ROAD]               = REGION_HOENN,
+    [MAPSEC_MIRAGE_ISLAND]              = REGION_HOENN,
+    [MAPSEC_CAVE_OF_ORIGIN]             = REGION_HOENN,
+    [MAPSEC_SOUTHERN_ISLAND]            = REGION_HOENN,
+    [MAPSEC_FIERY_PATH]                 = REGION_HOENN,
+    [MAPSEC_FIERY_PATH2]                = REGION_HOENN,
+    [MAPSEC_JAGGED_PASS]                = REGION_HOENN,
+    [MAPSEC_JAGGED_PASS2]               = REGION_HOENN,
+    [MAPSEC_SEALED_CHAMBER]             = REGION_HOENN,
+    [MAPSEC_UNDERWATER_SEALED_CHAMBER]  = REGION_HOENN,
+    [MAPSEC_SCORCHED_SLAB]              = REGION_HOENN,
+    [MAPSEC_ISLAND_CAVE]                = REGION_HOENN,
+    [MAPSEC_DESERT_RUINS]               = REGION_HOENN,
+    [MAPSEC_ANCIENT_TOMB]               = REGION_HOENN,
+    [MAPSEC_INSIDE_OF_TRUCK]            = REGION_HOENN,
+    [MAPSEC_SKY_PILLAR]                 = REGION_HOENN,
+    [MAPSEC_SECRET_BASE]                = REGION_HOENN,
+    [MAPSEC_DYNAMIC]                    = REGION_HOENN,
+    [MAPSEC_AQUA_HIDEOUT]               = REGION_HOENN,
+    [MAPSEC_MAGMA_HIDEOUT]              = REGION_HOENN,
+    [MAPSEC_MIRAGE_TOWER]               = REGION_HOENN,
+    [MAPSEC_FARAWAY_ISLAND]             = REGION_HOENN,
+    [MAPSEC_ARTISAN_CAVE]               = REGION_HOENN,
+    [MAPSEC_MARINE_CAVE]                = REGION_HOENN,
+    [MAPSEC_UNDERWATER_MARINE_CAVE]     = REGION_HOENN,
+    [MAPSEC_TERRA_CAVE]                 = REGION_HOENN,
+    [MAPSEC_UNDERWATER_105]             = REGION_HOENN,
+    [MAPSEC_UNDERWATER_125]             = REGION_HOENN,
+    [MAPSEC_UNDERWATER_129]             = REGION_HOENN,
+    [MAPSEC_DESERT_UNDERPASS]           = REGION_HOENN,
+    [MAPSEC_ALTERING_CAVE]              = REGION_HOENN,
+    [MAPSEC_TRAINER_HILL]               = REGION_HOENN
+};
