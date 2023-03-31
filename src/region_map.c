@@ -40,10 +40,12 @@
 
 #define MAP_WIDTH 28
 #define MAP_HEIGHT 15
+#define ARTORIA_MAP_WIDTH 32
+#define ARTORIA_MAP_HEIGHT 20
 #define MAPCURSOR_X_MIN 1
 #define MAPCURSOR_Y_MIN 2
-#define MAPCURSOR_X_MAX (MAPCURSOR_X_MIN + MAP_WIDTH - 1)
-#define MAPCURSOR_Y_MAX (MAPCURSOR_Y_MIN + MAP_HEIGHT - 1)
+#define MAPCURSOR_X_MAX (MAPCURSOR_X_MIN + (MAP_WIDTH || ARTORIA_MAP_WIDTH) - 1)
+#define MAPCURSOR_Y_MAX (MAPCURSOR_Y_MIN + (MAP_HEIGHT || ARTORIA_MAP_HEIGHT) - 1)
 
 #define FLYDESTICON_RED_OUTLINE 6
 
@@ -129,6 +131,9 @@ static const u8 sRegionMapPlayerIcon_MayGfx[] = INCBIN_U8("graphics/pokenav/regi
 
 #include "data/region_map/region_map_layout.h"
 #include "data/region_map/region_map_entries.h"
+
+#include "data/region_map/artoria_layout.h"
+//#include "data/region_map/artoria_map_entries.h"
 
 static const u16 sRegionMap_SpecialPlaceLocations[][2] =
 {
@@ -963,6 +968,7 @@ static u16 GetMapSecIdAt(u16 x, u16 y)
     y -= MAPCURSOR_Y_MIN;
     x -= MAPCURSOR_X_MIN;
     return sRegionMap_MapSectionLayout[y][x];
+    return sArtoriaMap_MapSectionLayout[y][x];
 }
 
 static void InitMapBasedOnPlayerLocation(void)

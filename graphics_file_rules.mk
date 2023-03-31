@@ -695,6 +695,9 @@ $(POKEDEXGFXDIR)/region_map.8bpp: %.8bpp: %.png
 $(POKEDEXGFXDIR)/region_map_affine.8bpp: %.8bpp: %.png
 	$(GFX) $< $@ -num_tiles 233 -Wnum_tiles
 
+$(PKNAVGFXDIR)/artoria_map.8bpp %.8bpp: %.png
+	$(GFX) $< $@ -num_tiles 233 -Wnum_tiles
+
 $(NAMINGGFXDIR)/cursor.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 5 -Wnum_tiles
 
