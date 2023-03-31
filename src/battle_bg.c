@@ -226,10 +226,10 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .paletteNum = 5,
         .baseBlock = 0x0290,
     },
-    [B_WIN_DUMMY] = {
+    [B_WIN_SPLIT_ICON] = {
         .bg = 0,
-        .tilemapLeft = 21,
-        .tilemapTop = 55,
+        .tilemapLeft = 23,
+        .tilemapTop = 57,
         .width = 2,
         .height = 2,
         .paletteNum = 10,
@@ -442,12 +442,12 @@ static const struct WindowTemplate sBattleArenaWindowTemplates[] =
         .bg = 0,
         .tilemapLeft = 23,
         .tilemapTop = 55,
-        .width = 2,
-        .height = 2,
+        .width = 0,
+        .height = 0,
         .paletteNum = 5,
         .baseBlock = 0x0290,
     },
-    [B_WIN_DUMMY] = {
+    [B_WIN_SPLIT_ICON] = {
         .bg = 0,
         .tilemapLeft = 21,
         .tilemapTop = 55,
@@ -469,7 +469,7 @@ static const struct WindowTemplate sBattleArenaWindowTemplates[] =
         .bg = 0,
         .tilemapLeft = 21,
         .tilemapTop = 57,
-        .width = 8,
+        .width = 4,
         .height = 2,
         .paletteNum = 5,
         .baseBlock = 0x02a0,
@@ -860,6 +860,8 @@ void LoadBattleTextboxAndBackground(void)
 #else
     DrawMainBattleBackground();
 #endif
+    gBattleMoveTypeSpriteId = MAX_SPRITES;
+    LoadCompressedPalette(gMoveTypes_Pal, 0x1D0, 0x60);
 }
 
 static void DrawLinkBattleParticipantPokeballs(u8 taskId, u8 multiplayerId, u8 bgId, u8 destX, u8 destY)
