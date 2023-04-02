@@ -135,8 +135,8 @@ static void PrintPocketNames(const u8 *, const u8 *);
 static void CopyPocketNameToWindow(u32);
 static void DrawPocketIndicatorSquare(u8, bool8);
 static void CreatePocketScrollArrowPair(void);
-static void CreatePocketSwitchArrowPair(void);
-static void DestroyPocketSwitchArrowPair(void);
+//static void CreatePocketSwitchArrowPair(void);
+//static void DestroyPocketSwitchArrowPair(void);
 static void PrepareTMHMMoveWindow(void);
 static bool8 IsWallysBag(void);
 static void Task_WallyTutorialBagMenu(u8);
@@ -385,10 +385,11 @@ enum {
     COLORID_TMHM_INFO,
     COLORID_NONE = 0xFF
 };
+
 static const u8 sFontColorTable[][3] = {
                             // bgColor, textColor, shadowColor
     [COLORID_NORMAL]      = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_LIGHT_GRAY},
-    [COLORID_POCKET_NAME] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_RED},
+    [COLORID_POCKET_NAME] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GRAY,      TEXT_COLOR_WHITE}, 
     [COLORID_GRAY_CURSOR] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GRAY, TEXT_COLOR_GREEN},
     [COLORID_UNUSED]      = {TEXT_COLOR_DARK_GRAY,   TEXT_COLOR_WHITE,      TEXT_COLOR_LIGHT_GRAY},
     [COLORID_TMHM_INFO]   = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_5,  TEXT_DYNAMIC_COLOR_1}
@@ -416,8 +417,8 @@ static const struct WindowTemplate sDefaultBagWindows[] =
     },
     [WIN_POCKET_NAME] = {
         .bg = 0,
-        .tilemapLeft = 4,
-        .tilemapTop = 1,
+        .tilemapLeft = 1,
+        .tilemapTop = 0,
         .width = 8,
         .height = 2,
         .paletteNum = 1,
@@ -637,7 +638,7 @@ void GoToBagMenu(u8 location, u8 pocket, void ( *exitCallback)())
         gBagMenu->newScreenCallback = NULL;
         gBagMenu->toSwapPos = NOT_SWAPPING;
         gBagMenu->pocketScrollArrowsTask = TASK_NONE;
-        gBagMenu->pocketSwitchArrowsTask = TASK_NONE;
+        //gBagMenu->pocketSwitchArrowsTask = TASK_NONE;
         memset(gBagMenu->spriteIds, SPRITE_NONE, sizeof(gBagMenu->spriteIds));
         memset(gBagMenu->windowIds, WINDOW_NONE, sizeof(gBagMenu->windowIds));
         SetMainCallback2(CB2_Bag);
@@ -767,7 +768,7 @@ static bool8 SetupBagMenu(void)
         break;
     case 17:
         CreatePocketScrollArrowPair();
-        CreatePocketSwitchArrowPair();
+        //CreatePocketSwitchArrowPair();
         gMain.state++;
         break;
     case 18:
@@ -1059,23 +1060,23 @@ void BagDestroyPocketScrollArrowPair(void)
         RemoveScrollIndicatorArrowPair(gBagMenu->pocketScrollArrowsTask);
         gBagMenu->pocketScrollArrowsTask = TASK_NONE;
     }
-    DestroyPocketSwitchArrowPair();
+    //DestroyPocketSwitchArrowPair();
 }
 
-static void CreatePocketSwitchArrowPair(void)
+/*static void CreatePocketSwitchArrowPair(void)
 {
     if (gBagMenu->pocketSwitchDisabled != TRUE && gBagMenu->pocketSwitchArrowsTask == TASK_NONE)
         gBagMenu->pocketSwitchArrowsTask = AddScrollIndicatorArrowPair(&sBagScrollArrowsTemplate, &gBagPosition.pocketSwitchArrowPos);
-}
+}*/
 
-static void DestroyPocketSwitchArrowPair(void)
+/*static void DestroyPocketSwitchArrowPair(void)
 {
     if (gBagMenu->pocketSwitchArrowsTask != TASK_NONE)
     {
         RemoveScrollIndicatorArrowPair(gBagMenu->pocketSwitchArrowsTask);
         gBagMenu->pocketSwitchArrowsTask = TASK_NONE;
     }
-}
+}*/
 
 static void FreeBagMenu(void)
 {
@@ -1287,7 +1288,7 @@ static void Task_BagMenu_HandleInput(u8 taskId)
 static void ReturnToItemList(u8 taskId)
 {
     CreatePocketScrollArrowPair();
-    CreatePocketSwitchArrowPair();
+    //CreatePocketSwitchArrowPair();
     ClearWindowTilemap(WIN_TMHM_INFO_ICONS);
     ClearWindowTilemap(WIN_TMHM_INFO);
     PutWindowTilemap(WIN_DESCRIPTION);
@@ -1318,6 +1319,10 @@ static void ChangeBagPocketId(u8 *bagPocketId, s8 deltaBagPocketId)
 {
     if ((deltaBagPocketId == MENU_CURSOR_DELTA_RIGHT && *bagPocketId == TREASURES_POCKET) || (deltaBagPocketId == MENU_CURSOR_DELTA_LEFT && *bagPocketId == KEYITEMS_POCKET))
         *bagPocketId += deltaBagPocketId*2;
+    /*if (deltaBagPocketId == MENU_CURSOR_DELTA_RIGHT && *bagPocketId == KEYITEMS_POCKET)
+        *bagPocketId = ITEMS_POCKET;
+    else if (deltaBagPocketId == MENU_CURSOR_DELTA_LEFT && *bagPocketId == ITEMS_POCKET)
+        *bagPocketId = KEYITEMS_POCKET;*/
     else if (deltaBagPocketId == MENU_CURSOR_DELTA_RIGHT && *bagPocketId == POCKETS_COUNT - 1)
         *bagPocketId = 0;
     else if (deltaBagPocketId == MENU_CURSOR_DELTA_LEFT && *bagPocketId == 0)
@@ -1361,7 +1366,7 @@ static void SwitchBagPocket(u8 taskId, s16 deltaBagPocketId, bool16 skipEraseLis
     ScheduleBgCopyTilemapToVram(2);
     SetBagVisualPocketId(newPocket, TRUE);
     RemoveBagSprite(ITEMMENUSPRITE_BALL);
-    AddSwitchPocketRotatingBallSprite(deltaBagPocketId);
+    //AddSwitchPocketRotatingBallSprite(deltaBagPocketId);
     SetTaskFuncWithFollowupFunc(taskId, Task_SwitchBagPocket, gTasks[taskId].func);
 }
 
@@ -1407,7 +1412,7 @@ static void Task_SwitchBagPocket(u8 taskId)
         PutWindowTilemap(WIN_POCKET_NAME);
         ScheduleBgCopyTilemapToVram(0);
         CreatePocketScrollArrowPair();
-        CreatePocketSwitchArrowPair();
+        //CreatePocketSwitchArrowPair();
         SwitchTaskToFollowupFunc(taskId);
     }
 }
@@ -1423,9 +1428,9 @@ static void DrawItemListBgRow(u8 y)
 static void DrawPocketIndicatorSquare(u8 x, bool8 isCurrentPocket)
 {
     if (!isCurrentPocket)
-        FillBgTilemapBufferRect_Palette0(2, 0x1017, x + 4, 3, 1, 1);
+        FillBgTilemapBufferRect_Palette0(2, 23, x + 14, 1, 1, 1);
     else
-        FillBgTilemapBufferRect_Palette0(2, 0x102B, x + 4, 3, 1, 1);
+        FillBgTilemapBufferRect_Palette0(2, 43, x + 14, 1, 1, 1);
     ScheduleBgCopyTilemapToVram(2);
 }
 
@@ -1455,7 +1460,7 @@ static void StartItemSwap(u8 taskId)
     FillWindowPixelBuffer(WIN_DESCRIPTION, PIXEL_FILL(0));
     BagMenu_Print(WIN_DESCRIPTION, FONT_NORMAL, gStringVar4, 3, 1, 0, 0, 0, COLORID_NORMAL);
     UpdateItemMenuSwapLinePos(tListPosition);
-    DestroyPocketSwitchArrowPair();
+    //DestroyPocketSwitchArrowPair();
     BagMenu_PrintCursor(tListTaskId, COLORID_GRAY_CURSOR);
     gTasks[taskId].func = Task_HandleSwappingItemsInput;
 }
@@ -1520,7 +1525,7 @@ static void DoItemSwap(u8 taskId)
         LoadBagItemListBuffers(gBagPosition.pocket);
         tListTaskId = ListMenuInit(&gMultiuseListMenuTemplate, *scrollPos, *cursorPos);
         SetItemMenuSwapLineInvisibility(TRUE);
-        CreatePocketSwitchArrowPair();
+        //CreatePocketSwitchArrowPair();
         gTasks[taskId].func = Task_BagMenu_HandleInput;
     }
 }
@@ -1538,7 +1543,7 @@ static void CancelItemSwap(u8 taskId)
     LoadBagItemListBuffers(gBagPosition.pocket);
     tListTaskId = ListMenuInit(&gMultiuseListMenuTemplate, *scrollPos, *cursorPos);
     SetItemMenuSwapLineInvisibility(TRUE);
-    CreatePocketSwitchArrowPair();
+    //CreatePocketSwitchArrowPair();
     gTasks[taskId].func = Task_BagMenu_HandleInput;
 }
 
@@ -2444,11 +2449,11 @@ static void PrintPocketNames(const u8 *pocketName1, const u8 *pocketName2)
     windowId = AddWindow(&window);
     FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
     offset = GetStringCenterAlignXOffset(FONT_NORMAL, pocketName1, 0x40);
-    BagMenu_Print(windowId, FONT_NORMAL, pocketName1, offset, 1, 0, 0, TEXT_SKIP_DRAW, COLORID_POCKET_NAME);
+    BagMenu_Print(windowId, FONT_BW, pocketName1, offset, 1, 0, 0, TEXT_SKIP_DRAW, COLORID_POCKET_NAME);
     if (pocketName2)
     {
         offset = GetStringCenterAlignXOffset(FONT_NORMAL, pocketName2, 0x40);
-        BagMenu_Print(windowId, FONT_NORMAL, pocketName2, offset + 0x40, 1, 0, 0, TEXT_SKIP_DRAW, COLORID_POCKET_NAME);
+        BagMenu_Print(windowId, FONT_BW, pocketName2, offset + 0x40, 1, 0, 0, TEXT_SKIP_DRAW, COLORID_POCKET_NAME);
     }
     CpuCopy32((u8 *)GetWindowAttribute(windowId, WINDOW_TILE_DATA), gBagMenu->pocketNameBuffer, sizeof(gBagMenu->pocketNameBuffer));
     RemoveWindow(windowId);
