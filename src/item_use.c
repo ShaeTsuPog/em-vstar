@@ -616,6 +616,21 @@ static void Task_StandingOnHiddenItem(u8 taskId)
 #undef tItemfinderBeeps
 #undef tFacingDir
 
+void ItemUseOutOfBattle_PokeRepel(u8 taskId)
+{
+    if (FlagGet(FLAG_POKE_REPEL) == FALSE)
+    {
+        FlagSet(FLAG_POKE_REPEL);
+        PlaySE(SE_REPEL);
+        DisplayItemMessage(taskId, FONT_NORMAL, gText_UsePokeRepel, CloseItemMessage);
+    }
+    else
+    {
+        FlagClear(FLAG_POKE_REPEL);
+        DisplayItemMessage(taskId, FONT_NORMAL, gText_RemovePokeRepel, CloseItemMessage);
+    }
+}
+
 void ItemUseOutOfBattle_PokeblockCase(u8 taskId)
 {
     if (MenuHelpers_IsLinkActive() == TRUE)
@@ -1326,3 +1341,9 @@ void ItemUseOutOfBattle_CannotUse(u8 taskId)
 }
 
 #undef tUsingRegisteredKeyItem
+
+void ItemUseOutOfBattle_Pokeball(u8 taskId)
+{
+    gItemUseCB = ItemUseCB_Pokeball;
+    SetUpItemUseCallback(taskId);
+}

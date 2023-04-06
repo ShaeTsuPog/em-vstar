@@ -971,7 +971,10 @@
 #define ITEM_GRISEOUS_CORE 793
 #define ITEM_LUSTROUS_GLOBE 794
 
-#define ITEMS_COUNT 795
+// Custom Items
+#define ITEM_POKE_REPEL 795
+
+#define ITEMS_COUNT 796
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

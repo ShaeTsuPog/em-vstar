@@ -100,6 +100,7 @@ void MoveDeleterForgetMove(void);
 void BufferMoveDeleterNicknameAndMove(void);
 void GetNumMovesSelectedMonHas(void);
 void MoveDeleterChooseMoveToForget(void);
+void ItemUseCB_Pokeball(u8 taskId, TaskFunc task);
 
 #ifndef BATTLE_ENGINE
 bool8 CanLearnTutorMove(u16, u8);

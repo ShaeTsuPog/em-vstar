@@ -477,14 +477,14 @@ static bool8 HandleLoadTMCaseGraphicsAndPalettes(void)
 
 static void CreateTMCaseListMenuBuffers(void)
 {
-    struct BagPocket * pocket = &gBagPockets[POCKET_TM_HM];
+    struct BagPocket * pocket = &gBagPockets[POCKET_TM_HM - 1];
     sListMenuItemsBuffer = Alloc((pocket->capacity) * sizeof(struct ListMenuItem));
     sListMenuStringsBuffer = Alloc(sTMCaseDynamicResources->numTMs * 29);
 }
 
 static void InitTMCaseListMenuItems(void)
 {
-    struct BagPocket * pocket = &gBagPockets[POCKET_TM_HM];
+    struct BagPocket * pocket = &gBagPockets[POCKET_TM_HM - 1];
     u16 i;
 
     for (i = 0; i < sTMCaseDynamicResources->numTMs; i++)
@@ -643,7 +643,7 @@ void ResetTMCaseCursorPos(void)
 
 static void TMCaseSetup_GetTMCount(void)
 {
-    struct BagPocket * pocket = &gBagPockets[POCKET_TM_HM];
+    struct BagPocket * pocket = &gBagPockets[POCKET_TM_HM - 1];
     u16 i;
 
     // BagPocketCompaction(pocket->itemSlots, pocket->capacity);

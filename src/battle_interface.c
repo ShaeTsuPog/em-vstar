@@ -159,6 +159,7 @@ enum
 
 static const u8 *GetHealthboxElementGfxPtr(u8);
 static u8 *AddTextPrinterAndCreateWindowOnHealthbox(const u8 *, u32, u32, u32, u32 *);
+static u8 *AddTextPrinterAndCreateWindowOnHealthboxSmall(const u8 *, u32, u32, u32, u32 *);
 
 static void RemoveWindowOnHealthbox(u32 windowId);
 static void UpdateHpTextInHealthboxInDoubles(u32 healthboxSpriteId, u32 maxOrCurrent, s16 currHp, s16 maxHp);
@@ -1034,7 +1035,7 @@ static void PrintHpOnHealthbox(u32 spriteId, s16 currHp, s16 maxHp, u32 bgColor,
     *txtPtr++ = CHAR_SLASH;
     txtPtr = ConvertIntToDecimalStringN(txtPtr, maxHp, STR_CONV_MODE_LEFT_ALIGN, 4);
     // Print last 6 chars on the right window
-    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(txtPtr - 6, 0, 4, 7, &windowId);
+    windowTileData = AddTextPrinterAndCreateWindowOnHealthboxSmall(txtPtr - 6, 0, 4, 7, &windowId);
     HpTextIntoHealthboxObject(objVram + rightTile, windowTileData, 4);
     RemoveWindowOnHealthbox(windowId);
     // Print the rest of the chars on the left window
@@ -1044,7 +1045,7 @@ static void PrintHpOnHealthbox(u32 spriteId, s16 currHp, s16 maxHp, u32 bgColor,
         x = 9, tilesCount = 3;
     else
         x = 6, tilesCount = 2, leftTile += 0x20;
-    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, x, 4, 7, &windowId);
+    windowTileData = AddTextPrinterAndCreateWindowOnHealthboxSmall(text, x, 4, 7, &windowId);
     HpTextIntoHealthboxObject(objVram + leftTile, windowTileData, tilesCount);
     RemoveWindowOnHealthbox(windowId);
 }
@@ -2831,6 +2832,25 @@ static u8 *AddTextPrinterAndCreateWindowOnHealthbox(const u8 *str, u32 x, u32 y,
     return (u8 *)(GetWindowAttribute(winId, WINDOW_TILE_DATA));
 }
 
+static u8 *AddTextPrinterAndCreateWindowOnHealthboxSmall(const u8 *str, u32 x, u32 y, u32 bgColor, u32 *windowId)
+{
+    u16 winId;
+    u8 color[3];
+    struct WindowTemplate winTemplate = sHealthboxWindowTemplate;
+
+    winId = AddWindow(&winTemplate);
+    FillWindowPixelBuffer(winId, PIXEL_FILL(bgColor));
+
+    color[0] = bgColor;
+    color[1] = 1;
+    color[2] = 3;
+
+    AddTextPrinterParameterized4(winId, FONT_BW_SMALL, x, y, 0, 0, color, TEXT_SKIP_DRAW, str);
+
+    *windowId = winId;
+    return (u8 *)(GetWindowAttribute(winId, WINDOW_TILE_DATA));
+}
+
 static void RemoveWindowOnHealthbox(u32 windowId)
 {
     RemoveWindow(windowId);
@@ -2943,7 +2963,7 @@ static u8* AddTextPrinterAndCreateWindowOnAbilityPopUp(const u8 *str, u32 x, u32
     *windowId = AddWindow(&winTemplate);
     FillWindowPixelBuffer(*windowId, PIXEL_FILL(color1));
 
-    AddTextPrinterParameterized4(*windowId, FONT_SMALL, x, y, 0, 0, color, TEXT_SKIP_DRAW, str);
+    AddTextPrinterParameterized4(*windowId, FONT_BW, x, y, 0, 0, color, TEXT_SKIP_DRAW, str);
     return (u8 *)(GetWindowAttribute(*windowId, WINDOW_TILE_DATA));
 }
 
@@ -3034,7 +3054,7 @@ static void PrintBattlerOnAbilityPopUp(u8 battlerId, u8 spriteId1, u8 spriteId2)
                         (void*)(OBJ_VRAM0) + (gSprites[spriteId2].oam.tileNum * 32),
                         5, 12,
                         0,
-                        2, 7, 1);
+                        6, 1, 15);
 }
 
 static void PrintAbilityOnAbilityPopUp(u32 ability, u8 spriteId1, u8 spriteId2)
@@ -3044,14 +3064,14 @@ static void PrintAbilityOnAbilityPopUp(u32 ability, u8 spriteId1, u8 spriteId2)
                         (void*)(OBJ_VRAM0) + (gSprites[spriteId2].oam.tileNum * 32) + 256,
                         5, 12,
                         4,
-                        7, 9, 1);
+                        1, 1, 15);
 }
 
-#define PIXEL_COORDS_TO_OFFSET(x, y)(            \
-/*Add tiles by X*/                                \
-((y / 8) * 32 * 8)                                \
-/*Add tiles by X*/                                \
-+ ((x / 8) * 32)                                \
+#define PIXEL_COORDS_TO_OFFSET(x, y)(              \
+/*Add tiles by X*/                                 \
+((y / 8) * 32 * 8)                                 \
+/*Add tiles by X*/                                 \
++ ((x / 8) * 32)                                   \
 /*Add pixels by Y*/                                \
 + ((((y) - ((y / 8) * 8))) * 4)                    \
 /*Add pixels by X*/                                \
