@@ -254,6 +254,8 @@ const u8 gText_TheBattle[] = _("the battle");
 const u8 gText_ThePokemonList[] = _("the POKéMON LIST");
 const u8 gText_TheShop[] = _("the shop");
 const u8 gText_ThePC[] = _("the PC");
+const u8 gText_UsePokeRepel[] = _("{PLAYER} used the\nPokéRepel.\pWild Pokémon will be repelled.{PAUSE_UNTIL_PRESS}");
+const u8 gText_RemovePokeRepel[] = _("{PLAYER} wiped\noff the PokéRepel.{PAUSE_UNTIL_PRESS}");
 
 const u8 *const gBagMenu_ReturnToStrings[] =
 {
@@ -280,14 +282,14 @@ const u8 *const gPyramidBagMenu_ReturnToStrings[] =
 };
 
 const u8 gText_ReturnToVar1[] = _("Return to\n{STR_VAR_1}.");
-const u8 gText_ItemsPocket[] = _("ITEMS");
-const u8 gText_PokeBallsPocket[] = _("POKé BALLS");
+const u8 gText_ItemsPocket[] = _("Items");
+const u8 gText_PokeBallsPocket[] = _("Poké Balls");
 const u8 gText_TMHMPocket[] = _("TMs & HMs");
-const u8 gText_BerriesPocket[] = _("BERRIES");
-const u8 gText_KeyItemsPocket[] = _("KEY ITEMS");
-const u8 gText_MedicinePocket[] = _("MEDICINE");
-const u8 gText_BattleItemsPocket[] = _("BATTLE ITEM");
-const u8 gText_TreasuresPocket[] = _("TREASURES");
+const u8 gText_BerriesPocket[] = _("Berries");
+const u8 gText_KeyItemsPocket[] = _("Key Items");
+const u8 gText_MedicinePocket[] = _("Medicine");
+const u8 gText_BattleItemsPocket[] = _("Battle Item");
+const u8 gText_TreasuresPocket[] = _("Treasure");
 
 const u8 *const gPocketNamesStringsTable[] =
 {
@@ -410,7 +412,8 @@ const u8 gText_BagFullCouldNotRemoveItem[] = _("The BAG is full. The POKéMON's\
 const u8 gText_PkmnLearnedMove3[] = _("{STR_VAR_1} learned\n{STR_VAR_2}!");
 const u8 gText_PkmnCantLearnMove[] = _("{STR_VAR_1} and {STR_VAR_2}\nare not compatible.\p{STR_VAR_2} can't be\nlearned.{PAUSE_UNTIL_PRESS}");
 const u8 gText_PkmnNeedsToReplaceMove[] = _("{STR_VAR_1} wants to learn the\nmove {STR_VAR_2}.\pHowever, {STR_VAR_1} already\nknows four moves.\pShould a move be deleted and\nreplaced with {STR_VAR_2}?");
-const u8 gText_StopLearningMove2[] = _("Stop trying to teach\n{STR_VAR_2}?");
+//const u8 gText_StopLearningMove2[] = _("Stop trying to teach\n{STR_VAR_2}?");
+const u8 gText_StopLearningMove2[] = _("Continue learning\n{STR_VAR_2}?");
 const u8 gText_MoveNotLearned[] = _("{STR_VAR_1} did not learn the\nmove {STR_VAR_2}.{PAUSE_UNTIL_PRESS}");
 const u8 gText_WhichMoveToForget[] = _("Which move should be forgotten?{PAUSE_UNTIL_PRESS}");
 const u8 gText_12PoofForgotMove[] = _("1, {PAUSE 15}2, and{PAUSE 15}… {PAUSE 15}… {PAUSE 15}… {PAUSE 15}{PLAY_SE SE_BALL_BOUNCE_1}Poof!\p{STR_VAR_1} forgot how to\nuse {STR_VAR_2}.\pAnd…{PAUSE_UNTIL_PRESS}");
@@ -1766,11 +1769,13 @@ const u8 gText_TeachWhichMoveToPkmn[] = _("Teach which move to {STR_VAR_1}?");
 const u8 gText_MoveRelearnerTeachMoveConfirm[] = _("Teach {STR_VAR_2}?");
 const u8 gText_MoveRelearnerPkmnLearnedMove[] = _("{STR_VAR_1} learned\n{STR_VAR_2}!");
 const u8 gText_MoveRelearnerPkmnTryingToLearnMove[] = _("{STR_VAR_1} is trying to learn\n{STR_VAR_2}.\pBut {STR_VAR_1} can't learn more\nthan four moves.\pDelete an older move to make\nroom for {STR_VAR_2}?");
-const u8 gText_MoveRelearnerStopTryingToTeachMove[] = _("Stop trying to teach\n{STR_VAR_2}?");
+//const u8 gText_MoveRelearnerStopTryingToTeachMove[] = _("Stop trying to teach\n{STR_VAR_2}?");
+const u8 gText_MoveRelearnerStopTryingToTeachMove[] = _("Continue learning\n{STR_VAR_2}?");
 const u8 gText_MoveRelearnerAndPoof[] = _("{PAUSE 32}1, {PAUSE 15}2, and {PAUSE 15}… {PAUSE 15}… {PAUSE 15}… {PAUSE 15}{PLAY_SE SE_BALL_BOUNCE_1}Poof!\p");
 const u8 gText_MoveRelearnerPkmnForgotMoveAndLearnedNew[] = _("{STR_VAR_1} forgot {STR_VAR_3}.\pAnd…\p{STR_VAR_1} learned {STR_VAR_2}.");
 const u8 gText_MoveRelearnedPkmnDidNotLearnMove[] = _("{STR_VAR_1} did not learn the\nmove {STR_VAR_2}."); // Unused
-const u8 gText_MoveRelearnerGiveUp[] = _("Give up trying to teach a new\nmove to {STR_VAR_1}?");
+//const u8 gText_MoveRelearnerGiveUp[] = _("Give up trying to teach a new\nmove to {STR_VAR_1}?");
+const u8 gText_MoveRelearnerGiveUp[] = _("Continue learning a \nnew move?");
 const u8 gText_MoveRelearnerWhichMoveToForget[] = _("Which move should be\nforgotten?\p");
 const u8 gText_MoveRelearnerBattleMoves[] = _("BATTLE MOVES");
 const u8 gText_MoveRelearnerContestMovesTitle[] = _("CONTEST MOVES");

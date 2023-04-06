@@ -5304,6 +5304,15 @@ static void Task_HandleStopLearningMoveYesNoInput(u8 taskId)
     case 0:
         GetMonNickname(mon, gStringVar1);
         StringCopy(gStringVar2, gMoveNames[gPartyMenu.data1]);
+        DisplayLearnMoveMessage(gText_PkmnNeedsToReplaceMove);
+        gTasks[taskId].func = Task_ReplaceMoveYesNo;
+        break;
+    case MENU_B_PRESSED:
+        PlaySE(SE_SELECT);
+        // fallthrough
+    case 1:
+        GetMonNickname(mon, gStringVar1);
+        StringCopy(gStringVar2, gMoveNames[gPartyMenu.data1]);
         StringExpandPlaceholders(gStringVar4, gText_MoveNotLearned);
         DisplayPartyMenuMessage(gStringVar4, TRUE);
         if (gPartyMenu.learnMoveState == 1)
@@ -5317,7 +5326,7 @@ static void Task_HandleStopLearningMoveYesNoInput(u8 taskId)
             gTasks[taskId].func = Task_ClosePartyMenuAfterText;
         }
         break;
-    case MENU_B_PRESSED:
+    /*case MENU_B_PRESSED:
         PlaySE(SE_SELECT);
         // fallthrough
     case 1:
@@ -5325,7 +5334,7 @@ static void Task_HandleStopLearningMoveYesNoInput(u8 taskId)
         StringCopy(gStringVar2, gMoveNames[gPartyMenu.data1]);
         DisplayLearnMoveMessage(gText_PkmnNeedsToReplaceMove);
         gTasks[taskId].func = Task_ReplaceMoveYesNo;
-        break;
+        break;*/
     }
 }
 
@@ -7056,4 +7065,37 @@ void IsLastMonThatKnowsSurf(void)
 u16 GetTMHMMoves(u16 position)
 {
     return sTMHMMoves[position];
+}
+
+void ItemUseCB_Pokeball(u8 taskId, TaskFunc task)
+{
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+    u16 currBall = GetMonData(mon, MON_DATA_POKEBALL);
+    u16 newBall = gSpecialVar_ItemId;
+    static const u8 sText_MonBallWasChanged[] = _("{STR_VAR_1} was put in the {STR_VAR_2}.{PAUSE_UNTIL_PRESS}");
+
+    if (currBall == newBall)
+    {
+        gPartyMenuUseExitCallback = FALSE;
+        DisplayPartyMenuMessage(gText_WontHaveEffect, TRUE);
+        ScheduleBgCopyTilemapToVram(2);
+        gTasks[taskId].func = task;
+    }
+    else
+    {
+        GetMonNickname(mon, gStringVar1);
+        CopyItemName(newBall, gStringVar2);
+        PlaySE(SE_SELECT);
+        gPartyMenuUseExitCallback = TRUE;
+        SetMonData(mon, MON_DATA_POKEBALL, &newBall);
+        StringExpandPlaceholders(gStringVar4, sText_MonBallWasChanged);
+        DisplayPartyMenuMessage(gStringVar4, TRUE);
+        ScheduleBgCopyTilemapToVram(2);
+        gTasks[taskId].func = task;
+        RemoveBagItem(newBall, 1);
+        if (currBall != ITEM_MASTER_BALL)
+        {
+            AddBagItem(currBall, 1);
+        }
+    }
 }

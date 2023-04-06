@@ -29,12 +29,12 @@ struct CompressedTilesPal
 // this file's functions
 static void SpriteCB_BagVisualSwitchingPockets(struct Sprite *sprite);
 static void SpriteCB_ShakeBagSprite(struct Sprite *sprite);
-static void SpriteCB_SwitchPocketRotatingBallInit(struct Sprite *sprite);
-static void SpriteCB_SwitchPocketRotatingBallContinue(struct Sprite *sprite);
+//static void SpriteCB_SwitchPocketRotatingBallInit(struct Sprite *sprite);
+//static void SpriteCB_SwitchPocketRotatingBallContinue(struct Sprite *sprite);
 
 // static const rom data
-static const u16 sRotatingBall_Pal[] = INCBIN_U16("graphics/bag/rotating_ball.gbapal");
-static const u8 sRotatingBall_Gfx[] = INCBIN_U8("graphics/bag/rotating_ball.4bpp");
+//static const u16 sRotatingBall_Pal[] = INCBIN_U16("graphics/bag/rotating_ball.gbapal");
+//static const u8 sRotatingBall_Gfx[] = INCBIN_U8("graphics/bag/rotating_ball.4bpp");
 static const u8 sCherryUnused[] = INCBIN_U8("graphics/unused/cherry.4bpp");
 static const u16 sCherryUnused_Pal[] = INCBIN_U16("graphics/unused/cherry.gbapal");
 
@@ -174,7 +174,7 @@ static const struct SpriteTemplate sBagSpriteTemplate =
     .callback = SpriteCallbackDummy,
 };
 
-static const struct OamData sRotatingBallOamData =
+/*static const struct OamData sRotatingBallOamData =
 {
     .y = 0,
     .affineMode = ST_OAM_AFFINE_OFF,
@@ -243,7 +243,7 @@ static const struct SpriteTemplate sRotatingBallSpriteTemplate =
     .images = NULL,
     .affineAnims = sRotatingBallAnimCmds,
     .callback = SpriteCB_SwitchPocketRotatingBallInit,
-};
+};*/
 
 static const struct OamData sBerryPicOamData =
 {
@@ -541,7 +541,7 @@ static void SpriteCB_ShakeBagSprite(struct Sprite *sprite)
     }
 }
 
-void AddSwitchPocketRotatingBallSprite(s16 rotationDirection)
+/*void AddSwitchPocketRotatingBallSprite(s16 rotationDirection)
 {
     u8 *spriteId = &gBagMenu->spriteIds[ITEMMENUSPRITE_BALL];
     LoadSpriteSheet(&sRotatingBallTable);
@@ -577,7 +577,7 @@ static void SpriteCB_SwitchPocketRotatingBallContinue(struct Sprite *sprite)
     UpdateSwitchPocketRotatingBallCoords(sprite);
     if (sprite->data[3] == 16)
         RemoveBagSprite(ITEMMENUSPRITE_BALL);
-}
+}*/
 
 void AddBagItemIconSprite(u16 itemId, u8 id)
 {
