@@ -2138,7 +2138,7 @@ static void Cmd_damagecalc(void)
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
-static void Cmd_typecalc(void)
+void Cmd_typecalc(void)
 {
     CMD_ARGS();
 

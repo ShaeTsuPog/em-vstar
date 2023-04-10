@@ -1753,6 +1753,13 @@
 	.byte 0xe4
 	.endm
 
+	@ Speaker name macro
+	.macro speakername text:req
+	.byte 0xe5
+	.4byte \text
+	.endm
+	
+
 
 @ Supplementary
 

@@ -37,6 +37,9 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "constants/rgb.h"
+#include "constants/battle_move_effects.h"
+#include "event_data.h"
+#include "battle_util.h"
 
 static void PlayerHandleGetMonData(void);
 static void PlayerHandleSetMonData(void);
@@ -124,6 +127,7 @@ static void EndDrawPartyStatusSummary(void);
 static void ReloadMoveNames(void);
 
 static void MoveSelectionDisplaySplitIcon(void);
+static void MoveSelectionDisplayMoveEffectivenessDoubles(u8 targetId);
 
 static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
 {
@@ -443,6 +447,7 @@ static void HandleInputChooseTarget(void)
                     i++;
                     break;
                 }
+                MoveSelectionDisplayMoveEffectivenessDoubles(GetBattlerPosition(gMultiUsePlayerCursor));
 
                 if (gAbsentBattlerFlags & gBitTable[gMultiUsePlayerCursor]
                  || !CanTargetBattler(gActiveBattler, gMultiUsePlayerCursor, move))
@@ -493,13 +498,13 @@ static void HandleInputChooseTarget(void)
                     i++;
                     break;
                 }
+                MoveSelectionDisplayMoveEffectivenessDoubles(GetBattlerPosition(gMultiUsePlayerCursor));
 
                 if (gAbsentBattlerFlags & gBitTable[gMultiUsePlayerCursor]
                  || !CanTargetBattler(gActiveBattler, gMultiUsePlayerCursor, move))
                     i = 0;
             } while (i == 0);
         }
-
         gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_ShowAsMoveTarget;
     }
 }
@@ -737,6 +742,10 @@ static void HandleInputChooseMove(void)
             gMoveSelectionCursor[gActiveBattler] ^= 1;
             PlaySE(SE_SELECT);
             MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 0);
+            if (!IsDoubleBattle())
+            {
+                MoveSelectionDisplayPpString();
+            }
             MoveSelectionDisplayPpNumber();
             MoveSelectionDisplayMoveType();
             TryChangeZIndicator(gActiveBattler, gMoveSelectionCursor[gActiveBattler]);
@@ -751,6 +760,10 @@ static void HandleInputChooseMove(void)
             gMoveSelectionCursor[gActiveBattler] ^= 1;
             PlaySE(SE_SELECT);
             MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 0);
+            if (!IsDoubleBattle())
+            {
+                MoveSelectionDisplayPpString();
+            }
             MoveSelectionDisplayPpNumber();
             MoveSelectionDisplayMoveType();
             TryChangeZIndicator(gActiveBattler, gMoveSelectionCursor[gActiveBattler]);
@@ -764,6 +777,10 @@ static void HandleInputChooseMove(void)
             gMoveSelectionCursor[gActiveBattler] ^= 2;
             PlaySE(SE_SELECT);
             MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 0);
+            if (!IsDoubleBattle())
+            {
+                MoveSelectionDisplayPpString();
+            }
             MoveSelectionDisplayPpNumber();
             MoveSelectionDisplayMoveType();
             TryChangeZIndicator(gActiveBattler, gMoveSelectionCursor[gActiveBattler]);
@@ -778,6 +795,11 @@ static void HandleInputChooseMove(void)
             gMoveSelectionCursor[gActiveBattler] ^= 2;
             PlaySE(SE_SELECT);
             MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 0);
+            if (gBattleTypeFlags != BATTLE_TYPE_DOUBLE)
+            if (!IsDoubleBattle())
+            {
+                MoveSelectionDisplayPpString();
+            }
             MoveSelectionDisplayPpNumber();
             MoveSelectionDisplayMoveType();
             TryChangeZIndicator(gActiveBattler, gMoveSelectionCursor[gActiveBattler]);
@@ -1702,10 +1724,70 @@ static void MoveSelectionDisplayMoveNames(void)
     }
 }
 
+#include "battle_script_commands.h"
+#include "battle_scripts.h"
+
+u8 TypeEffectivenessColor(struct ChooseMoveStruct *moveInfo, u8 targetId)
+{
+    bool8 isInverse = (B_FLAG_INVERSE_BATTLE != 0 && FlagGet(B_FLAG_INVERSE_BATTLE)) ? TRUE : FALSE;
+
+    if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].power == 0)
+    {
+        return 7;
+    }
+    else
+    {
+        u8 move = moveInfo->moves[gMoveSelectionCursor[gActiveBattler]];
+        u8 type;
+
+        GET_MOVE_TYPE(move, type);
+        if (CalcTypeEffectivenessMultiplier(move, type, gActiveBattler, targetId, TRUE) == UQ_4_12(0.0))
+        {
+            if(isInverse)
+                return 24;
+            else
+                return 26;
+        }
+        if (CalcTypeEffectivenessMultiplier(move, type, gActiveBattler, targetId, TRUE) <= UQ_4_12(0.5))
+        {
+            if(isInverse)
+                return 24;
+            else
+                return 25;
+        }
+        if (CalcTypeEffectivenessMultiplier(move, type, gActiveBattler, targetId, TRUE) >= UQ_4_12(2.0))
+        {
+            if(isInverse)
+                return 25;
+            else
+                return 24;
+        }
+        return 7;
+    }
+}
+
+static void MoveSelectionDisplayMoveEffectivenessDoubles(u8 targetId)
+{
+    u8 *txtPtr;
+    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[gActiveBattler][4]);
+
+    txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfacePP);
+    txtPtr[0] = EXT_CTRL_CODE_BEGIN;
+    txtPtr++;
+    txtPtr[0] = 6;
+    txtPtr++;
+    txtPtr[0] = 1;
+    txtPtr++;
+    
+    BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectivenessColor(moveInfo, targetId));
+}
+
 static void MoveSelectionDisplayPpString(void)
 {
+    //u8 *txtPtr;
+    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[gActiveBattler][4]);
     StringCopy(gDisplayedStringBattle, gText_MoveInterfacePP);
-    BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP);
+    BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectivenessColor(moveInfo, 1));
 }
 
 static void MoveSelectionDisplayPpNumber(void)
@@ -2891,7 +2973,10 @@ void InitMoveSelectionsVarsAndStrings(void)
     MoveSelectionDisplayMoveNames();
     gMultiUsePlayerCursor = 0xFF;
     MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 0);
-    MoveSelectionDisplayPpString();
+    if (!IsDoubleBattle())
+    {
+        MoveSelectionDisplayPpString();
+    }
     MoveSelectionDisplayPpNumber();
     MoveSelectionDisplayMoveType();
 }

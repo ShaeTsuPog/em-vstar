@@ -143,6 +143,11 @@ static void AlignFishingAnimationFrames(void);
 static u8 TrySpinPlayerForWarp(struct ObjectEvent *, s16 *);
 static void PlayerGoSlow(u8 direction);
 
+// Custom Movement: Grindrunning
+static u8 GetGrindRunDirection(u8 direction);
+static u8 CheckForCollision(s16 x, s16 y, u8 direction);
+static u8 CheckDiagonalFreeSpacelength(s16 x, s16 y, u8 sideDirection, u8 forwardDirection);
+
 // .rodata
 
 static bool8 (*const sForcedMovementTestFuncs[NUM_FORCED_MOVEMENTS])(u8) =
@@ -623,9 +628,32 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         }
         else
         {
-            u8 adjustedCollision = collision - COLLISION_STOP_SURFING;
+            /*u8 adjustedCollision = collision - COLLISION_STOP_SURFING;
             if (adjustedCollision > 3)
-                PlayerNotOnBikeCollide(direction);
+                PlayerNotOnBikeCollide(direction);*/
+
+            if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH) && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0)
+            {
+                u8 grindRunDirection;
+                grindRunDirection = GetGrindRunDirection(direction);
+
+                if(grindRunDirection != DIR_NONE)
+                {
+                    PlayerRun(grindRunDirection);
+                    gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+                    return;
+                }
+            }
+            else
+            {
+                u8 adjustedCollision = collision - COLLISION_STOP_SURFING;
+
+                if (adjustedCollision > 3)
+                {
+                    PlayerNotOnBikeCollide(direction);
+                }
+            }
+            
             return;
         }
     }
@@ -646,7 +674,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         return;
     }
 
-    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH)
+    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (heldKeys & B_BUTTON || gSaveBlock2Ptr->autoRun) && FlagGet(FLAG_SYS_B_DASH)
      && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0)
     {
         PlayerRun(direction);
@@ -2238,4 +2266,156 @@ static u8 TrySpinPlayerForWarp(struct ObjectEvent *object, s16 *delayTimer)
     ObjectEventForceSetHeldMovement(object, GetFaceDirectionMovementAction(sSpinDirections[object->facingDirection]));
     *delayTimer = 0;
     return sSpinDirections[object->facingDirection];
+}
+
+static const u8 GrindRunNeighboringDirectionLookup[][2] = {
+    [DIR_NORTH] = {
+        DIR_WEST, DIR_EAST
+    },
+    [DIR_EAST] = {
+        DIR_NORTH, DIR_SOUTH
+    },
+    [DIR_SOUTH] = {
+        DIR_EAST, DIR_WEST
+    },
+    [DIR_WEST] = {
+        DIR_SOUTH, DIR_NORTH
+    }
+};
+
+static const u8 CheckDistance = 10;
+
+static u8 GetGrindRunDirection(u8 direction)
+{
+    s8 leftCheck, rightCheck;
+    s8 leftDirection, rightDirection;
+    s16 x, y;
+    struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+    x = playerObjEvent->currentCoords.x;
+    y = playerObjEvent->currentCoords.y;
+
+    if(direction != DIR_NORTH && direction != DIR_EAST && direction != DIR_SOUTH && direction != DIR_WEST)
+    {
+        return DIR_NONE;
+    }
+
+    if(CheckForCollision(x, y, GrindRunNeighboringDirectionLookup[direction][0]) == FALSE)
+    {
+        leftDirection = GrindRunNeighboringDirectionLookup[direction][0];
+    }
+    else
+    {
+        leftDirection = DIR_NONE;
+    }
+
+    if(CheckForCollision(x, y, GrindRunNeighboringDirectionLookup[direction][1]) == FALSE)
+    {
+        rightDirection = GrindRunNeighboringDirectionLookup[direction][1];
+    }
+    else
+    {
+        rightDirection = DIR_NONE;
+    }
+
+    if(leftDirection == DIR_NONE && rightDirection == DIR_NONE)
+    {
+        return DIR_NONE;
+    }
+
+    if(leftDirection != DIR_NONE)
+    {
+        leftCheck = CheckDiagonalFreeSpacelength(x, y, leftDirection, direction);
+    }
+    else
+    {
+        leftCheck = CheckDistance;
+    }
+
+    if(rightDirection != DIR_NONE)
+    {
+        rightCheck = CheckDiagonalFreeSpacelength(x, y, rightDirection, direction);
+    }
+    else
+    {
+        rightCheck = CheckDistance;
+    }
+    
+    if(leftCheck == CheckDistance && rightCheck == CheckDistance)
+    {
+        return DIR_NONE;
+    }
+
+    if(leftCheck < rightCheck)
+    {
+        return leftDirection;
+    }
+    else
+    {
+        return rightDirection;
+    }
+
+    return DIR_NONE;
+}
+
+static u8 CheckDiagonalFreeSpacelength(s16 x, s16 y, u8 sideDirection, u8 forwardDirection)
+{
+    s8 check = 0;
+
+    while (check < CheckDistance)
+    {
+        if(CheckForCollision(x, y, sideDirection) == FALSE)
+        {
+            MoveCoords(sideDirection, &x, &y);
+
+            if(CheckForCollision(x, y, forwardDirection) == FALSE)
+            {
+                return check;
+            }
+        }
+        else
+        {
+            return CheckDistance;
+        }
+        check++;
+    }
+    return CheckDistance;
+}
+
+static u8 CheckForCollision(s16 x, s16 y, u8 direction)
+{
+    u8 collision;
+    struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+
+    MoveCoords(direction, &x, &y);
+    collision = CheckForObjectEventCollision(playerObjEvent, x, y, direction, MapGridGetMetatileBehaviorAt(x, y));
+
+    switch (collision)
+    {
+        case COLLISION_NONE:
+            return FALSE;
+        case COLLISION_OUTSIDE_RANGE:
+            return FALSE;
+        case COLLISION_IMPASSABLE:
+            return TRUE;
+        case COLLISION_ELEVATION_MISMATCH:
+            return TRUE;
+        case COLLISION_OBJECT_EVENT:
+            return FALSE;
+        case COLLISION_LEDGE_JUMP:
+            return FALSE;
+        case COLLISION_PUSHED_BOULDER:
+            return TRUE;
+        case COLLISION_ROTATING_GATE:
+            return TRUE;
+        case COLLISION_WHEELIE_HOP:
+            return TRUE;
+        case COLLISION_ISOLATED_VERTICAL_RAIL:
+            return TRUE;
+        case COLLISION_ISOLATED_HORIZONTAL_RAIL:
+            return TRUE;
+        case COLLISION_VERTICAL_RAIL:
+            return TRUE;
+        case COLLISION_HORIZONTAL_RAIL:
+            return TRUE;
+    }
 }
