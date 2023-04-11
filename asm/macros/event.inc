@@ -1758,6 +1758,12 @@
 	.byte 0xe5
 	.4byte \text
 	.endm
+
+	@ Ceases movement for the event object 
+	@ the player is interacting with and only that one.
+	.macro locktarget
+	.byte 0xe6
+	.endm
 	
 
 
