@@ -49,3 +49,4 @@ prefabs.json
 *.sym
 *.js
 tools/poryscript
+convert_inc.sh
