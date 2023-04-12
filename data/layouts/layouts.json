@@ -2417,7 +2417,7 @@
       "width": 58,
       "height": 26,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "0",
+      "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/UnusedOutdoorArea/border.bin",
       "blockdata_filepath": "data/layouts/UnusedOutdoorArea/map.bin"
     },
@@ -4440,6 +4440,16 @@
       "secondary_tileset": "gTileset_BrendansMaysHouse",
       "border_filepath": "data/layouts/ArboreaTown_PlayersHouse_Floor2/border.bin",
       "blockdata_filepath": "data/layouts/ArboreaTown_PlayersHouse_Floor2/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE_TEST",
+      "name": "RouteTest_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_gTileset_Test2",
+      "border_filepath": "data/layouts/RouteTest/border.bin",
+      "blockdata_filepath": "data/layouts/RouteTest/map.bin"
     }
   ]
 }
