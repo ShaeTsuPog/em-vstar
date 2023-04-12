@@ -1067,3 +1067,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/ArboreaTown_PlayersHouse/scripts.inc"
 
 	.include "data/maps/ArboreaTown_PlayersHouse_Floor2/scripts.inc"
+
+	.include "data/maps/RouteTest/scripts.inc"
