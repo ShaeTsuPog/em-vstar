@@ -6497,6 +6497,10 @@ BattleScript_FaintedMonShiftSwitched:
 	resetsentmonsvalue
 	copybyte gBattlerTarget, sSAVED_BATTLER
 	goto BattleScript_FaintedMonSendOutNewEnd
+BattleScript_AutoRun::
+	printstring STRINGID_GOTAWAYSAFELY
+	waitmessage B_WAIT_TIME_LONG
+	end2
 
 BattleScript_LinkHandleFaintedMonMultiple::
 	openpartyscreen BS_FAINTED_LINK_MULTIPLE_1, BattleScript_LinkHandleFaintedMonMultipleStart
