@@ -5,7 +5,7 @@
   "music": "MUS_FORTREE",
   "region_map_section": "MAPSEC_NONE",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
+  "weather": "WEATHER_SUNNY_CLOUDS",
   "map_type": "MAP_TYPE_TOWN",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -86,6 +86,13 @@
       "y": 34,
       "elevation": 0,
       "dest_map": "MAP_ARBOREA_TOWN_PLAYERS_HOUSE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 27,
+      "y": 27,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE_TEST",
       "dest_warp_id": "0"
     }
   ],

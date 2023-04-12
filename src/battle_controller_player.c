@@ -238,7 +238,7 @@ static void CompleteOnBankSpritePosX_0(void)
         PlayerBufferExecCompleted();
 }
 
-static void HandleInputChooseAction(u16 heldkeys)
+static void HandleInputChooseAction(void)
 {
     u16 itemId = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
 
@@ -315,7 +315,7 @@ static void HandleInputChooseAction(u16 heldkeys)
             ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
         }
     }
-    else if (JOY_NEW(R_BUTTON))
+    else if (JOY_NEW(R_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
         if (!(gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_FIRST_BATTLE)))
         {
