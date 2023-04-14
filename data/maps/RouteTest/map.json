@@ -142,7 +142,20 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "weather",
+      "x": 24,
+      "y": 44,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SNOW"
+    },
+    {
+      "type": "weather",
+      "x": 24,
+      "y": 41,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SHADE"
+    }
   ],
   "bg_events": [
 

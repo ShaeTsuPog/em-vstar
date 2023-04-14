@@ -4445,7 +4445,7 @@
       "id": "LAYOUT_ROUTE_TEST",
       "name": "RouteTest_Layout",
       "width": 60,
-      "height": 60,
+      "height": 51,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_gTileset_Test2",
       "border_filepath": "data/layouts/RouteTest/border.bin",

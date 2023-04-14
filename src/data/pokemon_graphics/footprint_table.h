@@ -1,3 +1,4 @@
+/*
 const u8 *const gMonFootprintTable[] =
 {
     [SPECIES_NONE] = gMonFootprint_Bulbasaur,
@@ -911,3 +912,4 @@ const u8 *const gMonFootprintTable[] =
 #endif
     [SPECIES_EGG] = gMonFootprint_Bulbasaur,
 };
+*/
