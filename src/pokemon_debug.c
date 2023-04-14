@@ -137,7 +137,7 @@ static const struct WindowTemplate sPokemonDebugWindowTemplate[] =
         .paletteNum = 0xF,
         .baseBlock = 1 + 30 + 60 + 36
     },
-    [WIN_FOOTPRINT] =
+    /*[WIN_FOOTPRINT] =
     {
         .bg = 0,
         .tilemapLeft = 27,
@@ -146,7 +146,7 @@ static const struct WindowTemplate sPokemonDebugWindowTemplate[] =
         .height = 2,
         .paletteNum = 0xF,
         .baseBlock = 1 + 30 + 60 + 36 + 144,
-    },
+    },*/
     DUMMY_WIN_TEMPLATE,
 };
 
@@ -844,7 +844,7 @@ static void LoadAndCreateEnemyShadowSpriteCustom(struct PokemonDebugMenu *data, 
     gSprites[data->frontShadowSpriteId].oam.priority = 0;
     gSprites[data->frontShadowSpriteId].invisible = invisible;
 }
-
+/*
 //Tile functions (footprints)
 static void DrawFootprintCustom(u8 windowId, u16 species)
 {
@@ -869,6 +869,7 @@ static void DrawFootprintCustom(u8 windowId, u16 species)
     }
     CopyToWindowPixelBuffer(windowId, footprint, sizeof(footprint), 0);
 }
+*/
 
 //Battle background functions
 static void LoadBattleBg(u8 battleBgType, u8 battleTerrain)
@@ -1230,8 +1231,8 @@ void CB2_Debug_Pokemon(void)
             PrintBattleBgName(taskId);
 
             //Footprint
-            DrawFootprintCustom(WIN_FOOTPRINT, species);
-            CopyWindowToVram(WIN_FOOTPRINT, COPYWIN_GFX);
+            //DrawFootprintCustom(WIN_FOOTPRINT, species);
+            //CopyWindowToVram(WIN_FOOTPRINT, COPYWIN_GFX);
 
             gMain.state++;
             break;
@@ -1741,8 +1742,8 @@ static void ReloadPokemonSprites(struct PokemonDebugMenu *data)
     SetArrowInvisibility(data);
 
     //Footprint
-    DrawFootprintCustom(WIN_FOOTPRINT, species);
-    CopyWindowToVram(WIN_FOOTPRINT, COPYWIN_GFX);
+    //DrawFootprintCustom(WIN_FOOTPRINT, species);
+    //CopyWindowToVram(WIN_FOOTPRINT, COPYWIN_GFX);
 }
 
 static void Exit_Debug_Pokemon(u8 taskId)

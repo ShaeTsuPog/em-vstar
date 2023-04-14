@@ -380,7 +380,7 @@ static void PrintMonWeight(u16 weight, u8 left, u8 top);
 static void ResetOtherVideoRegisters(u16);
 static u8 PrintCryScreenSpeciesName(u8, u16, u8, u8);
 static void PrintDecimalNum(u8 windowId, u16 num, u8 left, u8 top);
-static void DrawFootprint(u8 windowId, u16 dexNum);
+//static void DrawFootprint(u8 windowId, u16 dexNum);
 static u16 CreateSizeScreenTrainerPic(u16, s16, s16, s8);
 static u16 GetNextPosition(u8, u16, u16, u16);
 static u8 LoadSearchMenu(void);
@@ -1204,7 +1204,7 @@ static const struct BgTemplate sInfoScreen_BgTemplate[] =
 };
 
 #define WIN_INFO 0
-#define WIN_FOOTPRINT 1
+//#define WIN_FOOTPRINT 1
 #define WIN_CRY_WAVE 2
 #define WIN_VU_METER 3
 #define WIN_NAVIGATION_BUTTONS 4
@@ -1221,7 +1221,7 @@ static const struct WindowTemplate sInfoScreen_WindowTemplates[] =
         .paletteNum = 0,
         .baseBlock = 1,
     },
-    [WIN_FOOTPRINT] =
+    /*[WIN_FOOTPRINT] =
     {
         .bg = 2,
         .tilemapLeft = 15, //HGSSS_Ui
@@ -1230,7 +1230,7 @@ static const struct WindowTemplate sInfoScreen_WindowTemplates[] =
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 641,
-    },
+    },*/
     [WIN_CRY_WAVE] =
     {
         .bg = 0,
@@ -1415,7 +1415,7 @@ static const struct WindowTemplate sNewEntryInfoScreen_WindowTemplates[] =
         .paletteNum = 0,
         .baseBlock = 1,
     },
-    [WIN_FOOTPRINT] =
+    /*[WIN_FOOTPRINT] =
     {
         .bg = 2,
         .tilemapLeft = 15, //HGSSS_Ui
@@ -1424,13 +1424,13 @@ static const struct WindowTemplate sNewEntryInfoScreen_WindowTemplates[] =
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 641,
-    },
+    },*/
     DUMMY_WIN_TEMPLATE
 };
 
 static const u8 sText_TenDashes2[] = _("----------");
 
-#include "data/pokemon_graphics/footprint_table.h"
+//#include "data/pokemon_graphics/footprint_table.h"
 
 // First character in range followed by number of characters in range for upper and lowercase
 static const u8 sLetterSearchRanges[][4] =
@@ -3796,9 +3796,9 @@ static void Task_LoadInfoScreen(u8 taskId)
         // CopyToBgTilemapBuffer(3, gPokedexInfoScreen_Tilemap, 0, 0);
         FillWindowPixelBuffer(WIN_INFO, PIXEL_FILL(0));
         PutWindowTilemap(WIN_INFO);
-        PutWindowTilemap(WIN_FOOTPRINT);
-        DrawFootprint(WIN_FOOTPRINT, sPokedexListItem->dexNum);
-        CopyWindowToVram(WIN_FOOTPRINT, COPYWIN_GFX);
+        //PutWindowTilemap(WIN_FOOTPRINT);
+        //DrawFootprint(WIN_FOOTPRINT, sPokedexListItem->dexNum);
+        //CopyWindowToVram(WIN_FOOTPRINT, COPYWIN_GFX);
         gMain.state++;
         break;
     case 2:
@@ -4482,9 +4482,9 @@ static void Task_DisplayCaughtMonDexPage(u8 taskId)
         LoadTilesetTilemapHGSS(INFO_SCREEN);
         FillWindowPixelBuffer(WIN_INFO, PIXEL_FILL(0));
         PutWindowTilemap(WIN_INFO);
-        PutWindowTilemap(WIN_FOOTPRINT);
-        DrawFootprint(WIN_FOOTPRINT, dexNum);
-        CopyWindowToVram(WIN_FOOTPRINT, COPYWIN_GFX);
+        //PutWindowTilemap(WIN_FOOTPRINT);
+        //DrawFootprint(WIN_FOOTPRINT, dexNum);
+        //CopyWindowToVram(WIN_FOOTPRINT, COPYWIN_GFX);
         ResetPaletteFade();
         LoadPokedexBgPalette(FALSE);
         gTasks[taskId].tState++;
@@ -5151,6 +5151,7 @@ static void PrintDecimalNum(u8 windowId, u16 num, u8 left, u8 top)
     PrintInfoSubMenuText(windowId, str, left, top);
 }
 
+/*
 static void DrawFootprint(u8 windowId, u16 dexNum)
 {
     u8 footprint[32 * 4] = {0};
@@ -5175,6 +5176,7 @@ static void DrawFootprint(u8 windowId, u16 dexNum)
     CopyToWindowPixelBuffer(windowId, footprint, sizeof(footprint), 0);
 }
 
+
 // Unused Ruby/Sapphire function.
 static void RS_DrawFootprint(u16 offset, u16 tileNum)
 {
@@ -5183,6 +5185,7 @@ static void RS_DrawFootprint(u16 offset, u16 tileNum)
     *(u16 *)(VRAM + offset * 0x800 + 0x272) = 0xF000 + tileNum + 2;
     *(u16 *)(VRAM + offset * 0x800 + 0x274) = 0xF000 + tileNum + 3;
 }
+*/
 
 static u16 GetNextPosition(u8 direction, u16 position, u16 min, u16 max)
 {

@@ -6170,7 +6170,7 @@ extern const u8 gMonIcon_EnamorusTherian[];
 extern const u8 gMonIcon_BasculegionFemale[];
 #endif
 extern const u8 gMonIcon_Egg[];
-
+/*
 extern const u8 gMonFootprint_QuestionMark[];
 extern const u8 gMonFootprint_Bulbasaur[];
 extern const u8 gMonFootprint_Ivysaur[];
@@ -7087,6 +7087,8 @@ extern const u8 gMonFootprint_Calyrex[];
 //extern const u8 gMonFootprint_Overqwil[];
 //extern const u8 gMonFootprint_Enamorus[];
 #endif
+*/
+
 
 // trainer sprites
 extern const u32 gTrainerFrontPic_Hiker[];
