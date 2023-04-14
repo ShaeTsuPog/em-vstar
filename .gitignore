@@ -50,3 +50,5 @@ prefabs.json
 *.js
 tools/poryscript
 convert_inc.sh
+data/maps/*/scripts.inc
+*.inc
