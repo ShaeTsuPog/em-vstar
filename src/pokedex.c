@@ -7952,13 +7952,15 @@ static u8 PrintPreEvolutions(u8 taskId, u16 species)
             {
                 preEvolutionOne = i;
                 numPreEvolutions += 1;
+                /*
                 #ifdef POKEMON_EXPANSION
-                    if (gEvolutionTable[i][j].method == EVO_MEGA_EVOLUTION)
+                    if (gEvolutionTable[i][j].method == SPECIES_FLAG_MEGA_EVOLUTION)
                     {
                         CopyItemName(gEvolutionTable[i][j].param, gStringVar2); //item
                         isMega = TRUE;
                     }
                 #endif
+                */
                 break;
             }
         }
@@ -8069,7 +8071,7 @@ static u8 PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 depth,
                 times += 1;
         #endif
         #ifdef POKEMON_EXPANSION
-            if (gEvolutionTable[species][i].method != 0 && gEvolutionTable[species][i].method != EVO_MEGA_EVOLUTION)
+            if (gEvolutionTable[species][i].method != 0 /*&& gEvolutionTable[species][i].method != SPECIES_FLAG_MEGA_EVOLUTION*/)
                 times += 1;
         #endif
     }

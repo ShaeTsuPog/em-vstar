@@ -7876,14 +7876,14 @@ BattleScript_FocusPunchSetUp::
 
 BattleScript_MegaEvolution::
 	printstring STRINGID_MEGAEVOREACTING
-BattleScript_MegaEvolutionAfeterString:
+BattleScript_MegaEvolutionAfterString:
 	waitmessage B_WAIT_TIME_LONG
 	setbyte gIsCriticalHit, 0
 	handlemegaevo BS_ATTACKER, 0
 	handlemegaevo BS_ATTACKER, 1
 	playanimation BS_ATTACKER, B_ANIM_MEGA_EVOLUTION
 	waitanimation
-	handlemegaevo BS_ATTACKER, 2
+	handlemegaevo BS_ATTACKER, 1
 	printstring STRINGID_MEGAEVOEVOLVED
 	waitmessage B_WAIT_TIME_LONG
 	switchinabilities BS_ATTACKER
@@ -7891,7 +7891,7 @@ BattleScript_MegaEvolutionAfeterString:
 
 BattleScript_WishMegaEvolution::
 	printstring STRINGID_FERVENTWISHREACHED
-	goto BattleScript_MegaEvolutionAfeterString
+	goto BattleScript_MegaEvolutionAfterString
 
 BattleScript_PrimalReversion::
 	printstring STRINGID_EMPTYSTRING3
@@ -7940,6 +7940,7 @@ BattleScript_AttackerFormChangeEnd3::
 
 BattleScript_AttackerFormChangeEnd3NoPopup::
 	call BattleScript_AttackerFormChangeNoPopup
+	end3
 
 BattleScript_AttackerFormChangeMoveEffect::
 	waitmessage 1
