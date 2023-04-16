@@ -22,8 +22,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_POKE_BALL - FIRST_BALL,
     },
 
@@ -36,8 +35,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_GREAT_BALL - FIRST_BALL,
     },
 
@@ -50,8 +48,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_ULTRA_BALL - FIRST_BALL,
     },
 
@@ -64,8 +61,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_MASTER_BALL - FIRST_BALL,
     },
 
@@ -78,8 +74,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_PREMIER_BALL - FIRST_BALL,
     },
 
@@ -92,8 +87,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_HEAL_BALL - FIRST_BALL,
     },
 
@@ -106,8 +100,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_NET_BALL - FIRST_BALL,
     },
 
@@ -120,8 +113,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_NEST_BALL - FIRST_BALL,
     },
 
@@ -134,8 +126,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_DIVE_BALL - FIRST_BALL,
     },
 
@@ -148,8 +139,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_DUSK_BALL - FIRST_BALL,
     },
 
@@ -162,8 +152,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_TIMER_BALL - FIRST_BALL,
     },
 
@@ -176,8 +165,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_QUICK_BALL - FIRST_BALL,
     },
 
@@ -190,8 +178,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_REPEAT_BALL - FIRST_BALL,
     },
 
@@ -204,8 +191,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_LUXURY_BALL - FIRST_BALL,
     },
 
@@ -218,8 +204,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_LEVEL_BALL - FIRST_BALL,
     },
 
@@ -232,8 +217,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_LURE_BALL - FIRST_BALL,
     },
 
@@ -246,8 +230,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_MOON_BALL - FIRST_BALL,
     },
 
@@ -260,8 +243,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_FRIEND_BALL - FIRST_BALL,
     },
 
@@ -274,8 +256,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_LOVE_BALL - FIRST_BALL,
     },
 
@@ -288,8 +269,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_FAST_BALL - FIRST_BALL,
     },
 
@@ -302,8 +282,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_HEAVY_BALL - FIRST_BALL,
     },
 
@@ -316,8 +295,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_DREAM_BALL - FIRST_BALL,
     },
 
@@ -330,8 +308,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_SAFARI_BALL - FIRST_BALL,
     },
 
@@ -344,8 +321,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_SPORT_BALL - FIRST_BALL,
     },
 
@@ -358,8 +334,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_PARK_BALL - FIRST_BALL,
     },
 
@@ -372,8 +347,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_BEAST_BALL - FIRST_BALL,
     },
 
@@ -386,8 +360,7 @@ const struct Item gItems[] =
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Pokeball,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_PokeBall,
+        .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_CHERISH_BALL - FIRST_BALL,
     },
 
@@ -403,8 +376,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -418,8 +390,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -433,8 +404,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -448,8 +418,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -463,8 +432,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_HEAL_AND_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -477,8 +445,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_REVIVE,
         .flingPower = 30,
     },
 
@@ -491,8 +458,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_REVIVE,
         .flingPower = 30,
     },
 
@@ -506,8 +472,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -521,8 +486,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -536,8 +500,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -551,8 +514,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -565,8 +527,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -579,8 +540,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -593,8 +553,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -607,8 +566,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_REVIVE,
         .flingPower = 30,
     },
 
@@ -621,8 +579,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -635,8 +592,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -649,8 +605,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -663,8 +618,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -677,8 +631,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -691,8 +644,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -704,10 +656,9 @@ const struct Item gItems[] =
         .holdEffectParam = 10,
         .description = sEtherDesc,
         .pocket = POCKET_MEDICINE,
-        .type = ITEM_USE_PARTY_MENU,
+        .type = ITEM_USE_PARTY_MENU_MOVES,
         .fieldUseFunc = ItemUseOutOfBattle_PPRecovery,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_PPRecovery,
+        .battleUsage = EFFECT_ITEM_RESTORE_PP,
         .flingPower = 30,
     },
 
@@ -719,10 +670,9 @@ const struct Item gItems[] =
         .holdEffectParam = 255,
         .description = sMaxEtherDesc,
         .pocket = POCKET_MEDICINE,
-        .type = ITEM_USE_PARTY_MENU,
+        .type = ITEM_USE_PARTY_MENU_MOVES,
         .fieldUseFunc = ItemUseOutOfBattle_PPRecovery,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_PPRecovery,
+        .battleUsage = EFFECT_ITEM_RESTORE_PP,
         .flingPower = 30,
     },
 
@@ -736,8 +686,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_PPRecovery,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_PPRecovery,
+        .battleUsage = EFFECT_ITEM_RESTORE_PP,
         .flingPower = 30,
     },
 
@@ -751,8 +700,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_PPRecovery,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_PPRecovery,
+        .battleUsage = EFFECT_ITEM_RESTORE_PP,
         .flingPower = 30,
     },
 
@@ -767,8 +715,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -794,8 +741,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 30,
     },
 
@@ -808,8 +754,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_REVIVE,
         .flingPower = 30,
     },
 
@@ -824,8 +769,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -838,8 +782,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -852,8 +795,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -866,8 +808,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -880,8 +821,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -894,8 +834,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -908,8 +847,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -922,8 +860,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -1481,8 +1418,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -1495,8 +1431,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -1509,8 +1444,7 @@ const struct Item gItems[] =
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 30,
     },
 
@@ -1645,17 +1579,19 @@ const struct Item gItems[] =
 
 // X Items
 
+#define X_ITEM_STAGES (B_X_ITEMS_BUFF >= GEN_7) ? 2 : 1
+
     [ITEM_X_ATTACK] =
     {
         .name = _("X Attack"),
         .itemId = ITEM_X_ATTACK,
         .price = 1000,
+        .holdEffectParam = X_ITEM_STAGES,
         .description = sXAttackDesc,
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .battleUsage = EFFECT_ITEM_INCREASE_STAT,
         .flingPower = 30,
     },
 
@@ -1664,12 +1600,12 @@ const struct Item gItems[] =
         .name = _("X Defense"),
         .itemId = ITEM_X_DEFENSE,
         .price = 2000,
+        .holdEffectParam = X_ITEM_STAGES,
         .description = sXDefenseDesc,
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .battleUsage = EFFECT_ITEM_INCREASE_STAT,
         .flingPower = 30,
     },
 
@@ -1678,12 +1614,12 @@ const struct Item gItems[] =
         .name = _("X Sp. Atk"),
         .itemId = ITEM_X_SP_ATK,
         .price = 1000,
+        .holdEffectParam = X_ITEM_STAGES,
         .description = sXSpAtkDesc,
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .battleUsage = EFFECT_ITEM_INCREASE_STAT,
         .flingPower = 30,
     },
 
@@ -1692,12 +1628,12 @@ const struct Item gItems[] =
         .name = _("X Sp. Def"),
         .itemId = ITEM_X_SP_DEF,
         .price = 2000,
+        .holdEffectParam = X_ITEM_STAGES,
         .description = sXSpDefDesc,
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .battleUsage = EFFECT_ITEM_INCREASE_STAT,
         .flingPower = 30,
     },
 
@@ -1706,12 +1642,12 @@ const struct Item gItems[] =
         .name = _("X Speed"),
         .itemId = ITEM_X_SPEED,
         .price = 1000,
+        .holdEffectParam = X_ITEM_STAGES,
         .description = sXSpeedDesc,
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .battleUsage = EFFECT_ITEM_INCREASE_STAT,
         .flingPower = 30,
     },
 
@@ -1720,12 +1656,12 @@ const struct Item gItems[] =
         .name = _("X Accuracy"),
         .itemId = ITEM_X_ACCURACY,
         .price = 1000,
+        .holdEffectParam = X_ITEM_STAGES,
         .description = sXAccuracyDesc,
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .battleUsage = EFFECT_ITEM_INCREASE_STAT,
         .flingPower = 30,
     },
 
@@ -1738,8 +1674,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .battleUsage = EFFECT_ITEM_SET_FOCUS_ENERGY,
         .flingPower = 30,
     },
 
@@ -1752,8 +1687,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .battleUsage = EFFECT_ITEM_SET_MIST,
         .flingPower = 30,
     },
 
@@ -1766,8 +1700,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_Escape,
+        .battleUsage = EFFECT_ITEM_ESCAPE,
         .flingPower = 30,
     },
 
@@ -1780,8 +1713,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_Escape,
+        .battleUsage = EFFECT_ITEM_ESCAPE,
         .flingPower = 30,
     },
 
@@ -1794,8 +1726,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_Escape,
+        .battleUsage = EFFECT_ITEM_ESCAPE,
         .flingPower = 30,
     },
 
@@ -1808,10 +1739,11 @@ const struct Item gItems[] =
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_OTHER,
-        .battleUseFunc = ItemUseInBattle_StatIncrease, // Todo
+        .battleUsage = EFFECT_ITEM_INCREASE_ALL_STATS,
         .flingPower = 30,
     },
+
+#undef X_ITEM_STAGES
 
 // Treasures
 
@@ -6901,8 +6833,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 10,
     },
 
@@ -6916,8 +6847,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 10,
     },
 
@@ -6931,8 +6861,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 10,
     },
 
@@ -6946,8 +6875,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 10,
     },
 
@@ -6961,8 +6889,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 10,
     },
 
@@ -6975,10 +6902,9 @@ const struct Item gItems[] =
         .holdEffectParam = 10,
         .description = sLeppaBerryDesc,
         .pocket = POCKET_BERRIES,
-        .type = ITEM_USE_PARTY_MENU,
+        .type = ITEM_USE_PARTY_MENU_MOVES,
         .fieldUseFunc = ItemUseOutOfBattle_PPRecovery,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_PPRecovery,
+        .battleUsage = EFFECT_ITEM_RESTORE_PP,
         .flingPower = 10,
     },
 
@@ -6993,8 +6919,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 10,
     },
 
@@ -7008,8 +6933,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 10,
     },
 
@@ -7023,8 +6947,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 10,
     },
 
@@ -7044,8 +6967,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .flingPower = 10,
     },
 
@@ -7821,8 +7743,7 @@ const struct Item gItems[] =
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_BAG_MENU, // Type handled by ItemUseOutOfBattle_EnigmaBerry
         .fieldUseFunc = ItemUseOutOfBattle_EnigmaBerry,
-        .battleUsage = ITEM_B_USE_MEDICINE,
-        .battleUseFunc = ItemUseInBattle_EnigmaBerry,
+        .battleUsage = EFFECT_ITEM_ENIGMA_BERRY_EREADER,
         .flingPower = 10,
     },
 

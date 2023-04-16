@@ -648,11 +648,15 @@
 #define STRINGID_COULDNTFULLYPROTECT                  646
 #define STRINGID_STOCKPILEDEFFECTWOREOFF              647
 #define STRINGID_PKMNREVIVEDREADYTOFIGHT              648
-// Custom
-#define STRINGID_EVAPORATEACTIVATES                   649
-#define STRINGID_MOVEEVAPORATEDINTHEHARSHHEAT         650
+#define STRINGID_ITEMRESTOREDSPECIESHEALTH            649
+#define STRINGID_ITEMCUREDSPECIESSTATUS               650
+#define STRINGID_ITEMRESTOREDSPECIESPP                651
 
-#define BATTLESTRINGS_COUNT                           651
+// Custom
+#define STRINGID_EVAPORATEACTIVATES                   652
+#define STRINGID_MOVEEVAPORATEDINTHEHARSHHEAT         653
+
+#define BATTLESTRINGS_COUNT                           654
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
