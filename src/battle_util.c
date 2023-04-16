@@ -4795,6 +4795,15 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 effect++;
             }
             break;
+        case ABILITY_EVAPORATE:
+            if (!gSpecialStatuses[battler].switchInAbilityDone)
+            {
+                //gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_EVAPORATE;
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                BattleScriptPushCursorAndCallback(BattleScript_EvaporateActivates);
+                effect++;
+            }
+            break;
         case ABILITY_PRIMORDIAL_SEA:
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_RAIN_PRIMAL, TRUE))
             {

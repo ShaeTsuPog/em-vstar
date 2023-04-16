@@ -8764,6 +8764,23 @@ BattleScript_DesolateLandEvaporatesWaterTypeMoves::
 	orword gHitMarker, HITMARKER_STRING_PRINTED
 	goto BattleScript_MoveEnd
 
+BattleScript_EvaporateActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_EVAPORATEACTIVATES
+	end3
+
+BattleScript_EvaporateWaterTypeMoves::
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	pause B_WAIT_TIME_SHORT
+	ppreduce
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_STRING_PRINTED, BattleScript_MoveEnd
+	printstring STRINGID_MOVEEVAPORATEDINTHEHARSHHEAT
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_STRING_PRINTED
+	goto BattleScript_MoveEnd
+
 BattleScript_PrimordialSeaActivates::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp

@@ -402,6 +402,8 @@ extern const u8 BattleScript_GulpMissileGulping[];
 extern const u8 BattleScript_BattleBondActivatesOnMoveEndAttacker[];
 extern const u8 BattleScript_DesolateLandActivates[];
 extern const u8 BattleScript_DesolateLandEvaporatesWaterTypeMoves[];
+extern const u8 BattleScript_EvaporateActivates[];
+extern const u8 BattleScript_EvaporateWaterTypeMoves[];
 extern const u8 BattleScript_PrimordialSeaActivates[];
 extern const u8 BattleScript_PrimordialSeaFizzlesOutFireTypeMoves[];
 extern const u8 BattleScript_DeltaStreamActivates[];

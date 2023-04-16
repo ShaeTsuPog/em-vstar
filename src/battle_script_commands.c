@@ -1463,6 +1463,7 @@ static void Cmd_attackcanceler(void)
 
     s32 i, moveType;
     u16 attackerAbility = GetBattlerAbility(gBattlerAttacker);
+    u16 defenderAbility = GetBattlerAbility(gBattlerTarget);
 
     GET_MOVE_TYPE(gCurrentMove, moveType);
 
@@ -1480,6 +1481,13 @@ static void Cmd_attackcanceler(void)
             gBattlescriptCurrInstr = BattleScript_DesolateLandEvaporatesWaterTypeMoves;
             return;
         }
+    }
+
+    if (moveType == TYPE_WATER && gBattleMons->ability == ABILITY_EVAPORATE)
+    {
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_EvaporateWaterTypeMoves;
+        return;
     }
 
     if (gBattleOutcome != 0)
