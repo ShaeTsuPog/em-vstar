@@ -5,7 +5,7 @@ SINGLE_BATTLE_TEST("Drizzle summons rain", s16 damage)
 {
     u32 ability;
     PARAMETRIZE { ability = ABILITY_DRIZZLE; }
-    PARAMETRIZE { ability = ABILITY_DAMP; }
+    PARAMETRIZE { ability = ABILITY_WATER_ABSORB; }
 
     GIVEN {
         PLAYER(SPECIES_POLITOED) { Ability(ability); };

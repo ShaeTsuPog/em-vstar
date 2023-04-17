@@ -441,6 +441,10 @@ static const u8 sText_SpDefense[] = _("sp. defense");
 static const u8 sText_Accuracy[] = _("accuracy");
 static const u8 sText_Evasiveness[] = _("evasiveness");
 
+// Custom
+static const u8 sText_EvaporateActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} made the air\nextremely hot!");
+static const u8 sText_EvaporateWaterMoves[] = _("The Water-type move evaporated\nin the harsh heat!");
+
 const u8 *const gStatNamesTable[NUM_BATTLE_STATS] =
 {
     sText_HP, sText_Attack, sText_Defense,
@@ -1420,6 +1424,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_TARGETTOOHEAVY - BATTLESTRINGS_TABLE_START] = sText_TargetTooHeavy,
     [STRINGID_ATTACKERLOSTELECTRICTYPE - BATTLESTRINGS_TABLE_START] = sText_AttackerLostElectricType,
     [STRINGID_PKMNSABILITYPREVENTSABILITY - BATTLESTRINGS_TABLE_START] = sText_PkmnsAbilityPreventsAbility,
+    [STRINGID_EVAPORATEACTIVATES - BATTLESTRINGS_TABLE_START] = sText_EvaporateActivates,
+    [STRINGID_EVAPORATEINHARSHHEAT - BATTLESTRINGS_TABLE_START] = sText_EvaporateWaterMoves,
 };
 
 const u16 gZEffectStringIds[] =
@@ -1500,6 +1506,7 @@ const u16 gSwitchInAbilityStringIds[] =
     [B_MSG_SWITCHIN_CURIOUS_MEDICINE] = STRINGID_CURIOUSMEDICINEENTERS,
     [B_MSG_SWITCHIN_PASTEL_VEIL] = STRINGID_PASTELVEILENTERS,
     [B_MSG_SWITCHIN_NEUTRALIZING_GAS] = STRINGID_NEUTRALIZINGGASENTERS,
+    [B_MSG_SWITCHIN_EVAPORATE] = STRINGID_EVAPORATEACTIVATES,
 };
 
 const u16 gMissStringIds[] =

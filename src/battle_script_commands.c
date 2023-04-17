@@ -1470,16 +1470,25 @@ static void Cmd_attackcanceler(void)
     {
         if (moveType == TYPE_FIRE && (gBattleWeather & B_WEATHER_RAIN_PRIMAL))
         {
+            gHitMarker &= ~HITMARKER_STRING_PRINTED;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_PrimordialSeaFizzlesOutFireTypeMoves;
             return;
         }
         else if (moveType == TYPE_WATER && (gBattleWeather & B_WEATHER_SUN_PRIMAL))
         {
+            gHitMarker &= ~HITMARKER_STRING_PRINTED;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_DesolateLandEvaporatesWaterTypeMoves;
             return;
         }
+    }
+
+    if (moveType == TYPE_WATER && gBattleMons->ability == ABILITY_EVAPORATE)
+    {
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_EvaporateWaterMoves;
+        return;
     }
 
     if (gBattleOutcome != 0)
