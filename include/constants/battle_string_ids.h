@@ -654,7 +654,7 @@
 
 // Custom
 #define STRINGID_EVAPORATEACTIVATES                   652
-#define STRINGID_MOVEEVAPORATEDINTHEHARSHHEAT         653
+#define STRINGID_EVAPORATEINHARSHHEAT                 653
 
 #define BATTLESTRINGS_COUNT                           654
 

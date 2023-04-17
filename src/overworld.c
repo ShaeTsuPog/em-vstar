@@ -485,7 +485,7 @@ void LoadObjEventTemplatesFromHeader(void)
     // Clear map object templates
     CpuFill32(0, gSaveBlock1Ptr->objectEventTemplates, sizeof(gSaveBlock1Ptr->objectEventTemplates));
 
-    // Copy map header events to save block, counting how many there are
+    // Copy map header events to save block, counting how many there are.
     for (i = 0; i < gMapHeader.events->objectEventCount && n < OBJECT_EVENT_TEMPLATES_COUNT; i++) {
         gSaveBlock1Ptr->objectEventTemplates[n] = gMapHeader.events->objectEvents[i];
         n++;

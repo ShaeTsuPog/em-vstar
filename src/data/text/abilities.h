@@ -285,8 +285,7 @@ static const u8 sToxicDebrisDescription[] = _("Throws poison spikes if hit.");
 static const u8 sArmorTailDescription[] = _("Protects from priority.");
 static const u8 sEarthEaterDescription[] = _("Eats ground to heal HP.");
 static const u8 sMyceliumMightDescription[] = _("Status moves never fail.");
-// Custom
-static const u8 sEvaporateDescription[] = _("Nullifies Water and Rain.");
+static const u8 sEvaporateDescription[] = _("Water moves are nullified.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -896,7 +895,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_EARTH_EATER] = _("Earth Eater"),
     [ABILITY_MYCELIUM_MIGHT] = _("MceliumMight"),
     // Custom
-    [ABILITY_EVAPORATE] = _("Evaporate");
+    [ABILITY_EVAPORATE] = _("Evaporate"),
 };
 #endif
 
