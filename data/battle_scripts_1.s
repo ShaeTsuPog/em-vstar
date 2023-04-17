@@ -8744,17 +8744,6 @@ BattleScript_DroughtActivates::
 	call BattleScript_WeatherFormChanges
 	end3
 
-BattleScript_EvaporateWaterMoves::
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	pause B_WAIT_TIME_SHORT
-	ppreduce
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_STRING_PRINTED, BattleScript_MoveEnd
-	printstring STRINGID_EVAPORATEINHARSHHEAT
-	waitmessage B_WAIT_TIME_LONG
-	orword gHitMarker, HITMARKER_STRING_PRINTED
-	goto BattleScript_MoveEnd
-
 BattleScript_DesolateLandActivates::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
@@ -8781,13 +8770,13 @@ BattleScript_EvaporateActivates::
 	printstring STRINGID_EVAPORATEACTIVATES
 	end3
 
-BattleScript_EvaporateWaterTypeMoves::
+BattleScript_EvaporateWaterMoves::
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	pause B_WAIT_TIME_SHORT
 	ppreduce
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_STRING_PRINTED, BattleScript_MoveEnd
-	printstring STRINGID_MOVEEVAPORATEDINTHEHARSHHEAT
+	printstring STRINGID_EVAPORATEINHARSHHEAT
 	waitmessage B_WAIT_TIME_LONG
 	orword gHitMarker, HITMARKER_STRING_PRINTED
 	goto BattleScript_MoveEnd
