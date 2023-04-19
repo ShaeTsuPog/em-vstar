@@ -78,9 +78,9 @@ DOUBLE_BATTLE_TEST("Intimidate doesn't activate on an empty field in a double ba
         // Everyone faints.
 
         MESSAGE("Go! Ekans!");
-        MESSAGE("2 sent out Arbok!");
         MESSAGE("Go! Abra!");
         MESSAGE("2 sent out Wynaut!");
+        MESSAGE("2 sent out Arbok!");
 
         ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
