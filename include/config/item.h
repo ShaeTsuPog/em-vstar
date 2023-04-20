@@ -10,6 +10,9 @@
 #define I_VITAMIN_EV_CAP            GEN_LATEST  // In Gen8+, the Vitamins no longer have a cap of 100 EV per stat.
 #define I_GRISEOUS_ORB_FORM_CHANGE  GEN_LATEST  // In Gen9+, the Griseous Orb no longer changes Giratina's form when held.
 
+// TM config
+#define I_REUSABLE_TMS          FALSE       // In Gen5-8, TMs are reusable. Setting this to TRUE will make all vanilla TMs reusable, though they can also be cherry-picked by setting their importance to 1.
+
 // Repel/Lure config
 // These two settings are both independent and complementary.
 #define VAR_LAST_REPEL_LURE_USED    0       // If this var has been assigned, last Repel/Lure used will be saved and the player will get prompted with the vanilla repel YES/NO option, unless I_REPEL_LURE_MENU is set to TRUE.
