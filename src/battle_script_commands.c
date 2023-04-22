@@ -14648,7 +14648,7 @@ static void Cmd_setdamagetohealthdifference(void)
     }
 }
 
-static void HandleRoomMove(u32 statusFlag, u8 *timer, u8 stringId)
+void HandleRoomMove(u32 statusFlag, u8 *timer, u8 stringId)
 {
     if (gFieldStatuses & statusFlag)
     {

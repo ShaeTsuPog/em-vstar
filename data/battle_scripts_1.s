@@ -8910,6 +8910,15 @@ BattleScript_ActivateSwitchInAbilities_Increment:
 	copybyte gBattlerAttacker, sBATTLER
 	return
 
+BattleScript_MassInversionActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNTWISTEDDIMENSIONS
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_SCRIPTING, B_ANIM_RESTORE_BG
+	call BattleScript_ActivateTerrainEffects
+	end3
+
 BattleScript_ElectricSurgeActivates::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp

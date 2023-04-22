@@ -4570,6 +4570,22 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 effect++;
             }
             break;
+        case ABILITY_MASS_INVERSION:
+            if (TryChangeBattleTerrain(battler, STATUS_FIELD_TRICK_ROOM, &gFieldTimers.trickRoomTimer))
+            {
+                BattleScriptPushCursorAndCallback(BattleScript_MassInversionActivates);
+                effect++;
+            }
+        case ABILITY_TYPHOON:
+            if (!gSpecialStatuses[battler].switchInAbilityDone && B_WEATHER_RAIN
+             && !(gSideStatuses[GetBattlerSide(gBattlerAbility)] & SIDE_STATUS_TAILWIND))
+            {
+                gSideStatuses[GetBattlerSide(gBattlerAbility)] |= SIDE_STATUS_TAILWIND;
+                gSideTimers[GetBattlerSide(gBattlerAbility)].tailwindBattlerId = gBattlerAbility;
+                gSideTimers[GetBattlerSide(gBattlerAbility)].tailwindTimer = 4;
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                effect++;
+            }
         case ABILITY_DRIZZLE:
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_RAIN, TRUE))
             {

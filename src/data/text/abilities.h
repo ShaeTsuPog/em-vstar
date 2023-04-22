@@ -291,7 +291,9 @@ static const u8 sJuiceMakerDescription[] = _("Makes juice to heal itself.");
 static const u8 sWeatheringDescription[] = _("Grass and Water up stats.");
 static const u8 sFaeBlessedDescription[] = _("Immunity to Fairy moves.");
 static const u8 sShadifyDescription[] = _("Normal moves become Dark.");
-static const u8 sHiveTacticsDescription[] = _("Somtimes raises Evasion.");
+static const u8 sHiveTacticsDescription[] = _("Sometimes raises Evasion.");
+static const u8 sTyphoonDescription[] = _("Creates Tailwind in Rain.");
+static const u8 sMassInversionDescription[] = _("Summons Trick Room in battle.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -602,6 +604,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_FAE_BLESSED] = _("Fae Blessed"),
     [ABILITY_SHADIFY] = _("Shadify"),
     [ABILITY_HIVE_TACTICS] = _("Hive Tactics"),
+    [ABILITY_TYPHOON] = _("Typhoon"),
+    [ABILITY_MASS_INVERSION] = _("Mass Inversion"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -912,6 +916,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_FAE_BLESSED] = _("Fae Blessed"),
     [ABILITY_SHADIFY] = _("Shadify"),
     [ABILITY_HIVE_TACTICS] = _("Hive Tactics"),
+    [ABILITY_TYPHOON] = _("Typhoon"),
+    [ABILITY_MASS_INVERSION] = _("Mass Inversion"),
 };
 #endif
 
@@ -1223,4 +1229,6 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_FAE_BLESSED] = sFaeBlessedDescription,
     [ABILITY_SHADIFY] = sShadifyDescription,
     [ABILITY_HIVE_TACTICS] = sHiveTacticsDescription,
+    [ABILITY_TYPHOON] = sTyphoonDescription,
+    [ABILITY_MASS_INVERSION] = sMassInversionDescription,
 };
