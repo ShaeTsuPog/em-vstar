@@ -27,6 +27,7 @@ This is a planned Drayano style romhack that will feature an original story in a
     - New original Mega Evolutions, assuming a willing sprite artist is found.
 - Terastilization
     - Will come later once it's implemented into the RHH Expansion.
+- NOTE: This hack will not feature Dynamaxing or Gigantamaxing for balance reasons.
 - Many QoL features
     - Auto-Run, toggled with L.
     - Grind-running, hold B to pathfind around obstacles.
