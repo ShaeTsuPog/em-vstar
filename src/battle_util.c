@@ -5077,6 +5077,12 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 gBattlescriptCurrInstr = BattleScript_IceFaceNullsDamage;
                 effect = 1;
             }
+            else if (GetBattlerAbility(gBattlerTarget) == ABILITY_FAE_BLESSED 
+             && gBattleMoves[move].type == TYPE_FAIRY && !(moveTarget & MOVE_TARGET_USER))
+             {
+                gBattlescriptCurrInstr = BattleScript_FaeBlessed;
+                effect = 1;
+             }
             break;
         }
     case ABILITYEFFECT_ABSORBING: // 3

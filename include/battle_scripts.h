@@ -466,6 +466,7 @@ extern const u8 BattleScript_SpikesActivates[];
 extern const u8 BattleScript_EvaporateActivates[];
 extern const u8 BattleScript_EvaporateWaterMoves[];
 extern const u8 BattleScript_JuiceMakerActivates[];
+extern const u8 BattleScript_FaeBlessed[];
 
 extern const u8 BattleScript_AutoRun[];
 
