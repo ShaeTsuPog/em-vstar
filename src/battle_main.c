@@ -4716,11 +4716,7 @@ s8 GetMovePriority(u32 battlerId, u16 move)
     u16 ability = GetBattlerAbility(battlerId);
 
     priority = gBattleMoves[move].priority;
-    if (ability == ABILITY_GALE_WINGS
-    #if B_GALE_WINGS >= GEN_7
-        && BATTLER_MAX_HP(battlerId)
-    #endif
-        && gBattleMoves[move].type == TYPE_FLYING)
+    if (ability == ABILITY_GALE_WINGS && gBattleMoves[move].type == TYPE_FLYING)
     {
         priority++;
     }
@@ -4730,6 +4726,10 @@ s8 GetMovePriority(u32 battlerId, u16 move)
         priority++;
     }
     else if (gBattleMoves[move].effect == EFFECT_GRASSY_GLIDE && gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && IsBattlerGrounded(battlerId))
+    {
+        priority++;
+    }
+    else if (ability == ABILITY_ESPER && gBattleMoves[move].type == TYPE_PSYCHIC)
     {
         priority++;
     }

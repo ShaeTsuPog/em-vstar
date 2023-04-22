@@ -294,6 +294,7 @@ static const u8 sShadifyDescription[] = _("Normal moves become Dark.");
 static const u8 sHiveTacticsDescription[] = _("Sometimes raises Evasion.");
 static const u8 sTyphoonDescription[] = _("Creates Tailwind in Rain.");
 static const u8 sMassInversionDescription[] = _("Summons Trick Room in battle.");
+static const u8 sEsperDescription[] = _("Psychic moves go first.")
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -606,6 +607,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_HIVE_TACTICS] = _("Hive Tactics"),
     [ABILITY_TYPHOON] = _("Typhoon"),
     [ABILITY_MASS_INVERSION] = _("Mass Inversion"),
+    [ABILITY_ESPER] = _("Esper"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -918,6 +920,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_HIVE_TACTICS] = _("Hive Tactics"),
     [ABILITY_TYPHOON] = _("Typhoon"),
     [ABILITY_MASS_INVERSION] = _("Mass Inversion"),
+    [ABILITY_ESPER] = _("Esper"),
 };
 #endif
 
@@ -1231,4 +1234,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_HIVE_TACTICS] = sHiveTacticsDescription,
     [ABILITY_TYPHOON] = sTyphoonDescription,
     [ABILITY_MASS_INVERSION] = sMassInversionDescription,
+    [ABILITY_ESPER] = sEsperDescription,
 };
