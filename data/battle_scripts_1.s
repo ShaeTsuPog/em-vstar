@@ -8466,6 +8466,13 @@ BattleScript_SpeedBoostActivates::
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
+BattleScript_HiveTacticsActivates::
+	call BattleScript_AbilityPopUp
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_PKMNRAISEDEVASION
+	waitmessage B_WAIT_TIME_LONG
+	end3
+
 BattleScript_JuiceMakerActivates::
 	call BattleScript_AbilityPopUp
 	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT

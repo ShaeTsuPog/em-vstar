@@ -656,8 +656,9 @@
 #define STRINGID_EVAPORATEACTIVATES                   652
 #define STRINGID_EVAPORATEINHARSHHEAT                 653
 #define STRINGID_JUICEMAKER                           654
+#define STRINGID_PKMNRAISEDEVASION                    655
 
-#define BATTLESTRINGS_COUNT                           655
+#define BATTLESTRINGS_COUNT                           656
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

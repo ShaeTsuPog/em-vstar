@@ -445,6 +445,7 @@ static const u8 sText_Evasiveness[] = _("evasiveness");
 static const u8 sText_EvaporateActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} made the air\nextremely hot!");
 static const u8 sText_EvaporateWaterMoves[] = _("The Water-type move evaporated\nin the harsh heat!");
 static const u8 sText_JuiceMaker[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} drank its secret Berry Juice!");
+static const u8 sText_HiveTacticsActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nraised its Evasion!");
 
 const u8 *const gStatNamesTable[NUM_BATTLE_STATS] =
 {
@@ -1436,6 +1437,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_EVAPORATEACTIVATES - BATTLESTRINGS_TABLE_START] = sText_EvaporateActivates,
     [STRINGID_EVAPORATEINHARSHHEAT - BATTLESTRINGS_TABLE_START] = sText_EvaporateWaterMoves,
     [STRINGID_JUICEMAKER - BATTLESTRINGS_TABLE_START] = sText_JuiceMaker,
+    [STRINGID_PKMNRAISEDEVASION - BATTLESTRINGS_TABLE_START] = sText_HiveTacticsActivates,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

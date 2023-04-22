@@ -4899,6 +4899,40 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                     effect++;
                 }
                 break;
+            case ABILITY_HIVE_TACTICS:
+                if (CompareStat(battler, STAT_EVASION, MAX_STAT_STAGE, CMP_LESS_THAN)
+                 && gDisableStructs[battler].isFirstTurn != 2)
+                {
+                    int modifier = 0;
+                    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+                    {
+                        u32 side = GetBattlerSide(battler);
+                        if (IsBattlerAlive(i) && side != GetBattlerSide(i))
+                        {
+                            for (j = 0; j < MAX_MON_MOVES; j++)
+                            {
+                                move = gBattleMons[i].moves[j];
+                                GET_MOVE_TYPE(move, moveType);
+                                if (CalcTypeEffectivenessMultiplier(move, moveType, i, battler, FALSE) >= UQ_4_12(2.0))
+                                {
+                                    modifier++;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (modifier != 0)
+                    {
+                        gBattleMons[battler].statStages[STAT_EVASION]++;
+                        gBattleScripting.animArg1 = 14 + STAT_EVASION;
+                        gBattleScripting.animArg2 = 0;
+                        BattleScriptPushCursorAndCallback(BattleScript_HiveTacticsActivates);
+                        gBattleScripting.battler = battler;
+                        effect++;
+                    }
+                }
+                break;
             case ABILITY_JUICE_MAKER:
                 if (gBattleMons[battler].hp < gBattleMons[battler].maxHP && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
                 {
