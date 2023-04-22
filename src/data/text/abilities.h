@@ -294,7 +294,9 @@ static const u8 sShadifyDescription[] = _("Normal moves become Dark.");
 static const u8 sHiveTacticsDescription[] = _("Sometimes raises Evasion.");
 static const u8 sTyphoonDescription[] = _("Creates Tailwind in Rain.");
 static const u8 sMassInversionDescription[] = _("Summons Trick Room in battle.");
-static const u8 sEsperDescription[] = _("Psychic moves go first.")
+static const u8 sEsperDescription[] = _("Psychic moves go first.");
+static const u8 sSpiritDescription[] = _("Ups SpAtk if suffering.");
+static const u8 sSpunkDescription[] = _("KOs raise SpAtk.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -608,6 +610,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_TYPHOON] = _("Typhoon"),
     [ABILITY_MASS_INVERSION] = _("Mass Inversion"),
     [ABILITY_ESPER] = _("Esper"),
+    [ABILITY_SPIRIT] = _("Spirit"),
+    [ABILITY_SPUNK] = _("Spunk"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -921,6 +925,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_TYPHOON] = _("Typhoon"),
     [ABILITY_MASS_INVERSION] = _("Mass Inversion"),
     [ABILITY_ESPER] = _("Esper"),
+    [ABILITY_SPIRIT] = _("Spirit"),
+    [ABILITY_SPUNK] = _("Spunk"),
 };
 #endif
 
@@ -1235,4 +1241,6 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_TYPHOON] = sTyphoonDescription,
     [ABILITY_MASS_INVERSION] = sMassInversionDescription,
     [ABILITY_ESPER] = sEsperDescription,
+    [ABILITY_SPIRIT] = sSpiritDescription,
+    [ABILITY_SPUNK] = sSpunkDescription,
 };
