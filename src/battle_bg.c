@@ -174,9 +174,9 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
     },
     [B_WIN_ACTION_MENU] = {
         .bg = 0,
-        .tilemapLeft = 17,
+        .tilemapLeft = 19,
         .tilemapTop = 35,
-        .width = 12,
+        .width = 10,
         .height = 4,
         .paletteNum = 5,
         .baseBlock = 0x0190,

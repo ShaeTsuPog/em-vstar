@@ -1,5 +1,6 @@
 #include "global.h"
 #include "task.h"
+#include "main.h"
 
 struct Task gTasks[NUM_TASKS];
 
@@ -107,6 +108,18 @@ void DestroyTask(u8 taskId)
     }
 }
 
+extern void BattleIntroSlide1(u8);
+
+bool8 IsTaskFuncInList(u8 taskId)
+{
+    TaskFunc func = gTasks[taskId].func;
+
+    if (func == BattleIntroSlide1)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 void RunTasks(void)
 {
     u8 taskId = FindFirstActiveTask();
@@ -115,7 +128,13 @@ void RunTasks(void)
     {
         do
         {
-            gTasks[taskId].func(taskId);
+            if (IsTaskFuncInList(taskId) == TRUE && (gMain.vblankCounter1 % 1 == 0))
+            {
+                gTasks[taskId].func(taskId);
+                gTasks[taskId].func(taskId);
+            }
+            else
+                gTasks[taskId].func(taskId);
             taskId = gTasks[taskId].next;
         } while (taskId != TAIL_SENTINEL);
     }

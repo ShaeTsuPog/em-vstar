@@ -4699,16 +4699,16 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 effect++;
             }
             break;
-        /* case ABILITY_ILLUMINATE:
+        case ABILITY_ILLUMINATE:
             if (!gSpecialStatuses[battler].switchInAbilityDone && CompareStat(battler, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
                 gBattlerAttacker = battler;
-                gSpecialStatues[battler].switchInAbilityDone = TRUE;
-                SET_STATCHANGER(STAT_SPATCK, 1, FALSE);
-                BattleScriptPushCursorAndCallback(BattleScript_BattlerAbilityStatRaiseOnSwitch);
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                SET_STATCHANGER(STAT_SPATK, 1, FALSE);
+                BattleScriptPushCursorAndCallback(BattleScript_BattlerAbilityStatRaiseOnSwitchIn);
                 effect++;
             }
-            break; */
+            break;
         case ABILITY_DAUNTLESS_SHIELD:
             if (!gSpecialStatuses[battler].switchInAbilityDone && CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
@@ -4896,6 +4896,17 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                     gBattleScripting.animArg2 = 0;
                     BattleScriptPushCursorAndCallback(BattleScript_SpeedBoostActivates);
                     gBattleScripting.battler = battler;
+                    effect++;
+                }
+                break;
+            case ABILITY_JUICE_MAKER:
+                if (gBattleMons[battler].hp < gBattleMons[battler].maxHP && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
+                {
+                    gBattleMoveDamage = 20;
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+                    gBattleMoveDamage *= -1;
+                    BattleScriptPushCursorAndCallback(BattleScript_JuiceMakerActivates);
                     effect++;
                 }
                 break;
@@ -5633,6 +5644,31 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_TargetAbilityStatRaiseRet;
                 effect++;
+            }
+            break;
+        case ABILITY_WEATHERING:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && TARGET_TURN_DAMAGED
+             && IsBattlerAlive(battler))
+            {
+                if (moveType == TYPE_WATER 
+                 && CompareStat(battler, STAT_SPEED, MAX_STAT_STAGE, CMP_LESS_THAN))
+                {
+                    gEffectBattler = battler;
+                    SET_STATCHANGER(STAT_SPEED, 6, FALSE);
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_TargetAbilityStatRaiseRet;
+                    effect++;
+                }
+                else if (moveType == TYPE_GRASS
+                 && CompareStat(battler, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
+                {
+                    gEffectBattler = battler;
+                    SET_STATCHANGER(STAT_ATK, 6, FALSE);
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_TargetAbilityStatRaiseRet;
+                    effect++;
+                }
             }
             break;
         case ABILITY_SAND_SPIT:

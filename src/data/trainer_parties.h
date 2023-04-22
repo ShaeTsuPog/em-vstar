@@ -8001,6 +8001,11 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Tiana[] = {
     .iv = 0,
     .lvl = 4,
     .species = SPECIES_SHROOMISH,
+    },
+    {
+    .iv = 0,
+    .lvl = 6,
+    .species = SPECIES_RALTS,
     }
 };
 

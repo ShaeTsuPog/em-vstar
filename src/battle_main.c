@@ -2722,11 +2722,11 @@ void SpriteCB_WildMon(struct Sprite *sprite)
         BeginNormalPaletteFade((0x10000 << sprite->sBattler), 0, 10, 10, RGB(8, 8, 8));
 }
 
-static void SpriteCB_MoveWildMonToRight(struct Sprite *sprite)
+static void SpriteCB_MoveWildMonToRight(struct Sprite *sprite) // wild mon intro slide?
 {
     if ((gIntroSlideFlags & 1) == 0)
     {
-        sprite->x2 += 2;
+        sprite->x2 += 4;
         if (sprite->x2 == 0)
         {
             sprite->callback = SpriteCB_WildMonShowHealthbox;

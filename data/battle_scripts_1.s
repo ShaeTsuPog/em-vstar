@@ -8466,6 +8466,16 @@ BattleScript_SpeedBoostActivates::
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
+BattleScript_JuiceMakerActivates::
+	call BattleScript_AbilityPopUp
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	printstring STRINGID_JUICEMAKER
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	end3
+
 @ Can't compare directly to a value, have to compare to value at pointer
 sZero:
 .byte 0

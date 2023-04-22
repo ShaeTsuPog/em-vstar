@@ -337,13 +337,13 @@ static const u8 sText_PlayerBattledToDrawLinkTrainer[] = _("Player battled to a 
 static const u8 sText_PlayerBattledToDrawVsTwo[] = _("Player battled to a draw against\n{B_LINK_OPPONENT1_NAME} and {B_LINK_OPPONENT2_NAME}!");
 static const u8 sText_WildFled[] = _("{PLAY_SE SE_FLEE}{B_LINK_OPPONENT1_NAME} fled!");
 static const u8 sText_TwoWildFled[] = _("{PLAY_SE SE_FLEE}{B_LINK_OPPONENT1_NAME} and\n{B_LINK_OPPONENT2_NAME} fled!");
-static const u8 sText_NoRunningFromTrainers[] = _("No! There's no running\nfrom a TRAINER battle!\p");
+static const u8 sText_NoRunningFromTrainers[] = _("No! There's no running\nfrom a trainer battle!\p");
 static const u8 sText_CantEscape[] = _("Can't escape!\p");
-static const u8 sText_DontLeaveBirch[] = _("PROF. BIRCH: Don't leave me like this!\p");
+static const u8 sText_DontLeaveBirch[] = _("PROF. Birch: Don't leave me like this!\p");
 static const u8 sText_ButNothingHappened[] = _("But nothing happened!");
 static const u8 sText_ButItFailed[] = _("But it failed!");
 static const u8 sText_ItHurtConfusion[] = _("It hurt itself in its\nconfusion!");
-static const u8 sText_MirrorMoveFailed[] = _("The MIRROR MOVE failed!");
+static const u8 sText_MirrorMoveFailed[] = _("The Mirror Move failed!");
 static const u8 sText_StartedToRain[] = _("It started to rain!");
 static const u8 sText_DownpourStarted[] = _("A downpour started!"); // corresponds to DownpourText in pokegold and pokecrystal and is used by Rain Dance in GSC
 static const u8 sText_RainContinues[] = _("Rain continues to fall.");
@@ -444,6 +444,7 @@ static const u8 sText_Evasiveness[] = _("evasiveness");
 // Custom
 static const u8 sText_EvaporateActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} made the air\nextremely hot!");
 static const u8 sText_EvaporateWaterMoves[] = _("The Water-type move evaporated\nin the harsh heat!");
+static const u8 sText_JuiceMaker[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} drank its secret Berry Juice!");
 
 const u8 *const gStatNamesTable[NUM_BATTLE_STATS] =
 {
@@ -1431,8 +1432,10 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_TARGETTOOHEAVY - BATTLESTRINGS_TABLE_START] = sText_TargetTooHeavy,
     [STRINGID_ATTACKERLOSTELECTRICTYPE - BATTLESTRINGS_TABLE_START] = sText_AttackerLostElectricType,
     [STRINGID_PKMNSABILITYPREVENTSABILITY - BATTLESTRINGS_TABLE_START] = sText_PkmnsAbilityPreventsAbility,
+    // Custom
     [STRINGID_EVAPORATEACTIVATES - BATTLESTRINGS_TABLE_START] = sText_EvaporateActivates,
     [STRINGID_EVAPORATEINHARSHHEAT - BATTLESTRINGS_TABLE_START] = sText_EvaporateWaterMoves,
+    [STRINGID_JUICEMAKER - BATTLESTRINGS_TABLE_START] = sText_JuiceMaker,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1906,7 +1909,7 @@ const u8 gText_WhatWillPkmnDo[] = _("What will\n{B_ACTIVE_NAME2} do?");
 const u8 gText_WhatWillPkmnDo2[] = _("What will\n{B_PLAYER_NAME} do?");
 const u8 gText_WhatWillWallyDo[] = _("What will\nWALLY do?");
 const u8 gText_LinkStandby[] = _("{PAUSE 16}Link standby…");
-const u8 gText_BattleMenu[] = _("FIGHT{CLEAR_TO 56}BAG\nPOKéMON{CLEAR_TO 56}RUN");
+const u8 gText_BattleMenu[] = _("FIGHT{CLEAR_TO 56}BAG\nPKMN{CLEAR_TO 56}RUN");
 const u8 gText_SafariZoneMenu[] = _("BALL{CLEAR_TO 56}{POKEBLOCK}\nGO NEAR{CLEAR_TO 56}RUN");
 const u8 gText_MoveInterfacePP[] = _("PP ");
 const u8 gText_MoveInterfaceType[] = _("");
@@ -2068,29 +2071,29 @@ static const u8 sDummyWeirdStatusString[] = {EOS, EOS, EOS, EOS, EOS, EOS, EOS, 
 static const struct BattleWindowText sTextOnWindowsInfo_Normal[] =
 {
     [B_WIN_MSG] = {
-        .fillValue = PIXEL_FILL(1),
+        .fillValue = PIXEL_FILL(13),
         .fontId = FONT_NORMAL,
         .x = 0,
         .y = 1,
         .speed = 1,
-        .fgColor = 3,
-        .bgColor = 1,
-        .shadowColor = 15,
+        .fgColor = 1,
+        .bgColor = 13,
+        .shadowColor = 8,
     },
     [B_WIN_ACTION_PROMPT] = {
-        .fillValue = PIXEL_FILL(1),
+        .fillValue = PIXEL_FILL(13),
         .fontId = FONT_NORMAL,
         .x = 1,
         .y = 1,
         .speed = 0,
-        .fgColor = 3,
-        .bgColor = 1,
-        .shadowColor = 15,
+        .fgColor = 1,
+        .bgColor = 13,
+        .shadowColor = 8,
     },
     [B_WIN_ACTION_MENU] = {
         .fillValue = PIXEL_FILL(0xE),
         .fontId = FONT_NORMAL,
-        .x = 0,
+        .x = 1,
         .y = 1,
         .speed = 0,
         .fgColor = 13,
@@ -2344,7 +2347,7 @@ static const struct BattleWindowText sTextOnWindowsInfo_Arena[] =
         .y = 1,
         .speed = 1,
         .fgColor = 1,
-        .bgColor = 15,
+        .bgColor = 3,
         .shadowColor = 6,
     },
     [B_WIN_ACTION_PROMPT] = {

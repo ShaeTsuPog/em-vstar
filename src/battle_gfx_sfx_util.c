@@ -373,6 +373,7 @@ void SpriteCB_TrainerSlideIn(struct Sprite *sprite)
     if (!(gIntroSlideFlags & 1))
     {
         sprite->x2 += sprite->sSpeedX;
+        sprite->x2 += sprite->data[0] / 1;
         if (sprite->x2 == 0)
         {
             if (sprite->y2 != 0)

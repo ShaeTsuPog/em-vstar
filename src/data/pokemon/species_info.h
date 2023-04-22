@@ -2595,11 +2595,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseSpeed     = 45,
         .baseSpAttack  = 55,
         .baseSpDefense = 65,
-        #if P_UPDATED_STATS >= GEN_6
-            .baseAttack    = 120,
-        #else
-            .baseAttack    = 110,
-        #endif
+        .baseAttack    = 120,
         .types = { TYPE_ROCK, TYPE_GROUND},
         .catchRate = 45,
         .expYield = 223,
@@ -2610,7 +2606,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL},
-        .abilities = {ABILITY_ROCK_HEAD, ABILITY_STURDY, ABILITY_SAND_FORCE},
+        .abilities = {ABILITY_ROCK_HEAD, ABILITY_WEATHERING, ABILITY_SAND_FORCE},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
     },
@@ -5740,7 +5736,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG},
-        .abilities = {ABILITY_STURDY, ABILITY_GLUTTONY, ABILITY_CONTRARY},
+        .abilities = {ABILITY_STURDY, ABILITY_JUICE_MAKER, ABILITY_CONTRARY},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
     },

@@ -11,7 +11,8 @@ enum StringConvertMode
 {
     STR_CONV_MODE_LEFT_ALIGN,
     STR_CONV_MODE_RIGHT_ALIGN,
-    STR_CONV_MODE_LEADING_ZEROS
+    STR_CONV_MODE_LEADING_ZEROS,
+    STR_CONV_MODE_RIGHT_ALIGN_TRIM
 };
 
 u8 *StringCopy_Nickname(u8 *dest, const u8 *src);

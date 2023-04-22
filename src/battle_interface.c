@@ -1621,7 +1621,7 @@ u8 CreatePartyStatusSummarySprites(u8 battlerId, struct HpAndStatus *partyInfo, 
         if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
         {
             isOpponent = FALSE;
-            bar_X = 136, bar_Y = 96;
+            bar_X = 161, bar_Y = 96;
             bar_pos2_X = 100;
             bar_data0 = -5;
         }
@@ -1630,7 +1630,7 @@ u8 CreatePartyStatusSummarySprites(u8 battlerId, struct HpAndStatus *partyInfo, 
             isOpponent = TRUE;
 
             if (!skipPlayer || !WhichBattleCoords(battlerId))
-                bar_X = 104, bar_Y = 40;
+                bar_X = 79, bar_Y = 40;
             else
                 bar_X = 104, bar_Y = 16;
 

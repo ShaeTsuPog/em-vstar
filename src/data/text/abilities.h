@@ -286,6 +286,8 @@ static const u8 sArmorTailDescription[] = _("Protects from priority.");
 static const u8 sEarthEaterDescription[] = _("Eats ground to heal HP.");
 static const u8 sMyceliumMightDescription[] = _("Status moves never fail.");
 static const u8 sEvaporateDescription[] = _("Water moves are nullified.");
+static const u8 sJuiceMakerDescription[] = _("Makes juice to heal itself.");
+static const u8 sWeatheringDescription[] = _("Grass and Water up stats.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -591,6 +593,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_MYCELIUM_MIGHT] = _("Mycelium Might"),
     // Custom
     [ABILITY_EVAPORATE] = _("Evaporate"),
+    [ABILITY_JUICE_MAKER] = _("Juice Maker"),
+    [ABILITY_WEATHERING] = _("Weathering"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -896,6 +900,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_MYCELIUM_MIGHT] = _("MceliumMight"),
     // Custom
     [ABILITY_EVAPORATE] = _("Evaporate"),
+    [ABILITY_JUICE_MAKER] = _("Juice Maker"),
+    [ABILITY_WEATHERING] = _("Weathering")
 };
 #endif
 
@@ -1202,4 +1208,6 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_MYCELIUM_MIGHT] = sMyceliumMightDescription,
     // Custom
     [ABILITY_EVAPORATE] = sEvaporateDescription,
+    [ABILITY_JUICE_MAKER] = sJuiceMakerDescription,
+    [ABILITY_WEATHERING] = sWeatheringDescription,
 };
