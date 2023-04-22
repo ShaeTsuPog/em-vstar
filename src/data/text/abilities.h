@@ -290,6 +290,7 @@ static const u8 sEvaporateDescription[] = _("Water moves are nullified.");
 static const u8 sJuiceMakerDescription[] = _("Makes juice to heal itself.");
 static const u8 sWeatheringDescription[] = _("Grass and Water up stats.");
 static const u8 sFaeBlessedDescription[] = _("Immunity to Fairy moves.");
+static const u8 sShadifyDescription[] = _("Normal moves become Dark.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -598,6 +599,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_JUICE_MAKER] = _("Juice Maker"),
     [ABILITY_WEATHERING] = _("Weathering"),
     [ABILITY_FAE_BLESSED] = _("Fae Blessed"),
+    [ABILITY_SHADIFY] = _("Shadify"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -905,7 +907,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_EVAPORATE] = _("Evaporate"),
     [ABILITY_JUICE_MAKER] = _("Juice Maker"),
     [ABILITY_WEATHERING] = _("Weathering"),
-    [ABILITY_FAE_BLESSED] = _("Fae Blessed")
+    [ABILITY_FAE_BLESSED] = _("Fae Blessed"),
+    [ABILITY_SHADIFY] = _("Shadify"),
 };
 #endif
 
@@ -1215,4 +1218,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_JUICE_MAKER] = sJuiceMakerDescription,
     [ABILITY_WEATHERING] = sWeatheringDescription,
     [ABILITY_FAE_BLESSED] = sFaeBlessedDescription,
+    [ABILITY_SHADIFY] = sShadifyDescription,
 };
