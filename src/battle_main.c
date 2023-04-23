@@ -4733,6 +4733,10 @@ s8 GetMovePriority(u32 battlerId, u16 move)
     {
         priority++;
     }
+    else if (ability == ABILITY_QUICK_JABS && gBattleMoves[move].flags & FLAG_IRON_FIST_BOOST)
+    {
+        priority++;
+    }
     else if (ability == ABILITY_TRIAGE)
     {
         switch (gBattleMoves[move].effect)

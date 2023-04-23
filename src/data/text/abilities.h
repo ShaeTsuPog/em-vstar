@@ -300,6 +300,8 @@ static const u8 sSpunkDescription[] = _("KOs raise SpAtk.");
 static const u8 sTriplicateDescription[] = _("Moves hit thrice.");
 static const u8 sBefuddleDescription[] = _("Dances to confuse enemies.");
 static const u8 sIgnitionDescription[] = _("Field becomes Searing.");
+static const u8 sQuickJabsDescription[] = _("Punching moves go first.");
+static const u8 sWhirlyTopDescription[] = _("Doubles power of spinning moves.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -618,6 +620,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_TRIPLICATE] = _("Triplicate"),
     [ABILITY_BEFUDDLE] = _("Befuddle"),
     [ABILITY_IGNITION] = _("Ignition"),
+    [ABILITY_QUICK_JABS] = _("Quick Jabs"),
+    [ABILITY_WHIRLY_TOP] = _("Whirly Top"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -936,6 +940,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_TRIPLICATE] = _("Triplicate"),
     [ABILITY_BEFUDDLE] = _("Befuddle"),
     [ABILITY_IGNITION] = _("Ignition"),
+    [ABILITY_QUICK_JABS] = _("Quick Jabs"),
+    [ABILITY_WHIRLY_TOP] = _("Whirly Top"),
 };
 #endif
 
@@ -1255,4 +1261,6 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_TRIPLICATE] = sTriplicateDescription,
     [ABILITY_BEFUDDLE] = sBefuddleDescription,
     [ABILITY_IGNITION] = sIgnitionDescription,
+    [ABILITY_QUICK_JABS] = sQuickJabsDescription,
+    [ABILITY_WHIRLY_TOP] = sWhirlyTopDescription,
 };
