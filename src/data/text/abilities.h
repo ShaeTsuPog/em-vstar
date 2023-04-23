@@ -299,6 +299,7 @@ static const u8 sSpiritDescription[] = _("Ups SpAtk if suffering.");
 static const u8 sSpunkDescription[] = _("KOs raise SpAtk.");
 static const u8 sTriplicateDescription[] = _("Moves hit thrice.");
 static const u8 sBefuddleDescription[] = _("Dances to confuse enemies.");
+static const u8 sIgnitionDescription[] = _("Field becomes Searing.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -616,6 +617,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SPUNK] = _("Spunk"),
     [ABILITY_TRIPLICATE] = _("Triplicate"),
     [ABILITY_BEFUDDLE] = _("Befuddle"),
+    [ABILITY_IGNITION] = _("Ignition"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -933,6 +935,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SPUNK] = _("Spunk"),
     [ABILITY_TRIPLICATE] = _("Triplicate"),
     [ABILITY_BEFUDDLE] = _("Befuddle"),
+    [ABILITY_IGNITION] = _("Ignition"),
 };
 #endif
 
@@ -1251,4 +1254,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_SPUNK] = sSpunkDescription,
     [ABILITY_TRIPLICATE] = sTriplicateDescription,
     [ABILITY_BEFUDDLE] = sBefuddleDescription,
+    [ABILITY_IGNITION] = sIgnitionDescription,
 };

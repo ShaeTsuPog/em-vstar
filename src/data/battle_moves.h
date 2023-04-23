@@ -10094,6 +10094,21 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_SPD_UP_1,
     },
 
+    [MOVE_BLAZING_TERRAIN] =
+    {
+        .effect = EFFECT_BLAZING_TERRAIN,
+        .power = 0,
+        .type = TYPE_FIRE,
+        .accuracy = 0,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_ALL_BATTLERS,
+        .priority = 0,
+        .flags = 0,
+        .split = SPLIT_STATUS,
+        .zMoveEffect = Z_EFFECT_NONE,
+    },
+
     [MOVE_DAZZLING_GLEAM] =
     {
         .effect = EFFECT_HIT,

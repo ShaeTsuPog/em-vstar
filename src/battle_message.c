@@ -447,6 +447,9 @@ static const u8 sText_EvaporateWaterMoves[] = _("The Water-type move evaporated\
 static const u8 sText_JuiceMaker[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} drank its secret Berry Juice!");
 static const u8 sText_HiveTacticsActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nraised its Evasion!");
 static const u8 sText_BefuddleActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s dancing confused\nthe enemy!");
+static const u8 sText_TerrainBecomesBlazing[] = _("An searing flame runs across\nthe battlefield!");
+static const u8 sText_BurnedByTerrain[] = _("{B_ATK_NAME_WITH_PREFIX} is burned\nby the fire!");
+static const u8 sText_BlazingTerrainEnds[] = _("The flames disappeared\nfrom the battlefield.");
 
 const u8 *const gStatNamesTable[NUM_BATTLE_STATS] =
 {
@@ -1440,6 +1443,9 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_JUICEMAKER - BATTLESTRINGS_TABLE_START] = sText_JuiceMaker,
     [STRINGID_PKMNRAISEDEVASION - BATTLESTRINGS_TABLE_START] = sText_HiveTacticsActivates,
     [STRINGID_BEFUDDLE - BATTLESTRINGS_TABLE_START] = sText_BefuddleActivates,
+    [STRINGID_TERRAINBECOMESBLAZING - BATTLESTRINGS_TABLE_START] = sText_TerrainBecomesBlazing,
+    [STRINGID_PKMNBURNEDBYTERRAIN - BATTLESTRINGS_TABLE_START] = sText_BurnedByTerrain,
+    [STRINGID_BLAZINGTERRAINENDS - BATTLESTRINGS_TABLE_START] = sText_BlazingTerrainEnds,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1470,7 +1476,9 @@ const u16 gMentalHerbCureStringIds[] =
 
 const u16 gTerrainStringIds[] =
 {
-    STRINGID_TERRAINBECOMESMISTY, STRINGID_TERRAINBECOMESGRASSY, STRINGID_TERRAINBECOMESELECTRIC, STRINGID_TERRAINBECOMESPSYCHIC, STRINGID_TERRAINREMOVED,
+    STRINGID_TERRAINBECOMESMISTY, STRINGID_TERRAINBECOMESGRASSY,
+    STRINGID_TERRAINBECOMESELECTRIC, STRINGID_TERRAINBECOMESPSYCHIC,
+    STRINGID_TERRAINBECOMESBLAZING, STRINGID_TERRAINREMOVED,
 };
 
 const u16 gTerrainEndingStringIds[B_MSG_TERRAINENDS_COUNT] =
@@ -1479,6 +1487,7 @@ const u16 gTerrainEndingStringIds[B_MSG_TERRAINENDS_COUNT] =
     [B_MSG_TERRAINENDS_ELECTRIC] = STRINGID_ELECTRICTERRAINENDS,
     [B_MSG_TERRAINENDS_PSYCHIC] = STRINGID_PSYCHICTERRAINENDS,
     [B_MSG_TERRAINENDS_GRASS] = STRINGID_GRASSYTERRAINENDS,
+    [B_MSG_TERRAINENDS_BLAZING] = STRINGID_BLAZINGTERRAINENDS,
 };
 
 const u16 gTerrainPreventsStringIds[] =
@@ -1565,7 +1574,8 @@ const u16 gSandStormHailContinuesStringIds[] =
 const u16 gSandStormHailDmgStringIds[] =
 {
     [B_MSG_SANDSTORM] = STRINGID_PKMNBUFFETEDBYSANDSTORM,
-    [B_MSG_HAIL]      = STRINGID_PKMNPELTEDBYHAIL
+    [B_MSG_HAIL]      = STRINGID_PKMNPELTEDBYHAIL,
+    [B_MSG_BLAZING]   = STRINGID_PKMNBURNEDBYTERRAIN
 };
 
 const u16 gSandStormHailEndStringIds[] =

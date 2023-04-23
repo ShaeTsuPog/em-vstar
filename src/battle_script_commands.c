@@ -8432,6 +8432,10 @@ static void HandleTerrainMove(u16 move)
         statusFlag = STATUS_FIELD_PSYCHIC_TERRAIN;
         gBattleCommunication[MULTISTRING_CHOOSER] = 3;
         break;
+    case EFFECT_BLAZING_TERRAIN:
+        statusFlag = STATUS_FIELD_BLAZING_TERRAIN;
+        gBattleCommunication[MULTISTRING_CHOOSER] = 5;
+        break;
     case EFFECT_HIT_SET_REMOVE_TERRAIN:
         switch (gBattleMoves[move].argument)
         {
@@ -8518,6 +8522,9 @@ static void RemoveAllTerrains(void)
         break;
     case STATUS_FIELD_PSYCHIC_TERRAIN:
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAINENDS_PSYCHIC;
+        break;
+    case STATUS_FIELD_BLAZING_TERRAIN:
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAINENDS_BLAZING;
         break;
     default:
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAINENDS_COUNT;  // failsafe
@@ -10393,6 +10400,9 @@ static void Cmd_various(void)
                 break;
             case HOLD_EFFECT_PARAM_PSYCHIC_TERRAIN:
                 effect = TryHandleSeed(gActiveBattler, STATUS_FIELD_PSYCHIC_TERRAIN, STAT_SPDEF, item, FALSE);
+                break;
+            case HOLD_EFFECT_PARAM_BLAZING_TERRAIN:
+                effect = TryHandleSeed(gActiveBattler, STATUS_FIELD_BLAZING_TERRAIN, STAT_ATK, item, FALSE);
                 break;
             }
 
@@ -12773,6 +12783,19 @@ static void Cmd_weatherdamage(void)
                     gBattleMoveDamage = 1;
             }
         }
+        if (gFieldStatuses & STATUS_FIELD_BLAZING_TERRAIN)
+        {
+            if (!IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_FIRE)
+            && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERGROUND)))
+            {
+                if (IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GRASS))
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
+                else if (IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_WATER))
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
+                else
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
+            }
+        }
     }
 
     gBattlescriptCurrInstr = cmd->nextInstr;
@@ -14351,6 +14374,8 @@ u16 GetNaturePowerMove(void)
         return MOVE_ENERGY_BALL;
     else if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN)
         return MOVE_PSYCHIC;
+    else if (gFieldStatuses & STATUS_FIELD_BLAZING_TERRAIN)
+        return MOVE_FLAMETHROWER;
     else if (sNaturePowerMoves == MOVE_NONE)
         return MOVE_TRI_ATTACK;
     return sNaturePowerMoves[gBattleTerrain];
@@ -15030,6 +15055,9 @@ u16 GetSecretPowerMoveEffect(void)
         case STATUS_FIELD_PSYCHIC_TERRAIN:
             moveEffect = MOVE_EFFECT_SPD_MINUS_1;
             break;
+        case STATUS_FIELD_BLAZING_TERRAIN:
+            moveEffect = MOVE_EFFECT_BURN;
+            break;
         default:
             moveEffect = MOVE_EFFECT_PARALYSIS;
             break;
@@ -15349,6 +15377,9 @@ static void Cmd_settypetoterrain(void)
         break;
     case STATUS_FIELD_PSYCHIC_TERRAIN:
         terrainType = TYPE_PSYCHIC;
+        break;
+    case STATUS_FIELD_BLAZING_TERRAIN:
+        terrainType = TYPE_FIRE;
         break;
     default:
         terrainType = sTerrainToType[gBattleTerrain];

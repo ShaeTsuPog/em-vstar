@@ -658,8 +658,11 @@
 #define STRINGID_JUICEMAKER                           654
 #define STRINGID_PKMNRAISEDEVASION                    655
 #define STRINGID_BEFUDDLE                             656
+#define STRINGID_TERRAINBECOMESBLAZING                657
+#define STRINGID_PKMNBURNEDBYTERRAIN                  658
+#define STRINGID_BLAZINGTERRAINENDS                   659
 
-#define BATTLESTRINGS_COUNT                           657
+#define BATTLESTRINGS_COUNT                           660
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -734,6 +737,7 @@
 // gSandStormHailContinuesStringIds / gSandStormHailDmgStringIds/ gSandStormHailEndStringIds
 #define B_MSG_SANDSTORM  0
 #define B_MSG_HAIL       1
+#define B_MSG_BLAZING    2
 
 // gReflectLightScreenSafeguardStringIds
 #define B_MSG_SIDE_STATUS_FAILED     0
@@ -922,7 +926,8 @@
 #define B_MSG_TERRAINENDS_ELECTRIC  1
 #define B_MSG_TERRAINENDS_PSYCHIC   2
 #define B_MSG_TERRAINENDS_GRASS     3
-#define B_MSG_TERRAINENDS_COUNT     4
+#define B_MSG_TERRAINENDS_BLAZING   4
+#define B_MSG_TERRAINENDS_COUNT     5
 
 // gWrappedStringIds
 #define B_MSG_WRAPPED_BIND        0
