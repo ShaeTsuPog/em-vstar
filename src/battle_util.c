@@ -4735,6 +4735,18 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 effect++;
             }
             break;
+/*      case ABILITY_BEFUDDLE: // TODO: Unfinished
+            gBattlerAttacker = battler;
+            for (int i = 0; i < 2; i++)
+            {
+                if (CanBeConfused(i))
+                {
+                    gBattleMons[i].status2 |= STATUS2_CONFUSION;
+                }
+            }
+            BattleScriptPushCursorAndCallback(BattleScript_BefuddleActivates);
+            effect++;
+            break; */
         case ABILITY_DESOLATE_LAND:
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_SUN_PRIMAL, TRUE))
             {
@@ -9489,6 +9501,13 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
             MulModifier(&finalModifier, UQ_4_12(0.5));
         else
             MulModifier(&finalModifier, UQ_4_12(0.25));
+    }
+
+    if (gSpecialStatuses[battlerAtk].triplicateState == TRIPLICATE_1ST_HIT
+    || gSpecialStatuses[battlerAtk].triplicateState == TRIPLICATE_2ND_HIT
+    || gSpecialStatuses[battlerAtk].triplicateState == TRIPLICATE_3RD_HIT)
+    {
+        MulModifier(&finalModifier, UQ_4_12(0.66));
     }
 
     // Z-Moves and Max Moves bypass Protect and do 25% of their original damage

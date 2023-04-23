@@ -496,4 +496,10 @@
 #define PARENTAL_BOND_2ND_HIT 1
 #define PARENTAL_BOND_OFF     0
 
+// Custom constants for Triplicate
+#define TRIPLICATE_1ST_HIT    3
+#define TRIPLICATE_2ND_HIT    2
+#define TRIPLICATE_3RD_HIT    1
+#define TRIPLICATE_OFF        0
+
 #endif // GUARD_CONSTANTS_BATTLE_H

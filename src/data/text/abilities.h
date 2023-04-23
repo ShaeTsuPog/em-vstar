@@ -297,6 +297,8 @@ static const u8 sMassInversionDescription[] = _("Summons Trick Room in battle.")
 static const u8 sEsperDescription[] = _("Psychic moves go first.");
 static const u8 sSpiritDescription[] = _("Ups SpAtk if suffering.");
 static const u8 sSpunkDescription[] = _("KOs raise SpAtk.");
+static const u8 sTriplicateDescription[] = _("Moves hit thrice.");
+static const u8 sBefuddleDescription[] = _("Dances to confuse enemies.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -612,6 +614,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_ESPER] = _("Esper"),
     [ABILITY_SPIRIT] = _("Spirit"),
     [ABILITY_SPUNK] = _("Spunk"),
+    [ABILITY_TRIPLICATE] = _("Triplicate"),
+    [ABILITY_BEFUDDLE] = _("Befuddle"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -927,6 +931,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_ESPER] = _("Esper"),
     [ABILITY_SPIRIT] = _("Spirit"),
     [ABILITY_SPUNK] = _("Spunk"),
+    [ABILITY_TRIPLICATE] = _("Triplicate"),
+    [ABILITY_BEFUDDLE] = _("Befuddle"),
 };
 #endif
 
@@ -1243,4 +1249,6 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_ESPER] = sEsperDescription,
     [ABILITY_SPIRIT] = sSpiritDescription,
     [ABILITY_SPUNK] = sSpunkDescription,
+    [ABILITY_TRIPLICATE] = sTriplicateDescription,
+    [ABILITY_BEFUDDLE] = sBefuddleDescription,
 };

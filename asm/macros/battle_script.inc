@@ -2059,6 +2059,13 @@
 	.byte \counter
 	.4byte \jumpInstr
 	.endm
+
+	.macro checktriplicatecounter counter:req, jumpInstr:req
+	various BS_ATTACKER, VARIOUS_CHECK_TRIPLICATE_COUNTER
+	.byte \counter
+	.4byte \jumpInstr
+	.endm
+
 	.macro swapstats stat:req
 	various BS_ATTACKER, VARIOUS_SWAP_STATS
 	.byte \stat

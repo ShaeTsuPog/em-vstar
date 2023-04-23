@@ -1524,6 +1524,19 @@ static void Cmd_attackcanceler(void)
         return;
     }
 
+    if (gSpecialStatuses[gBattlerAttacker].triplicateState == TRIPLICATE_OFF
+    && GetBattlerAbility(gBattlerAttacker) == ABILITY_TRIPLICATE
+    && IsMoveAffectedByParentalBond(gCurrentMove, gBattlerAttacker)
+    && !(gAbsentBattlerFlags & gBitTable[gBattlerTarget])
+    && gBattleStruct->zmove.toBeUsed[gBattlerAttacker] == MOVE_NONE
+    && ((gBattleMons[gBattlerAttacker].type1 || gBattleMons[gBattlerAttacker].type2) == moveType))
+    {
+        gSpecialStatuses[gBattlerAttacker].triplicateState = TRIPLICATE_1ST_HIT;
+        gMultiHitCounter = 3;
+        PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 1, 0)
+        return;
+    }
+
     // Check Protean activation.
     if (ProteanTryChangeType(gBattlerAttacker, attackerAbility, gCurrentMove, moveType))
     {
@@ -1662,8 +1675,10 @@ static void Cmd_attackcanceler(void)
         gLastLandedMoves[gBattlerTarget] = 0;
         gLastHitByType[gBattlerTarget] = 0;
 
-        if (gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_1ST_HIT)
+        if (gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_1ST_HIT
+        || gSpecialStatuses[gBattlerAttacker].triplicateState == TRIPLICATE_1ST_HIT)
         {
+            gSpecialStatuses[gBattlerAttacker].triplicateState = TRIPLICATE_OFF;
             gSpecialStatuses[gBattlerAttacker].parentalBondState = PARENTAL_BOND_OFF; // No second hit if first hit was blocked
             gSpecialStatuses[gBattlerAttacker].multiHitOn = 0;
             gMultiHitCounter = 0;
@@ -1922,6 +1937,8 @@ static void Cmd_accuracycheck(void)
             gBattlescriptCurrInstr = cmd->nextInstr;
     }
     else if (gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_2ND_HIT
+        || gSpecialStatuses[gBattlerAttacker].triplicateState == TRIPLICATE_2ND_HIT
+        || gSpecialStatuses[gBattlerAttacker].triplicateState == TRIPLICATE_3RD_HIT
         || (gSpecialStatuses[gBattlerAttacker].multiHitOn && (gBattleMoves[move].effect != EFFECT_TRIPLE_KICK
         || GetBattlerAbility(gBattlerAttacker) == ABILITY_SKILL_LINK)))
     {
@@ -2025,7 +2042,9 @@ static void Cmd_ppreduce(void)
         if (gCurrentMove == gLastResultingMoves[gBattlerAttacker]
             && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
             && !WasUnableToUseMove(gBattlerAttacker)
-            && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT) // Don't increment counter on first hit
+            && (gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT
+            || gSpecialStatuses[gBattlerAttacker].triplicateState != TRIPLICATE_1ST_HIT
+            || gSpecialStatuses[gBattlerAttacker].triplicateState != TRIPLICATE_2ND_HIT)) // Don't increment counter on first hit
                 gBattleStruct->sameMoveTurns[gBattlerAttacker]++;
         else
             gBattleStruct->sameMoveTurns[gBattlerAttacker] = 0;
@@ -2908,7 +2927,9 @@ void SetMoveEffect(bool32 primary, u32 certain)
     u16 battlerAbility;
     bool8 activateAfterFaint = FALSE;
 
-    if (gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_1ST_HIT
+    if ((gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_1ST_HIT
+        || gSpecialStatuses[gBattlerAttacker].triplicateState == TRIPLICATE_1ST_HIT
+        || gSpecialStatuses[gBattlerAttacker].triplicateState == TRIPLICATE_2ND_HIT)
         && gBattleMons[gBattlerTarget].hp != 0
         && IsFinalStrikeEffect(gCurrentMove))
     {
@@ -3300,7 +3321,10 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 break;
             case MOVE_EFFECT_PAYDAY:
                 // Don't scatter coins on the second hit of Parental Bond
-                if (GET_BATTLER_SIDE(gBattlerAttacker) == B_SIDE_PLAYER && gSpecialStatuses[gBattlerAttacker].parentalBondState!= PARENTAL_BOND_2ND_HIT)
+                if (GET_BATTLER_SIDE(gBattlerAttacker) == B_SIDE_PLAYER 
+                && (gSpecialStatuses[gBattlerAttacker].parentalBondState!= PARENTAL_BOND_2ND_HIT
+                || gSpecialStatuses[gBattlerAttacker].triplicateState != TRIPLICATE_2ND_HIT
+                || gSpecialStatuses[gBattlerAttacker].triplicateState != TRIPLICATE_3RD_HIT))
                 {
                     u16 payday = gPaydayMoney;
                     gPaydayMoney += (gBattleMons[gBattlerAttacker].level * 5);
@@ -6006,6 +6030,8 @@ static void Cmd_moveend(void)
                     {
                         if (gSpecialStatuses[gBattlerAttacker].parentalBondState)
                             gSpecialStatuses[gBattlerAttacker].parentalBondState--;
+                        if (gSpecialStatuses[gBattlerAttacker].triplicateState)
+                            gSpecialStatuses[gBattlerAttacker].triplicateState--;
 
                         gHitMarker |= (HITMARKER_NO_PPDEDUCT | HITMARKER_NO_ATTACKSTRING);
                         gBattleScripting.animTargetsHit = 0;
@@ -6029,6 +6055,7 @@ static void Cmd_moveend(void)
             }
             gMultiHitCounter = 0;
             gSpecialStatuses[gBattlerAttacker].parentalBondState = PARENTAL_BOND_OFF;
+            gSpecialStatuses[gBattlerAttacker].triplicateState = TRIPLICATE_OFF;
             gSpecialStatuses[gBattlerAttacker].multiHitOn = 0;
             gBattleScripting.moveendState++;
             break;
@@ -11040,6 +11067,17 @@ static void Cmd_various(void)
             // so a way to check this in battle scripts is useful
             u8 counter = cmd->counter;
             if (gSpecialStatuses[gBattlerAttacker].parentalBondState == counter && gBattleMons[gBattlerTarget].hp != 0)
+                gBattlescriptCurrInstr = cmd->jumpInstr;
+            else
+                gBattlescriptCurrInstr = cmd->nextInstr;
+            return;
+        }
+    case VARIOUS_CHECK_TRIPLICATE_COUNTER:
+        {
+            VARIOUS_ARGS(u8 counter, const u8 *jumpInstr);
+
+            u8 counter = cmd->counter;
+            if (gSpecialStatuses[gBattlerAttacker].triplicateState == counter && gBattleMons[gBattlerTarget].hp != 0)
                 gBattlescriptCurrInstr = cmd->jumpInstr;
             else
                 gBattlescriptCurrInstr = cmd->nextInstr;

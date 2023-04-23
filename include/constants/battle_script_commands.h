@@ -262,6 +262,7 @@
 #define VARIOUS_TRY_REVIVAL_BLESSING                170
 // custom
 #define VARIOUS_TRY_ACTIVATE_SPUNK                  171
+#define VARIOUS_CHECK_TRIPLICATE_COUNTER            172
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

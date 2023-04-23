@@ -3254,6 +3254,7 @@ BattleScript_EffectNaturalGift:
 	seteffectwithchance
 	jumpifmovehadnoeffect BattleScript_EffectNaturalGiftEnd
 	checkparentalbondcounter 2, BattleScript_EffectNaturalGiftEnd
+	checktriplicatecounter 2, BattleScript_EffectNaturalGiftEnd
 	removeitem BS_ATTACKER
 BattleScript_EffectNaturalGiftEnd:
 	tryfaintmon BS_TARGET
@@ -5643,6 +5644,7 @@ BattleScript_EffectSpitUp::
 	goto BattleScript_HitFromAtkAnimation
 BattleScript_SpitUpFail::
 	checkparentalbondcounter 2, BattleScript_SpitUpEnd
+	checktriplicatecounter 2, BattleScript_SpitUpEnd
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_FAILEDTOSPITUP
 	waitmessage B_WAIT_TIME_LONG
@@ -8481,6 +8483,12 @@ BattleScript_JuiceMakerActivates::
 	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
+	end3
+
+BattleScript_BefuddleActivates::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_BEFUDDLE
+	waitmessage B_WAIT_TIME_LONG
 	end3
 
 @ Can't compare directly to a value, have to compare to value at pointer
