@@ -8722,6 +8722,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     case ABILITY_WHIRLY_TOP:
         if (gBattleMoves[move].flags & FLAG_WHIRLY_TOP_BOOST)
             MulModifier(&modifier, UQ_4_12(2.0));
+        break;
     case ABILITY_SHEER_FORCE:
         if (gBattleMoves[move].flags & FLAG_SHEER_FORCE_BOOST)
            MulModifier(&modifier, UQ_4_12(1.3));
