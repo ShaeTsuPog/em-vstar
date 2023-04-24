@@ -915,7 +915,6 @@ const u8 gSpeciesNames[][POKEMON_NAME_LENGTH + 1] = {
     [SPECIES_OVERQWIL] = _("Overqwil"),
     [SPECIES_ENAMORUS] = _("Enamorus"),
 #endif
-
     // Megas
     [SPECIES_VENUSAUR_MEGA] = _("Venusaur"),
     [SPECIES_CHARIZARD_MEGA_X] = _("Charizard"),
@@ -925,7 +924,8 @@ const u8 gSpeciesNames[][POKEMON_NAME_LENGTH + 1] = {
     [SPECIES_PIDGEOT_MEGA] = _("Pidgeot"),
     [SPECIES_ALAKAZAM_MEGA] = _("Alakazam"),
     [SPECIES_SLOWBRO_MEGA] = _("Slowbro"),
-    [SPECIES_GENGAR_MEGA] = _("Gengar"),
+    [SPECIES_GENGAR_MEGA_X] = _("Gengar"),
+    [SPECIES_GENGAR_MEGA_Y] = _("Gengar"),
     [SPECIES_KANGASKHAN_MEGA] = _("Kangaskhan"),
     [SPECIES_PINSIR_MEGA] = _("Pinsir"),
     [SPECIES_GYARADOS_MEGA] = _("Gyarados"),

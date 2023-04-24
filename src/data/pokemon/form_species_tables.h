@@ -196,7 +196,8 @@ static const u16 sMukFormSpeciesIdTable[] = {
 
 static const u16 sGengarFormSpeciesIdTable[] = {
     SPECIES_GENGAR,
-    SPECIES_GENGAR_MEGA,
+    SPECIES_GENGAR_MEGA_X,
+    SPECIES_GENGAR_MEGA_Y,
     FORM_SPECIES_END,
 };
 

@@ -182,7 +182,7 @@ const u16 *const gFormSpeciesIdTables[NUM_SPECIES] =
     [SPECIES_PIDGEOT_MEGA] = sPidgeotFormSpeciesIdTable,
     [SPECIES_ALAKAZAM_MEGA] = sAlakazamFormSpeciesIdTable,
     [SPECIES_SLOWBRO_MEGA] = sSlowbroFormSpeciesIdTable,
-    [SPECIES_GENGAR_MEGA] = sGengarFormSpeciesIdTable,
+    [SPECIES_GENGAR_MEGA_X] = sGengarFormSpeciesIdTable,
     [SPECIES_KANGASKHAN_MEGA] = sKangaskhanFormSpeciesIdTable,
     [SPECIES_PINSIR_MEGA] = sPinsirFormSpeciesIdTable,
     [SPECIES_GYARADOS_MEGA] = sGyaradosFormSpeciesIdTable,
@@ -231,6 +231,8 @@ const u16 *const gFormSpeciesIdTables[NUM_SPECIES] =
     [SPECIES_RAYQUAZA_MEGA] = sRayquazaFormSpeciesIdTable,
     [SPECIES_KYOGRE_PRIMAL] = sKyogreFormSpeciesIdTable,
     [SPECIES_GROUDON_PRIMAL] = sGroudonFormSpeciesIdTable,
+    // Custom Megas
+    [SPECIES_GENGAR_MEGA_Y] = sGengarFormSpeciesIdTable,
     // Alolan Forms
     [SPECIES_RATTATA_ALOLAN] = sRattataFormSpeciesIdTable,
     [SPECIES_RATICATE_ALOLAN] = sRaticateFormSpeciesIdTable,

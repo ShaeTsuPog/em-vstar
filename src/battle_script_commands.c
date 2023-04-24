@@ -1529,7 +1529,7 @@ static void Cmd_attackcanceler(void)
     && IsMoveAffectedByParentalBond(gCurrentMove, gBattlerAttacker)
     && !(gAbsentBattlerFlags & gBitTable[gBattlerTarget])
     && gBattleStruct->zmove.toBeUsed[gBattlerAttacker] == MOVE_NONE
-    && ((gBattleMons[gBattlerAttacker].type1 || gBattleMons[gBattlerAttacker].type2) == moveType))
+    && (IS_BATTLER_OF_TYPE(gBattlerAttacker, moveType)))
     {
         gSpecialStatuses[gBattlerAttacker].triplicateState = TRIPLICATE_1ST_HIT;
         gMultiHitCounter = 3;
@@ -1906,13 +1906,6 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
 
     if (gFieldStatuses & STATUS_FIELD_GRAVITY)
         calc = (calc * 5) / 3; // 1.66 Gravity acc boost
-
-#if B_AFFECTION_MECHANICS == TRUE
-    // With high affection/friendship there's a chance to evade a move by substracting 10% of its accuracy.
-    // I can't find exact information about that chance, so I'm just gonna write it as a 20% chance for now.
-    if (GetBattlerFriendshipScore(battlerDef) >= FRIENDSHIP_150_TO_199 && (Random() % 100) <= 20)
-        calc = (calc * 90) / 100;
-#endif
 
     return calc;
 }
@@ -12783,6 +12776,7 @@ static void Cmd_weatherdamage(void)
                     gBattleMoveDamage = 1;
             }
         }
+        
         if (gFieldStatuses & STATUS_FIELD_BLAZING_TERRAIN)
         {
             if (!IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_FIRE)
@@ -16108,7 +16102,7 @@ static const u16 sTelekinesisBanList[] =
     SPECIES_DUGTRIO_ALOLAN,
     SPECIES_SANDYGAST,
     SPECIES_PALOSSAND,
-    SPECIES_GENGAR_MEGA,
+    SPECIES_GENGAR_MEGA_X,
 };
 
 bool32 IsTelekinesisBannedSpecies(u16 species)

@@ -917,7 +917,7 @@
 #define SPECIES_PIDGEOT_MEGA                 FORMS_START + 6
 #define SPECIES_ALAKAZAM_MEGA                FORMS_START + 7
 #define SPECIES_SLOWBRO_MEGA                 FORMS_START + 8
-#define SPECIES_GENGAR_MEGA                  FORMS_START + 9
+#define SPECIES_GENGAR_MEGA_X                FORMS_START + 9
 #define SPECIES_KANGASKHAN_MEGA              FORMS_START + 10
 #define SPECIES_PINSIR_MEGA                  FORMS_START + 11
 #define SPECIES_GYARADOS_MEGA                FORMS_START + 12
@@ -1371,8 +1371,11 @@
 // Basculegion
 #define SPECIES_BASCULEGION_FEMALE           FORMS_START + 329
 
+// Custom Megas
+#define SPECIES_GENGAR_MEGA_Y                FORMS_START + 330
+
 #define FORMS_START SPECIES_ENAMORUS
-#define SPECIES_EGG SPECIES_BASCULEGION_FEMALE + 1
+#define SPECIES_EGG SPECIES_GENGAR_MEGA_Y + 1
 
 #define NUM_SPECIES SPECIES_EGG
 

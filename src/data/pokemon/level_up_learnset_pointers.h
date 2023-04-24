@@ -925,7 +925,7 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_PIDGEOT_MEGA] = sPidgeotLevelUpLearnset,
     [SPECIES_ALAKAZAM_MEGA] = sAlakazamLevelUpLearnset,
     [SPECIES_SLOWBRO_MEGA] = sSlowbroLevelUpLearnset,
-    [SPECIES_GENGAR_MEGA] = sGengarLevelUpLearnset,
+    [SPECIES_GENGAR_MEGA_X] = sGengarLevelUpLearnset,
     [SPECIES_KANGASKHAN_MEGA] = sKangaskhanLevelUpLearnset,
     [SPECIES_PINSIR_MEGA] = sPinsirLevelUpLearnset,
     [SPECIES_GYARADOS_MEGA] = sGyaradosLevelUpLearnset,
@@ -1336,4 +1336,5 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_ENAMORUS_THERIAN] = sEnamorusLevelUpLearnset,
     [SPECIES_BASCULEGION_FEMALE] = sBasculegionLevelUpLearnset,
 #endif
+    [SPECIES_GENGAR_MEGA_Y] = sGengarLevelUpLearnset,
 };

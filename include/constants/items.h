@@ -365,7 +365,7 @@
 #define ITEM_PIDGEOTITE 297
 #define ITEM_ALAKAZITE 298
 #define ITEM_SLOWBRONITE 299
-#define ITEM_GENGARITE 300
+#define ITEM_GENGARITE_X 300
 #define ITEM_KANGASKHANITE 301
 #define ITEM_PINSIRITE 302
 #define ITEM_GYARADOSITE 303
@@ -977,8 +977,9 @@
 
 // Custom Items
 #define ITEM_POKE_REPEL 798
+#define ITEM_GENGARITE_Y 799
 
-#define ITEMS_COUNT 799
+#define ITEMS_COUNT 800
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

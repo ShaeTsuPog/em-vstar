@@ -3924,10 +3924,23 @@ const struct Item gItems[] =
         .flingPower = 80,
     },
 
-    [ITEM_GENGARITE] =
+    [ITEM_GENGARITE_X] =
     {
-        .name = _("Gengarite"),
-        .itemId = ITEM_GENGARITE,
+        .name = _("Gengarite X"),
+        .itemId = ITEM_GENGARITE_X,
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sGengariteDesc,
+        .pocket = POCKET_BATTLE_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+    },
+
+    [ITEM_GENGARITE_Y] =
+    {
+        .name = _("Gengarite Y"),
+        .itemId = ITEM_GENGARITE_Y,
         .price = 0,
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = sGengariteDesc,

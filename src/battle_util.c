@@ -977,6 +977,7 @@ static const u8 sAbilitiesAffectedByMoldBreaker[] =
     [ABILITY_WONDER_GUARD] = 1,
     [ABILITY_BIG_PECKS] = 1,
     [ABILITY_CONTRARY] = 1,
+    [ABILITY_DESTINY_STAR] = 1,
     [ABILITY_FRIEND_GUARD] = 1,
     [ABILITY_HEAVY_METAL] = 1,
     [ABILITY_LIGHT_METAL] = 1,
@@ -8662,10 +8663,6 @@ static u16 CalcMoveBasePower(u16 move, u8 battlerAtk, u8 battlerDef)
         if (IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_ELECTRIC_TERRAIN))
             MulModifier(&basePower, UQ_4_12(1.5));
         break;
-/*     case EFFECT_FIRE_SPIN:
-        if (IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_BLAZING_TERRAIN))
-            MulModifier(&basePower, UQ_4_12(2.0));
-        break; */
     }
 
     // Move-specific base power changes

@@ -302,6 +302,7 @@ static const u8 sBefuddleDescription[] = _("Dances to confuse enemies.");
 static const u8 sIgnitionDescription[] = _("Field becomes Searing.");
 static const u8 sQuickJabsDescription[] = _("Punching moves go first.");
 static const u8 sWhirlyTopDescription[] = _("Doubles power of spinning moves.");
+static const u8 sDestinyStarDescription[] = _("Victory Star + Contrary");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -622,6 +623,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_IGNITION] = _("Ignition"),
     [ABILITY_QUICK_JABS] = _("Quick Jabs"),
     [ABILITY_WHIRLY_TOP] = _("Whirly Top"),
+    [ABILITY_DESTINY_STAR] = _("Destiny Star"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -942,6 +944,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_IGNITION] = _("Ignition"),
     [ABILITY_QUICK_JABS] = _("Quick Jabs"),
     [ABILITY_WHIRLY_TOP] = _("Whirly Top"),
+    [ABILITY_DESTINY_STAR] = _("Destiny Star"),
 };
 #endif
 
@@ -1263,4 +1266,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_IGNITION] = sIgnitionDescription,
     [ABILITY_QUICK_JABS] = sQuickJabsDescription,
     [ABILITY_WHIRLY_TOP] = sWhirlyTopDescription,
+    [ABILITY_DESTINY_STAR] = sDestinyStarDescription
 };
