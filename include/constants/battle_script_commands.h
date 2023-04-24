@@ -263,8 +263,8 @@
 #define VARIOUS_TRY_TRAINER_SLIDE_MSG_Z_MOVE         171
 #define VARIOUS_TRY_TRAINER_SLIDE_MSG_MEGA_EVOLUTION 172
 // custom
-#define VARIOUS_TRY_ACTIVATE_SPUNK                   171
-#define VARIOUS_CHECK_TRIPLICATE_COUNTER             172
+#define VARIOUS_TRY_ACTIVATE_SPUNK                   173
+#define VARIOUS_CHECK_TRIPLICATE_COUNTER             174
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0
