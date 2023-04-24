@@ -5859,7 +5859,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                             if (itemEffect[10] & ITEM10_IS_VITAMIN)
                                 evCap = EV_ITEM_RAISE_LIMIT;
                             else
-                                evCap = 252;
+                                evCap = MAX_PER_STAT_EVS;
 
                             if (dataSigned >= evCap)
                                 break;
@@ -5885,6 +5885,10 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                                 break;
                             }
                             dataSigned += evChange;
+                            #if I_EV_LOWERING_BERRY_JUMP == GEN_4
+                            if (dataSigned > 100)
+                                dataSigned = 100;
+                            #endif
                             if (dataSigned < 0)
                                 dataSigned = 0;
                         }
@@ -6035,7 +6039,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                             if (itemEffect[10] & ITEM10_IS_VITAMIN)
                                 evCap = EV_ITEM_RAISE_LIMIT;
                             else
-                                evCap = 252;
+                                evCap = MAX_PER_STAT_EVS;
 
                             if (dataSigned >= evCap)
                                 break;
@@ -6061,6 +6065,10 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                                 break;
                             }
                             dataSigned += evChange;
+                            #if I_BERRY_EV_JUMP == GEN_4
+                            if (dataSigned > 100)
+                                dataSigned = 100;
+                            #endif
                             if (dataSigned < 0)
                                 dataSigned = 0;
                         }
