@@ -18,6 +18,11 @@ This is a planned Drayano style romhack that will feature an original story in a
 - Type matchup rebalance
     - Ice now resists Flying and Water.
     - Bug is now super-effective against Fairy.
+- Type and Species specific move synergies
+    - Psychic types gain 20% accuracy with Hypnosis and are immune to Hypnosis.
+    - Hariyama always hits 5 times with Arm Thrust.
+    - Leaf Blade is a 40bp multi-hit move when used by Sceptile.
+    - Muddy Water is both Water and Ground type when used by a Water/Ground Pokémon.
 - New Weather and Terrains
     - Featuring more interesting interactions and synergies between the two.
 - Original regional forms
