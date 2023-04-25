@@ -772,6 +772,10 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                 if (moveType == TYPE_GRASS)
                     RETURN_SCORE_MINUS(20);
                 break;
+            case ABILITY_ICE_BODY:
+                if (moveType == TYPE_ICE)
+                    RETURN_SCORE_MINUS(20);
+                break;
             case ABILITY_JUSTIFIED:
                 if (moveType == TYPE_DARK && !IS_MOVE_STATUS(move))
                     RETURN_SCORE_MINUS(10);
@@ -2869,6 +2873,12 @@ static s16 AI_DoubleBattle(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                       && BattlerStatCanRise(battlerAtkPartner, atkPartnerAbility, STAT_ATK))
                     {
                         RETURN_SCORE_PLUS(1);
+                    }
+                    break;
+                case ABILITY_ICE_BODY:
+                    if (!(AI_THINKING_STRUCT->aiFlags & AI_FLAG_HP_AWARE))
+                    {
+                        RETURN_SCORE_MINUS(10);
                     }
                     break;
                 case ABILITY_JUSTIFIED:
@@ -5055,7 +5065,9 @@ static s16 AI_HPAware(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
     {
         if ((effect == EFFECT_HEAL_PULSE || effect == EFFECT_HIT_ENEMY_HEAL_ALLY)
          || (moveType == TYPE_ELECTRIC && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_VOLT_ABSORB)
-         || (moveType == TYPE_WATER && (AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_DRY_SKIN || AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_WATER_ABSORB)))
+         || (moveType == TYPE_WATER && (AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_DRY_SKIN
+         || AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_WATER_ABSORB
+         || AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_ICE_BODY)))
         {
             if (gStatuses3[battlerDef] & STATUS3_HEAL_BLOCK)
                 return 0;

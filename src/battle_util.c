@@ -972,6 +972,7 @@ static const u8 sAbilitiesAffectedByMoldBreaker[] =
     [ABILITY_VITAL_SPIRIT] = 1,
     [ABILITY_VOLT_ABSORB] = 1,
     [ABILITY_WATER_ABSORB] = 1,
+    [ABILITY_ICE_BODY] = 1,
     [ABILITY_WATER_VEIL] = 1,
     [ABILITY_WHITE_SMOKE] = 1,
     [ABILITY_WONDER_GUARD] = 1,
@@ -5049,6 +5050,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                     {
                         BattleScriptPushCursorAndCallback(BattleScript_BadDreamsActivates);
                         effect++;
+                        break;
                     }
                 }
                 break;
@@ -5191,6 +5193,10 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             case ABILITY_WATER_ABSORB:
             case ABILITY_DRY_SKIN:
                 if (moveType == TYPE_WATER)
+                    effect = 1;
+                break;
+            case ABILITY_ICE_BODY:
+                if (moveType == TYPE_ICE)
                     effect = 1;
                 break;
             case ABILITY_MOTOR_DRIVE:
