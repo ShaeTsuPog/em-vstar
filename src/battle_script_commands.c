@@ -1903,6 +1903,11 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     if (defAbility == ABILITY_WONDER_SKIN && IS_MOVE_STATUS(move) && moveAcc > 50)
         moveAcc = 50;
 
+    if (IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_PSYCHIC) && gCurrentMove == MOVE_HYPNOSIS)
+    {
+        moveAcc = 80;
+    }
+
     calc = gAccuracyStageRatios[buff].dividend * moveAcc;
     calc /= gAccuracyStageRatios[buff].divisor;
 
