@@ -8935,8 +8935,6 @@ BattleScript_MassInversionActivates::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNTWISTEDDIMENSIONS
 	waitmessage B_WAIT_TIME_LONG
-	playanimation BS_SCRIPTING, B_ANIM_RESTORE_BG
-	call BattleScript_ActivateTerrainEffects
 	end3
 
 BattleScript_ElectricSurgeActivates::

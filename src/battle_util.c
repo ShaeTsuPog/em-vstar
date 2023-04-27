@@ -4594,6 +4594,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 BattleScriptPushCursorAndCallback(BattleScript_MassInversionActivates);
                 effect++;
             }
+            break;
         case ABILITY_TYPHOON:
             if (!gSpecialStatuses[battler].switchInAbilityDone && B_WEATHER_RAIN
              && !(gSideStatuses[GetBattlerSide(gBattlerAbility)] & SIDE_STATUS_TAILWIND))
@@ -4604,6 +4605,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 effect++;
             }
+            break;
         case ABILITY_DRIZZLE:
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_RAIN, TRUE))
             {
