@@ -130,19 +130,19 @@ SINGLE_BATTLE_TEST("Rock Throw can set up Stealth Rock only once")
     } SCENE {
         s32 maxHP = GetMonData(&OPPONENT_PARTY[1], MON_DATA_MAX_HP);
 
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ROCK_THROW, player);
         HP_BAR(opponent);
         MESSAGE("Pointed stones float in the air around the opposing team!");
 
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ROCK_THROW, player);
         HP_BAR(opponent);
         NOT MESSAGE("Pointed stones float in the air around the opposing team!");
 
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ROCK_THROW, player);
         HP_BAR(opponent);
         NOT MESSAGE("Pointed stones float in the air around the opposing team!");
 
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ROCK_THROW, player);
         HP_BAR(opponent);
         NOT MESSAGE("Pointed stones float in the air around the opposing team!");
 

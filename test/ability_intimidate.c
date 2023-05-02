@@ -10,7 +10,7 @@ SINGLE_BATTLE_TEST("Intimidate (opponent) lowers player's attack after switch ou
 {
     u32 ability;
     PARAMETRIZE { ability = ABILITY_INTIMIDATE; }
-    PARAMETRIZE { ability = ABILITY_SHED_SKIN; }
+    PARAMETRIZE { ability = ABILITY_STRONG_JAW; }
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
@@ -35,7 +35,7 @@ SINGLE_BATTLE_TEST("Intimidate (opponent) lowers player's attack after KO", s16 
 {
     u32 ability;
     PARAMETRIZE { ability = ABILITY_INTIMIDATE; }
-    PARAMETRIZE { ability = ABILITY_SHED_SKIN; }
+    PARAMETRIZE { ability = ABILITY_STRONG_JAW; }
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Speed(2); };
         OPPONENT(SPECIES_WOBBUFFET) { HP(1); Speed(1); };

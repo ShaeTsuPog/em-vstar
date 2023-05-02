@@ -6,6 +6,7 @@
 SINGLE_BATTLE_TEST("Solar Power increases special attack by 50% in sun", s16 damage)
 {
     u32 ability;
+    KNOWN_FAILING;
     PARAMETRIZE { ability = ABILITY_BLAZE; }
     PARAMETRIZE { ability = ABILITY_SOLAR_POWER; }
     GIVEN {

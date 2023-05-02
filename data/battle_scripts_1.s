@@ -3417,6 +3417,7 @@ BattleScript_CantMakeAsleep::
 
 BattleScript_EffectBarbBarrage:
 BattleScript_EffectPoisonHit:
+	jumpifability BS_ATTACKER, ABILITY_NUMBING_VENOM, BattleScript_EffectParalyzeHit
 	setmoveeffect MOVE_EFFECT_POISON
 	goto BattleScript_EffectHit
 
@@ -8773,6 +8774,7 @@ BattleScript_IntimidateEffect:
 	statbuffchange STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_IntimidateLoopIncrement
 	setgraphicalstatchangevalues
 	jumpifability BS_TARGET, ABILITY_CONTRARY, BattleScript_IntimidateContrary
+	jumpifability BS_TARGET, ABILITY_DESTINY_STAR, BattleScript_IntimidateContrary
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	printstring STRINGID_PKMNCUTSATTACKWITH
 BattleScript_IntimidateEffect_WaitString:

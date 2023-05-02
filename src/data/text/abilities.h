@@ -304,6 +304,8 @@ static const u8 sQuickJabsDescription[] = _("Punching moves go first.");
 static const u8 sWhirlyTopDescription[] = _("Doubles power of spinning moves.");
 static const u8 sDestinyStarDescription[] = _("Victory Star + Contrary");
 static const u8 sWhiteoutDescription[] = _("Boosts power in Hail");
+static const u8 sNumbingVenomDescription[] = _("May paralyze instead of poisoning");
+static const u8 sIcyVeinsDescription[] = _("Ups Water and Ice moves in Hail");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -626,6 +628,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_WHIRLY_TOP] = _("Whirly Top"),
     [ABILITY_DESTINY_STAR] = _("Destiny Star"),
     [ABILITY_WHITEOUT] = _("Whiteout"),
+    [ABILITY_NUMBING_VENOM] = _("Numbing Venom"),
+    [ABILITY_ICY_VEINS] = _("Icy Veins"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -948,6 +952,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_WHIRLY_TOP] = _("Whirly Top"),
     [ABILITY_DESTINY_STAR] = _("Destiny Star"),
     [ABILITY_WHITEOUT] = _("Whiteout"),
+    [ABILITY_NUMBING_VENOM] = _("Numbing Venom"),
+    [ABILITY_ICY_VEINS] = _("Icy Veins"),
 };
 #endif
 
@@ -1271,4 +1277,6 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_WHIRLY_TOP] = sWhirlyTopDescription,
     [ABILITY_DESTINY_STAR] = sDestinyStarDescription,
     [ABILITY_WHITEOUT] = sWhiteoutDescription,
+    [ABILITY_NUMBING_VENOM] = sNumbingVenomDescription,
+    [ABILITY_ICY_VEINS] = sIcyVeinsDescription,
 };

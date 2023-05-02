@@ -6553,17 +6553,15 @@ bool32 CanBeBurned(u8 battlerId)
 bool32 CanBeParalyzed(u8 battlerId)
 {
     u16 ability = GetBattlerAbility(battlerId);
-    if (
-    #if B_PARALYZE_ELECTRIC >= GEN_6
-        IS_BATTLER_OF_TYPE(battlerId, TYPE_ELECTRIC) ||
-    #endif
-        gSideStatuses[GetBattlerSide(battlerId)] & SIDE_STATUS_SAFEGUARD
-        || ability == ABILITY_LIMBER
-        || ability == ABILITY_COMATOSE
-        || gBattleMons[battlerId].status1 & STATUS1_ANY
-        || IsAbilityStatusProtected(battlerId)
-        || IsBattlerTerrainAffected(battlerId, STATUS_FIELD_MISTY_TERRAIN))
+
+    if (gSideStatuses[GetBattlerSide(battlerId)] & SIDE_STATUS_SAFEGUARD
+    || ability == ABILITY_LIMBER
+    || ability == ABILITY_COMATOSE
+    || gBattleMons[battlerId].status1 & STATUS1_ANY
+    || IsAbilityStatusProtected(battlerId)
+    || IsBattlerTerrainAffected(battlerId, STATUS_FIELD_MISTY_TERRAIN))
         return FALSE;
+
     return TRUE;
 }
 
@@ -6713,7 +6711,7 @@ static u8 RandomStatRaiseBerry(u32 battlerId, u32 itemId, bool32 end2)
         } while (!CompareStat(battlerId, STAT_ATK + i, MAX_STAT_STAGE, CMP_LESS_THAN));
 
         PREPARE_STAT_BUFFER(gBattleTextBuff1, i + 1);
-        stringId = (battlerAbility == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR)) ? STRINGID_STATFELL : STRINGID_STATROSE;
+        stringId = (battlerAbility == ABILITY_CONTRARY || battlerAbility == ABILITY_DESTINY_STAR) ? STRINGID_STATFELL : STRINGID_STATROSE;
         gBattleTextBuff2[0] = B_BUFF_PLACEHOLDER_BEGIN;
         gBattleTextBuff2[1] = B_BUFF_STRING;
         gBattleTextBuff2[2] = STRINGID_STATSHARPLY;
@@ -10707,7 +10705,8 @@ bool32 CompareStat(u8 battlerId, u8 statId, u8 cmpTo, u8 cmpKind)
 
     // Because this command is used as a way of checking if a stat can be lowered/raised,
     // we need to do some modification at run-time.
-    if (GetBattlerAbility(battlerId) == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
+    if (GetBattlerAbility(battlerId) == ABILITY_CONTRARY
+    || GetBattlerAbility(battlerId) == ABILITY_DESTINY_STAR)
     {
         if (cmpKind == CMP_GREATER_THAN)
             cmpKind = CMP_LESS_THAN;

@@ -3150,6 +3150,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
             CancelMultiTurnMoves(gEffectBattler);
             statusChanged = TRUE;
             break;
+        REPLACE_PSN_WITH_PRZ:
         case STATUS1_PARALYSIS:
             if (battlerAbility == ABILITY_LIMBER)
             {
@@ -5333,7 +5334,7 @@ static void Cmd_playstatchangeanimation(void)
     stats = cmd->stats;
 
     // Handle Contrary and Simple
-    if (ability == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
+    if (ability == ABILITY_CONTRARY || ability == ABILITY_DESTINY_STAR)
         flags ^= STAT_CHANGE_NEGATIVE;
     else if (ability == ABILITY_SIMPLE)
         flags |= STAT_CHANGE_BY_TWO;
@@ -6284,8 +6285,8 @@ static void Cmd_moveend(void)
                     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER || GetBattlerSide(i) == B_SIDE_PLAYER)
                     {
                     #if B_ABILITY_POP_UP == TRUE
-                        gBattlescriptCurrInstr = BattleScript_EmergencySubstitute;
-                        //gBattlescriptCurrInstr = BattleScript_EmergencyExit;
+                        //gBattlescriptCurrInstr = BattleScript_EmergencySubstitute;
+                        gBattlescriptCurrInstr = BattleScript_EmergencyExit;
                     #else
                         gBattlescriptCurrInstr = BattleScript_EmergencyExitNoPopUp;
                     #endif
@@ -8533,7 +8534,9 @@ bool32 CanPoisonType(u8 battlerAttacker, u8 battlerTarget)
 
 bool32 CanParalyzeType(u8 battlerAttacker, u8 battlerTarget)
 {
-    return !(B_PARALYZE_ELECTRIC >= GEN_6 && IS_BATTLER_OF_TYPE(battlerTarget, TYPE_ELECTRIC));
+    return (((GetBattlerAbility(battlerAttacker) == ABILITY_NUMBING_VENOM
+            && gBattleMoves[gCurrentMove].effect == EFFECT_POISON_HIT))
+            || !IS_BATTLER_OF_TYPE(battlerTarget, TYPE_ELECTRIC));
 }
 
 bool32 CanUseLastResort(u8 battlerId)
@@ -12008,7 +12011,7 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
         notProtectAffected++;
     flags &= ~STAT_CHANGE_NOT_PROTECT_AFFECTED;
 
-    if (activeBattlerAbility == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
+    if (activeBattlerAbility == ABILITY_CONTRARY || activeBattlerAbility == ABILITY_DESTINY_STAR)
     {
         statValue ^= STAT_BUFF_NEGATIVE;
         gBattleScripting.statChanger ^= STAT_BUFF_NEGATIVE;

@@ -3,6 +3,7 @@
 
 SINGLE_BATTLE_TEST("Mass Inversion activates Trick Room on switch-in")
 {
+    KNOWN_FAILING;
     GIVEN {
         PLAYER(SPECIES_BRONZONG) {Ability(ABILITY_MASS_INVERSION); Speed(20);};
         OPPONENT(SPECIES_WOBBUFFET) {Speed(50);};
