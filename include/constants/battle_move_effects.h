@@ -407,7 +407,8 @@
 #define EFFECT_REVIVAL_BLESSING             401
 // Custom
 #define EFFECT_BLAZING_TERRAIN              402
+#define EFFECT_ROCK_THROW                   403
 
-#define NUM_BATTLE_MOVE_EFFECTS             403
+#define NUM_BATTLE_MOVE_EFFECTS             404
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

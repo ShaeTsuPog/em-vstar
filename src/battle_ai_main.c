@@ -814,6 +814,7 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                 if (TestMoveFlags(move, FLAG_MAGIC_COAT_AFFECTED))
                     RETURN_SCORE_MINUS(20);
                 break;
+            case ABILITY_DESTINY_STAR:
             case ABILITY_CONTRARY:
                 if (IsStatLoweringMoveEffect(moveEffect))
                     RETURN_SCORE_MINUS(20);
@@ -1069,7 +1070,7 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                 score -= 6;
             break;
         case EFFECT_ATTACK_ACCURACY_UP: //hone claws
-            if (AI_DATA->abilities[battlerAtk] != ABILITY_CONTRARY)
+            if (AI_DATA->abilities[battlerAtk] != (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
             {
                 if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE
                   && (gBattleMons[battlerAtk].statStages[STAT_ACC] >= MAX_STAT_STAGE || !HasMoveWithSplit(battlerAtk, SPLIT_PHYSICAL)))
@@ -1115,7 +1116,7 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                 score -= 8;
             break;
         case EFFECT_SHELL_SMASH:
-            if (AI_DATA->abilities[battlerAtk] == ABILITY_CONTRARY)
+            if (AI_DATA->abilities[battlerAtk] == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
             {
                 if (!BattlerStatCanRise(battlerAtk, AI_DATA->abilities[battlerAtk], STAT_DEF))
                     score -= 10;
@@ -1146,7 +1147,7 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                   && (BattlerStatCanRise(battlerAtk, AI_DATA->abilities[battlerAtk], STAT_ATK) || BattlerStatCanRise(battlerAtk, AI_DATA->abilities[battlerAtk], STAT_SPATK)))
                   && !(IS_BATTLER_OF_TYPE(BATTLE_PARTNER(battlerAtk), TYPE_GRASS)
                   && AI_IsBattlerGrounded(BATTLE_PARTNER(battlerAtk))
-                  && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_CONTRARY
+                  && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != (ABILITY_CONTRARY || ABILITY_DESTINY_STAR)
                   && (BattlerStatCanRise(BATTLE_PARTNER(battlerAtk), AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)], STAT_ATK)
                    || BattlerStatCanRise(BATTLE_PARTNER(battlerAtk), AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)], STAT_SPATK))))
                 {
@@ -1625,7 +1626,7 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                 score -= 6;
             break;
         case EFFECT_BELLY_DRUM:
-            if (AI_DATA->abilities[battlerAtk] == ABILITY_CONTRARY)
+            if (AI_DATA->abilities[battlerAtk] == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
                 score -= 10;
             else if (AI_DATA->hpPercents[battlerAtk] <= 60)
                 score -= 10;
@@ -1762,7 +1763,7 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                 score -= 6;
             break;
         case EFFECT_STRENGTH_SAP:
-            if (AI_DATA->abilities[battlerDef] == ABILITY_CONTRARY)
+            if (AI_DATA->abilities[battlerDef] == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
                 score -= 10;
             else if (!ShouldLowerStat(battlerDef, AI_DATA->abilities[battlerDef], STAT_ATK))
                 score -= 10;
@@ -2067,7 +2068,7 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
 
             // evasion check
             if (gBattleMons[battlerDef].statStages[STAT_EVASION] == MIN_STAT_STAGE
-              || ((AI_DATA->abilities[battlerDef] == ABILITY_CONTRARY) && !IsTargetingPartner(battlerAtk, battlerDef))) // don't want to raise target stats unless its your partner
+              || ((AI_DATA->abilities[battlerDef] == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR)) && !IsTargetingPartner(battlerAtk, battlerDef))) // don't want to raise target stats unless its your partner
                 score -= 10;
             break;
 
@@ -2900,6 +2901,7 @@ static s16 AI_DoubleBattle(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                         RETURN_SCORE_PLUS(1);
                     }
                     break;
+                case ABILITY_DESTINY_STAR:
                 case ABILITY_CONTRARY:
                     if (IsStatLoweringEffect(effect))
                     {
@@ -3430,7 +3432,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         break;
     case EFFECT_GROWTH:
     case EFFECT_ATTACK_SPATK_UP:    // work up
-        if (AI_DATA->hpPercents[battlerAtk] <= 40 || AI_DATA->abilities[battlerAtk] == ABILITY_CONTRARY)
+        if (AI_DATA->hpPercents[battlerAtk] <= 40 || AI_DATA->abilities[battlerAtk] == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
             break;
 
         if (HasMoveWithSplit(battlerAtk, SPLIT_PHYSICAL))
@@ -3589,7 +3591,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
     case EFFECT_SPECIAL_DEFENSE_DOWN_HIT:
     case EFFECT_ACCURACY_DOWN_HIT:
     case EFFECT_EVASION_DOWN_HIT:
-        if (sereneGraceBoost && AI_DATA->abilities[battlerDef] != ABILITY_CONTRARY)
+        if (sereneGraceBoost && AI_DATA->abilities[battlerDef] != (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
             score += 2;
         break;
     case EFFECT_SPEED_DOWN_HIT:
@@ -3599,7 +3601,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
             score++;
         if (ShouldLowerSpeed(battlerAtk, battlerDef, AI_DATA->abilities[battlerDef]))
         {
-            if (sereneGraceBoost && AI_DATA->abilities[battlerDef] != ABILITY_CONTRARY)
+            if (sereneGraceBoost && AI_DATA->abilities[battlerDef] != (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
                 score += 5;
             else
                 score += 2;
@@ -3737,7 +3739,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
             score++;
         break;
     case EFFECT_SPEED_UP_HIT:
-        if (sereneGraceBoost && AI_DATA->abilities[battlerDef] != ABILITY_CONTRARY && !WillAIStrikeFirst())
+        if (sereneGraceBoost && AI_DATA->abilities[battlerDef] != (ABILITY_CONTRARY || ABILITY_DESTINY_STAR) && !WillAIStrikeFirst())
             score += 3;
         break;
     case EFFECT_DESTINY_BOND:
@@ -3826,7 +3828,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         }
         else
         {
-            if (AI_DATA->abilities[battlerAtk] == ABILITY_CONTRARY || AI_DATA->abilities[battlerDef] == ABILITY_MAGIC_GUARD)
+            if (AI_DATA->abilities[battlerAtk] == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR) || AI_DATA->abilities[battlerDef] == ABILITY_MAGIC_GUARD)
                 break;
             else if (gBattleMons[battlerAtk].statStages[STAT_ATK] < 8)
                 score += (8 - gBattleMons[battlerAtk].statStages[STAT_ATK]);
@@ -3989,7 +3991,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         break;
     case EFFECT_FELL_STINGER:
         if (gBattleMons[battlerAtk].statStages[STAT_ATK] < MAX_STAT_STAGE
-          && AI_DATA->abilities[battlerAtk] != ABILITY_CONTRARY
+          && AI_DATA->abilities[battlerAtk] != (ABILITY_CONTRARY || ABILITY_DESTINY_STAR)
           && CanIndexMoveFaintTarget(battlerAtk, battlerDef, AI_THINKING_STRUCT->movesetIndex, 0))
         {
             if (AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_FASTER) // Attacker goes first
@@ -3999,7 +4001,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         }
         break;
     case EFFECT_BELLY_DRUM:
-        if (!CanTargetFaintAi(battlerDef, battlerAtk) && HasMoveWithSplit(battlerAtk, SPLIT_PHYSICAL) && AI_DATA->abilities[battlerAtk] != ABILITY_CONTRARY)
+        if (!CanTargetFaintAi(battlerDef, battlerAtk) && HasMoveWithSplit(battlerAtk, SPLIT_PHYSICAL) && AI_DATA->abilities[battlerAtk] != (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
             score += (MAX_STAT_STAGE - gBattleMons[battlerAtk].statStages[STAT_ATK]);
         break;
     case EFFECT_PSYCH_UP:
@@ -4060,7 +4062,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
             score += 8;
         break;
     case EFFECT_STOCKPILE:
-        if (AI_DATA->abilities[battlerAtk] == ABILITY_CONTRARY)
+        if (AI_DATA->abilities[battlerAtk] == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
             break;
         if (HasMoveEffect(battlerAtk, EFFECT_SWALLOW)
           || HasMoveEffect(battlerAtk, EFFECT_SPIT_UP))
@@ -4083,7 +4085,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
           || HasMoveEffect(battlerAtk, EFFECT_SPECTRAL_THIEF))
             score++;
 
-        if (AI_DATA->abilities[battlerDef] == ABILITY_CONTRARY)
+        if (AI_DATA->abilities[battlerDef] == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
             score += 2;
 
         IncreaseConfusionScore(battlerAtk, battlerDef, move, &score);
@@ -4093,7 +4095,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
           || HasMoveEffect(battlerAtk, EFFECT_SPECTRAL_THIEF))
             score += 2;
 
-        if (AI_DATA->abilities[battlerDef] == ABILITY_CONTRARY)
+        if (AI_DATA->abilities[battlerDef] == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
             score += 2;
 
         IncreaseConfusionScore(battlerAtk, battlerDef, move, &score);
@@ -4308,7 +4310,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         break;
     case EFFECT_SUPERPOWER:
     case EFFECT_OVERHEAT:
-        if (AI_DATA->abilities[battlerAtk] == ABILITY_CONTRARY)
+        if (AI_DATA->abilities[battlerAtk] == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
             score += 10;
         break;
     case EFFECT_MAGIC_COAT:
@@ -4412,7 +4414,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         break;
     case EFFECT_TICKLE:
         if (gBattleMons[battlerDef].statStages[STAT_DEF] > 4 && HasMoveWithSplit(battlerAtk, SPLIT_PHYSICAL)
-          && AI_DATA->abilities[battlerDef] != ABILITY_CONTRARY && ShouldLowerDefense(battlerAtk, battlerDef, AI_DATA->abilities[battlerDef]))
+          && AI_DATA->abilities[battlerDef] != (ABILITY_CONTRARY || ABILITY_DESTINY_STAR) && ShouldLowerDefense(battlerAtk, battlerDef, AI_DATA->abilities[battlerDef]))
         {
             score += 2;
         }

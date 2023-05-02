@@ -1913,9 +1913,9 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
 
     if (atkAbility == ABILITY_COMPOUND_EYES)
         calc = (calc * 130) / 100; // 1.3 compound eyes boost
-    else if (atkAbility == ABILITY_VICTORY_STAR)
+    else if (atkAbility == (ABILITY_VICTORY_STAR || ABILITY_DESTINY_STAR))
         calc = (calc * 110) / 100; // 1.1 victory star boost
-    if (IsBattlerAlive(BATTLE_PARTNER(battlerAtk)) && GetBattlerAbility(BATTLE_PARTNER(battlerAtk)) == ABILITY_VICTORY_STAR)
+    if (IsBattlerAlive(BATTLE_PARTNER(battlerAtk)) && GetBattlerAbility(BATTLE_PARTNER(battlerAtk)) == (ABILITY_VICTORY_STAR || ABILITY_DESTINY_STAR))
         calc = (calc * 110) / 100; // 1.1 ally's victory star boost
 
     if (defAbility == ABILITY_SAND_VEIL && WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_SANDSTORM)
@@ -5333,7 +5333,7 @@ static void Cmd_playstatchangeanimation(void)
     stats = cmd->stats;
 
     // Handle Contrary and Simple
-    if (ability == ABILITY_CONTRARY)
+    if (ability == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
         flags ^= STAT_CHANGE_NEGATIVE;
     else if (ability == ABILITY_SIMPLE)
         flags |= STAT_CHANGE_BY_TWO;
@@ -6284,7 +6284,8 @@ static void Cmd_moveend(void)
                     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER || GetBattlerSide(i) == B_SIDE_PLAYER)
                     {
                     #if B_ABILITY_POP_UP == TRUE
-                        gBattlescriptCurrInstr = BattleScript_EmergencyExit;
+                        gBattlescriptCurrInstr = BattleScript_EmergencySubstitute;
+                        //gBattlescriptCurrInstr = BattleScript_EmergencyExit;
                     #else
                         gBattlescriptCurrInstr = BattleScript_EmergencyExitNoPopUp;
                     #endif
@@ -9139,7 +9140,11 @@ static void Cmd_various(void)
         }
         else
         {
-            gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 16;
+            if (IS_BATTLER_OF_TYPE(gActiveBattler, (TYPE_GRASS || TYPE_BUG)))
+                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
+            else
+                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 16;
+
             if (gBattleMoveDamage == 0)
                 gBattleMoveDamage = 1;
             gBattleMoveDamage *= -1;
@@ -12003,7 +12008,7 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
         notProtectAffected++;
     flags &= ~STAT_CHANGE_NOT_PROTECT_AFFECTED;
 
-    if (activeBattlerAbility == ABILITY_CONTRARY)
+    if (activeBattlerAbility == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
     {
         statValue ^= STAT_BUFF_NEGATIVE;
         gBattleScripting.statChanger ^= STAT_BUFF_NEGATIVE;
@@ -12844,6 +12849,8 @@ static void Cmd_weatherdamage(void)
                 && ability != ABILITY_SNOW_CLOAK
                 && ability != ABILITY_OVERCOAT
                 && ability != ABILITY_ICE_BODY
+                && ability != ABILITY_WHITEOUT
+                && ability != ABILITY_SLUSH_RUSH
                 && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
                 && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
             {

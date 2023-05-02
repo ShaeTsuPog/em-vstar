@@ -4450,6 +4450,16 @@
       "secondary_tileset": "gTileset_gTileset_Test2",
       "border_filepath": "data/layouts/RouteTest/border.bin",
       "blockdata_filepath": "data/layouts/RouteTest/map.bin"
+    },
+    {
+      "id": "LAYOUT_TEST_AREA",
+      "name": "TestArea_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/TestArea/border.bin",
+      "blockdata_filepath": "data/layouts/TestArea/map.bin"
     }
   ]
 }

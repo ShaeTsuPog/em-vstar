@@ -109,12 +109,18 @@ void DestroyTask(u8 taskId)
 }
 
 extern void BattleIntroSlide1(u8);
+extern void BattleIntroSlide2(u8);
+extern void BattleIntroSlide3(u8);
 
 bool8 IsTaskFuncInList(u8 taskId)
 {
     TaskFunc func = gTasks[taskId].func;
 
     if (func == BattleIntroSlide1)
+        return TRUE;
+    else if (func == BattleIntroSlide2)
+        return TRUE;
+    else if (func == BattleIntroSlide3)
         return TRUE;
     else
         return FALSE;

@@ -444,7 +444,7 @@ static const u8 sText_Evasiveness[] = _("evasiveness");
 // Custom
 static const u8 sText_EvaporateActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} made the air\nextremely hot!");
 static const u8 sText_EvaporateWaterMoves[] = _("The Water-type move evaporated\nin the harsh heat!");
-static const u8 sText_JuiceMaker[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} drank its secret Berry Juice!");
+static const u8 sText_JuiceMaker[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} drank its\nsecret Berry Juice!");
 static const u8 sText_HiveTacticsActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nraised its Evasion!");
 static const u8 sText_BefuddleActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s dancing confused\nthe enemy!");
 static const u8 sText_TerrainBecomesBlazing[] = _("An searing flame runs across\nthe battlefield!");

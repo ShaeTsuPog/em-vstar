@@ -5375,6 +5375,10 @@ BattleScript_SolarBeamOnFirstTurn::
 	ppreduce
 	goto BattleScript_TwoTurnMovesSecondTurn
 
+BattleScript_EffectRockThrow:
+	setmoveeffect MOVE_EFFECT_ROCK_THROW
+	goto BattleScript_EffectHit
+
 BattleScript_EffectThunder:
 	setmoveeffect MOVE_EFFECT_PARALYSIS
 	goto BattleScript_EffectHit
@@ -8528,6 +8532,41 @@ BattleScript_MoodyLower:
 BattleScript_MoodyEnd:
 	end3
 
+BattleScript_EmergencySubstitute::
+	pause 5
+	call BattleScript_AbilityPopUp
+	pause B_WAIT_TIME_LONG
+	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_EmergencyFail
+	setsubstitute
+	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_SUBSTITUTE_FAILED, BattleScript_SubstituteAnim
+	pause B_WAIT_TIME_SHORT
+	openpartyscreen BS_TARGET, BattleScript_EffectBatonPass
+	switchoutabilities BS_TARGET
+	waitstate
+	switchhandleorder BS_TARGET, 2
+	returntoball BS_TARGET
+	getswitchedmondata BS_TARGET
+	switchindataupdate BS_TARGET
+	hpthresholds BS_TARGET
+	printstring STRINGID_SWITCHINMON
+	switchinanim BS_TARGET, TRUE
+	waitstate
+	switchineffects BS_TARGET
+
+BattleScript_EmergencyFail::
+	openpartyscreen BS_TARGET, BattleScript_EffectBatonPass
+	switchoutabilities BS_TARGET
+	waitstate
+	switchhandleorder BS_TARGET, 2
+	returntoball BS_TARGET
+	getswitchedmondata BS_TARGET
+	switchindataupdate BS_TARGET
+	hpthresholds BS_TARGET
+	printstring STRINGID_SWITCHINMON
+	switchinanim BS_TARGET, TRUE
+	waitstate
+	switchineffects BS_TARGET
+
 BattleScript_EmergencyExit::
 	pause 5
 	call BattleScript_AbilityPopUp
@@ -8611,6 +8650,16 @@ BattleScript_HarvestActivatesEnd:
 	end3
 
 BattleScript_SolarPowerActivates::
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	call BattleScript_AbilityPopUp
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printstring STRINGID_SOLARPOWERHPDROP
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_ATTACKER
+	end3
+
+BattleScript_DrySkinHpLoss::
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	call BattleScript_AbilityPopUp
 	healthbarupdate BS_ATTACKER

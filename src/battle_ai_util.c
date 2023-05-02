@@ -54,6 +54,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_COMPETITIVE] = 5,
     [ABILITY_COMPOUND_EYES] = 7,
     [ABILITY_CONTRARY] = 8,
+    [ABILITY_DESTINY_STAR] = 8,
     [ABILITY_CORROSION] = 5,
     [ABILITY_CURSED_BODY] = 4,
     [ABILITY_CUTE_CHARM] = 2,
@@ -205,6 +206,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_SNOW_CLOAK] = 3,
     [ABILITY_SNOW_WARNING] = 8,
     [ABILITY_SOLAR_POWER] = 3,
+    [ABILITY_WHITEOUT] = 3,
     [ABILITY_SOLID_ROCK] = 6,
     [ABILITY_SOUL_HEART] = 7,
     [ABILITY_SOUNDPROOF] = 4,
@@ -1588,6 +1590,7 @@ bool32 ShouldSetHail(u8 battler, u16 ability, u16 holdEffect)
       || ability == ABILITY_SLUSH_RUSH
       || ability == ABILITY_MAGIC_GUARD
       || ability == ABILITY_OVERCOAT
+      || ability == ABILITY_WHITEOUT
       || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES
       || IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
       || HasMove(battler, MOVE_BLIZZARD)
@@ -1694,8 +1697,8 @@ void ProtectChecks(u8 battlerAtk, u8 battlerDef, u16 move, u16 predictedMove, s1
 // stat stages
 bool32 ShouldLowerStat(u8 battler, u16 battlerAbility, u8 stat)
 {
-    if ((gBattleMons[battler].statStages[stat] > MIN_STAT_STAGE && battlerAbility != ABILITY_CONTRARY)
-      || (battlerAbility == ABILITY_CONTRARY && gBattleMons[battler].statStages[stat] < MAX_STAT_STAGE))
+    if ((gBattleMons[battler].statStages[stat] > MIN_STAT_STAGE && battlerAbility != (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
+      || (battlerAbility == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR) && gBattleMons[battler].statStages[stat] < MAX_STAT_STAGE))
     {
         if (AI_DATA->holdEffects[battler] == HOLD_EFFECT_CLEAR_AMULET
          || battlerAbility == ABILITY_CLEAR_BODY
@@ -1711,8 +1714,8 @@ bool32 ShouldLowerStat(u8 battler, u16 battlerAbility, u8 stat)
 
 bool32 BattlerStatCanRise(u8 battler, u16 battlerAbility, u8 stat)
 {
-    if ((gBattleMons[battler].statStages[stat] < MAX_STAT_STAGE && battlerAbility != ABILITY_CONTRARY)
-      || (battlerAbility == ABILITY_CONTRARY && gBattleMons[battler].statStages[stat] > MIN_STAT_STAGE))
+    if ((gBattleMons[battler].statStages[stat] < MAX_STAT_STAGE && battlerAbility != (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
+      || (battlerAbility == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR) && gBattleMons[battler].statStages[stat] > MIN_STAT_STAGE))
         return TRUE;
     return FALSE;
 }
@@ -1772,6 +1775,7 @@ bool32 ShouldLowerAttack(u8 battlerAtk, u8 battlerDef, u16 defAbility)
     if (gBattleMons[battlerDef].statStages[STAT_ATK] > 4
       && HasMoveWithSplit(battlerDef, SPLIT_PHYSICAL)
       && defAbility != ABILITY_CONTRARY
+      && defAbility != ABILITY_DESTINY_STAR
       && defAbility != ABILITY_CLEAR_BODY
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_FULL_METAL_BODY
@@ -1789,6 +1793,7 @@ bool32 ShouldLowerDefense(u8 battlerAtk, u8 battlerDef, u16 defAbility)
     if (gBattleMons[battlerDef].statStages[STAT_DEF] > 4
       && HasMoveWithSplit(battlerAtk, SPLIT_PHYSICAL)
       && defAbility != ABILITY_CONTRARY
+      && defAbility != ABILITY_DESTINY_STAR
       && defAbility != ABILITY_CLEAR_BODY
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_FULL_METAL_BODY
@@ -1805,6 +1810,7 @@ bool32 ShouldLowerSpeed(u8 battlerAtk, u8 battlerDef, u16 defAbility)
 
     if (!WillAIStrikeFirst()
       && defAbility != ABILITY_CONTRARY
+      && defAbility != ABILITY_DESTINY_STAR
       && defAbility != ABILITY_CLEAR_BODY
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
@@ -1821,6 +1827,7 @@ bool32 ShouldLowerSpAtk(u8 battlerAtk, u8 battlerDef, u16 defAbility)
     if (gBattleMons[battlerDef].statStages[STAT_SPATK] > 4
       && HasMoveWithSplit(battlerDef, SPLIT_SPECIAL)
       && defAbility != ABILITY_CONTRARY
+      && defAbility != ABILITY_DESTINY_STAR
       && defAbility != ABILITY_CLEAR_BODY
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
@@ -1837,6 +1844,7 @@ bool32 ShouldLowerSpDef(u8 battlerAtk, u8 battlerDef, u16 defAbility)
     if (gBattleMons[battlerDef].statStages[STAT_SPDEF] > 4
       && HasMoveWithSplit(battlerAtk, SPLIT_SPECIAL)
       && defAbility != ABILITY_CONTRARY
+      && defAbility != ABILITY_DESTINY_STAR
       && defAbility != ABILITY_CLEAR_BODY
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
@@ -1851,6 +1859,7 @@ bool32 ShouldLowerAccuracy(u8 battlerAtk, u8 battlerDef, u16 defAbility)
         return FALSE; // Don't bother lowering stats if can kill enemy.
 
     if (defAbility != ABILITY_CONTRARY
+      && defAbility != ABILITY_DESTINY_STAR
       && defAbility != ABILITY_CLEAR_BODY
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_FULL_METAL_BODY
@@ -1867,6 +1876,7 @@ bool32 ShouldLowerEvasion(u8 battlerAtk, u8 battlerDef, u16 defAbility)
 
     if (gBattleMons[battlerDef].statStages[STAT_EVASION] > DEFAULT_STAT_STAGE
       && defAbility != ABILITY_CONTRARY
+      && defAbility != ABILITY_DESTINY_STAR
       && defAbility != ABILITY_CLEAR_BODY
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
@@ -2387,7 +2397,8 @@ static bool32 BattlerAffectedByHail(u8 battlerId, u16 ability)
     if (!IS_BATTLER_OF_TYPE(battlerId, TYPE_ICE)
       && ability != ABILITY_SNOW_CLOAK
       && ability != ABILITY_OVERCOAT
-      && ability != ABILITY_ICE_BODY)
+      && ability != ABILITY_ICE_BODY
+      && ability != ABILITY_WHITEOUT)
         return TRUE;
     return FALSE;
 }
@@ -3540,7 +3551,7 @@ bool32 IsRecycleEncouragedItem(u16 item)
 #define STAT_UP_STAGE       10
 void IncreaseStatUpScore(u8 battlerAtk, u8 battlerDef, u8 statId, s16 *score)
 {
-    if (AI_DATA->abilities[battlerAtk] == ABILITY_CONTRARY)
+    if (AI_DATA->abilities[battlerAtk] == (ABILITY_CONTRARY || ABILITY_DESTINY_STAR))
         return;
 
     if (AI_DATA->hpPercents[battlerAtk] < 80 && AI_RandLessThan(128))
