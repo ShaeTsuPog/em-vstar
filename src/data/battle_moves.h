@@ -12788,6 +12788,22 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .argument = MOVE_EFFECT_SPIKES,
     },
 
+    [MOVE_PINSPLOSION] =
+    {
+        .effect = EFFECT_HIT_SET_ENTRY_HAZARD,
+        .power = 100,
+        .type = TYPE_GROUND,
+        .accuracy = 100,
+        .pp = 5,
+        .secondaryEffectChance = 100,
+        .target = MOVE_TARGET_FOES_AND_ALLY,
+        .priority = 0,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .argument = MOVE_EFFECT_SPIKES,
+    },
+
     [MOVE_BLEAKWIND_STORM] =
     {
         #if B_UPDATED_MOVE_DATA >= GEN_9

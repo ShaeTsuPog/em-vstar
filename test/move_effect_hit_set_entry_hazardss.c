@@ -78,7 +78,7 @@ SINGLE_BATTLE_TEST("Ceaseless Edge can set up to 3 layers of Spikes")
     }
 }
 
-SINGLE_BATTLE_TEST("Stone Axe can set up pointed stones only once")
+SINGLE_BATTLE_TEST("Stone Axe can set up Stealth Rock only once")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
@@ -115,3 +115,76 @@ SINGLE_BATTLE_TEST("Stone Axe can set up pointed stones only once")
     }
 }
 
+SINGLE_BATTLE_TEST("Rock Throw can set up Stealth Rock only once")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN {MOVE(player, MOVE_ROCK_THROW);}
+        TURN {MOVE(player, MOVE_ROCK_THROW);}
+        TURN {MOVE(player, MOVE_ROCK_THROW);}
+        TURN {MOVE(player, MOVE_ROCK_THROW);}
+        TURN {SWITCH(opponent, 1);}
+    } SCENE {
+        s32 maxHP = GetMonData(&OPPONENT_PARTY[1], MON_DATA_MAX_HP);
+
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
+        HP_BAR(opponent);
+        MESSAGE("Pointed stones float in the air around the opposing team!");
+
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
+        HP_BAR(opponent);
+        NOT MESSAGE("Pointed stones float in the air around the opposing team!");
+
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
+        HP_BAR(opponent);
+        NOT MESSAGE("Pointed stones float in the air around the opposing team!");
+
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
+        HP_BAR(opponent);
+        NOT MESSAGE("Pointed stones float in the air around the opposing team!");
+
+        MESSAGE("2 sent out Wynaut!");
+        HP_BAR(opponent, damage: maxHP / 8);
+        MESSAGE("Pointed stones dug into Foe Wynaut!");
+    }
+}
+
+SINGLE_BATTLE_TEST("Pinsplosion can set up to 3 layers of Spikes")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(player, MOVE_PINSPLOSION); }
+        TURN { MOVE(player, MOVE_PINSPLOSION); }
+        TURN { MOVE(player, MOVE_PINSPLOSION); }
+        TURN { MOVE(player, MOVE_PINSPLOSION); }
+        TURN { SWITCH(opponent, 1); }
+    } SCENE {
+        s32 maxHP = GetMonData(&OPPONENT_PARTY[1], MON_DATA_MAX_HP);
+
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_PINSPLOSION, player);
+        HP_BAR(opponent);
+        MESSAGE("Spikes were scattered all around the opposing team!");
+
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_PINSPLOSION, player);
+        HP_BAR(opponent);
+        MESSAGE("Spikes were scattered all around the opposing team!");
+
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_PINSPLOSION, player);
+        HP_BAR(opponent);
+        MESSAGE("Spikes were scattered all around the opposing team!");
+
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_PINSPLOSION, player);
+        HP_BAR(opponent);
+        NOT MESSAGE("Spikes were scattered all around the opposing team!");
+
+        MESSAGE("2 sent out Wynaut!");
+        HP_BAR(opponent, damage: maxHP / 4);
+        MESSAGE("Foe Wynaut is hurt by spikes!");
+    }
+}

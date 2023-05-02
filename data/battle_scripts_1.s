@@ -5375,10 +5375,6 @@ BattleScript_SolarBeamOnFirstTurn::
 	ppreduce
 	goto BattleScript_TwoTurnMovesSecondTurn
 
-BattleScript_EffectRockThrow:
-	setmoveeffect MOVE_EFFECT_ROCK_THROW
-	goto BattleScript_EffectHit
-
 BattleScript_EffectThunder:
 	setmoveeffect MOVE_EFFECT_PARALYSIS
 	goto BattleScript_EffectHit
