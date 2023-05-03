@@ -65,6 +65,10 @@ const struct FormChange *const gFormChangeTablePointers[NUM_SPECIES] =
     [SPECIES_ALTARIA_MEGA] = sAltariaFormChangeTable,
     [SPECIES_ABSOL] = sAbsolFormChangeTable,
     [SPECIES_ABSOL_MEGA] = sAbsolFormChangeTable,
+    [SPECIES_CASTFORM] = sCastformFormChangeTable,
+    [SPECIES_CASTFORM_SUNNY] = sCastformFormChangeTable,
+    [SPECIES_CASTFORM_RAINY] = sCastformFormChangeTable,
+    [SPECIES_CASTFORM_SNOWY] = sCastformFormChangeTable,
     [SPECIES_BANETTE] = sBanetteFormChangeTable,
     [SPECIES_BANETTE_MEGA] = sBanetteFormChangeTable,
     [SPECIES_AGGRON] = sAggronFormChangeTable,
@@ -85,6 +89,7 @@ const struct FormChange *const gFormChangeTablePointers[NUM_SPECIES] =
     [SPECIES_GROUDON_PRIMAL] = sGroudonFormChangeTable,
     [SPECIES_RAYQUAZA] = sRayquazaFormChangeTable,
     [SPECIES_RAYQUAZA_MEGA] = sRayquazaFormChangeTable,
+#if P_GEN_4_POKEMON == TRUE
     [SPECIES_BURMY] = sBurmyFormChangeTable,
     [SPECIES_BURMY_SANDY_CLOAK] = sBurmyFormChangeTable,
     [SPECIES_BURMY_TRASH_CLOAK] = sBurmyFormChangeTable,
@@ -124,6 +129,8 @@ const struct FormChange *const gFormChangeTablePointers[NUM_SPECIES] =
     [SPECIES_ARCEUS_DRAGON] = sArceusFormChangeTable,
     [SPECIES_ARCEUS_DARK] = sArceusFormChangeTable,
     [SPECIES_ARCEUS_FAIRY] = sArceusFormChangeTable,
+#endif
+#if P_GEN_5_POKEMON == TRUE
     [SPECIES_AUDINO] = sAudinoFormChangeTable,
     [SPECIES_AUDINO_MEGA] = sAudinoFormChangeTable,
     [SPECIES_DARMANITAN] = sDarmanitanFormChangeTable,
@@ -145,6 +152,8 @@ const struct FormChange *const gFormChangeTablePointers[NUM_SPECIES] =
     [SPECIES_GENESECT_SHOCK_DRIVE] = sGenesectFormChangeTable,
     [SPECIES_GENESECT_BURN_DRIVE] = sGenesectFormChangeTable,
     [SPECIES_GENESECT_CHILL_DRIVE] = sGenesectFormChangeTable,
+#endif
+#if P_GEN_6_POKEMON == TRUE
     [SPECIES_GRENINJA_BATTLE_BOND] = sGreninjaBattleBondFormChangeTable,
     [SPECIES_GRENINJA_ASH] = sGreninjaBattleBondFormChangeTable,
     [SPECIES_AEGISLASH] = sAegislashFormChangeTable,
@@ -198,6 +207,8 @@ const struct FormChange *const gFormChangeTablePointers[NUM_SPECIES] =
     [SPECIES_MINIOR_CORE_VIOLET] = sMiniorVioletFormChangeTable,
     [SPECIES_MINIOR_METEOR_YELLOW] = sMiniorYellowFormChangeTable,
     [SPECIES_MINIOR_CORE_YELLOW] = sMiniorYellowFormChangeTable,
+#endif
+#if P_GEN_8_POKEMON == TRUE
     [SPECIES_CRAMORANT] = sCramorantFormChangeTable,
     [SPECIES_CRAMORANT_GULPING] = sCramorantFormChangeTable,
     [SPECIES_CRAMORANT_GORGING] = sCramorantFormChangeTable,
@@ -211,4 +222,5 @@ const struct FormChange *const gFormChangeTablePointers[NUM_SPECIES] =
     [SPECIES_ZAMAZENTA_CROWNED_SHIELD] = sZamazentaFormChangeTable,
     [SPECIES_ENAMORUS] = sEnamorusFormChangeTable,
     [SPECIES_ENAMORUS_THERIAN] = sEnamorusFormChangeTable,
+#endif
 };

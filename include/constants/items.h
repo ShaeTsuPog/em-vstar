@@ -975,12 +975,13 @@
 #define ITEM_BLACK_AUGURITE 795
 #define ITEM_LINKING_CORD 796
 #define ITEM_PEAT_BLOCK 797
+#define ITEM_BERSERK_GENE 798
 
 // Custom Items
-#define ITEM_POKE_REPEL 798
-#define ITEM_GENGARITE_Y 799
+#define ITEM_POKE_REPEL 799
+#define ITEM_GENGARITE_Y 800
 
-#define ITEMS_COUNT 800
+#define ITEMS_COUNT 801
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

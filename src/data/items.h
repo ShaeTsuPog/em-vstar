@@ -3152,7 +3152,6 @@ const struct Item gItems[] =
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_FormChange_ConsumedOnUse,
-
         .flingPower = 10,
     },
 
@@ -3166,7 +3165,6 @@ const struct Item gItems[] =
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_FormChange_ConsumedOnUse,
-
         .flingPower = 10,
     },
 
@@ -3180,7 +3178,6 @@ const struct Item gItems[] =
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_FormChange_ConsumedOnUse,
-
         .flingPower = 10,
     },
 
@@ -3194,7 +3191,6 @@ const struct Item gItems[] =
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_FormChange_ConsumedOnUse,
-
         .flingPower = 10,
     },
 
@@ -10385,5 +10381,18 @@ const struct Item gItems[] =
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
         .flingPower = 30,
+    },
+
+    [ITEM_BERSERK_GENE] =
+    {
+        .name = _("Berserk Gene"),
+        .itemId = ITEM_BERSERK_GENE,
+        .price = 20,
+        .holdEffect = HOLD_EFFECT_BERSERK_GENE,
+        .description = sBerserkGene,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 10,
     },
 };

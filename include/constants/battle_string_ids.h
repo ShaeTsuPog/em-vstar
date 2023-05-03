@@ -652,18 +652,25 @@
 #define STRINGID_ITEMCUREDSPECIESSTATUS               650
 #define STRINGID_ITEMRESTOREDSPECIESPP                651
 #define STRINGID_THUNDERCAGETRAPPED                   652
+#define STRINGID_PKMNHURTBYFROSTBITE                  653
+#define STRINGID_PKMNGOTFROSTBITE                     654
+#define STRINGID_PKMNSITEMHEALEDFROSTBITE             655
+#define STRINGID_ATTACKERHEALEDITSFROSTBITE           656
+#define STRINGID_PKMNFROSTBITEHEALED                  657
+#define STRINGID_PKMNFROSTBITEHEALED2                 658
+#define STRINGID_PKMNFROSTBITEHEALEDBY                659
 
 // Custom
-#define STRINGID_EVAPORATEACTIVATES                   653
-#define STRINGID_EVAPORATEINHARSHHEAT                 654
-#define STRINGID_JUICEMAKER                           655
-#define STRINGID_PKMNRAISEDEVASION                    656
-#define STRINGID_BEFUDDLE                             657
-#define STRINGID_TERRAINBECOMESBLAZING                658
-#define STRINGID_PKMNBURNEDBYTERRAIN                  659
-#define STRINGID_BLAZINGTERRAINENDS                   660
+#define STRINGID_EVAPORATEACTIVATES                   660
+#define STRINGID_EVAPORATEINHARSHHEAT                 661
+#define STRINGID_JUICEMAKER                           662
+#define STRINGID_PKMNRAISEDEVASION                    663
+#define STRINGID_BEFUDDLE                             664
+#define STRINGID_TERRAINBECOMESBLAZING                665
+#define STRINGID_PKMNBURNEDBYTERRAIN                  666
+#define STRINGID_BLAZINGTERRAINENDS                   667
 
-#define BATTLESTRINGS_COUNT                           661
+#define BATTLESTRINGS_COUNT                           668
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -871,6 +878,10 @@
 // gGotDefrostedStringIds
 #define B_MSG_DEFROSTED         0
 #define B_MSG_DEFROSTED_BY_MOVE 1
+
+// gFrostbiteHealedStringIds
+#define B_MSG_FROSTBITE_HEALED         0
+#define B_MSG_FROSTBITE_HEALED_BY_MOVE 1
 
 // gBattlePalaceFlavorTextTable
 #define B_MSG_GLINT_IN_EYE   0
