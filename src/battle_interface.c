@@ -2233,7 +2233,6 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
         statusGfxPtr = GetHealthboxElementGfxPtr(GetStatusIconForBattlerId(HEALTHBOX_GFX_STATUS_PRZ_BATTLER0, battlerId));
         //statusPalId = PAL_STATUS_PAR;
     }
-    
     else
     {
         for (i = 0; i < 1; i++)
@@ -2336,6 +2335,13 @@ static u8 GetStatusIconForBattlerId(u8 statusElementId, u8 battlerId)
                 else if (battlerId == 1)
                     ret = HEALTHBOX_GFX_STATUS_BRN_BATTLER1;
                 break;
+
+            case HEALTHBOX_GFX_STATUS_FSB_BATTLER0:
+                if (battlerId == 0)
+                    ret = HEALTHBOX_GFX_STATUS_FSB_BATTLER0;
+                else if (battlerId == 1)
+                    ret = HEALTHBOX_GFX_STATUS_FSB_BATTLER1;
+                break;
         }
     }
     else
@@ -2360,6 +2366,10 @@ static u8 GetStatusIconForBattlerId(u8 statusElementId, u8 battlerId)
 
             case HEALTHBOX_GFX_STATUS_BRN_BATTLER0:
                 ret = HEALTHBOX_GFX_STATUS_BRN_BATTLER1;
+            break;
+
+            case HEALTHBOX_GFX_STATUS_FSB_BATTLER0:
+                ret = HEALTHBOX_GFX_STATUS_FSB_BATTLER1;
             break;
         }
     }

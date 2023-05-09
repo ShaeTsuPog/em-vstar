@@ -5783,7 +5783,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
              && TARGET_TURN_DAMAGED
              && IsBattlerAlive(battler))
             {
-                if (moveType == TYPE_WATER 
+                if (moveType == TYPE_WATER
                  && CompareStat(battler, STAT_SPEED, MAX_STAT_STAGE, CMP_LESS_THAN))
                 {
                     gEffectBattler = battler;
@@ -5965,6 +5965,40 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 gBattleScripting.moveEffect = MOVE_EFFECT_POISON;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                effect++;
+            }
+            break;
+        case ABILITY_GRAPPLE_JAW:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && gBattleMons[gBattlerTarget].hp != 0
+             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
+             && CanBeParalyzed(gBattlerTarget)
+             && IsMoveMakingContact(move, gBattlerAttacker)
+             && TARGET_TURN_DAMAGED // Need to actually hit the target
+             && (gBattleMoves[gCurrentMove].flags & FLAG_STRONG_JAW_BOOST)
+             && (Random() % 3) == 0)
+            {
+                gBattleScripting.moveEffect = MOVE_EFFECT_PARALYSIS;
+                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                effect++;
+            }
+            break;
+        case ABILITY_MYTHIC_SOUL:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && gBattleMons[gBattlerTarget].hp != 0
+             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
+             && CanBeBurned(gBattlerTarget)
+             && TARGET_TURN_DAMAGED
+             && (gBattleMoves[gCurrentMove].type == TYPE_DRAGON)
+             && (Random() % 3) == 0)
+            {
+                gBattleScripting.moveEffect = MOVE_EFFECT_BURN;
+                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
                 gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
@@ -8869,6 +8903,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
            MulModifier(&modifier, UQ_4_12(1.3));
         break;
     case ABILITY_STRONG_JAW:
+    case ABILITY_GRAPPLE_JAW:
         if (gBattleMoves[move].flags & FLAG_STRONG_JAW_BOOST)
            MulModifier(&modifier, UQ_4_12(1.5));
         break;
@@ -8896,6 +8931,10 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         if (moveType == TYPE_ELECTRIC && gBattleStruct->ateBoost[battlerAtk])
             MulModifier(&modifier, UQ_4_12(1.2));
         break;
+    case ABILITY_VULKANIZE:
+        if (gBattleStruct->ateBoost[battlerAtk])
+            MulModifier(&modifier, UQ_4_12(1.2));
+        break;
     case ABILITY_REFRIGERATE:
         if (moveType == TYPE_ICE && gBattleStruct->ateBoost[battlerAtk])
             MulModifier(&modifier, UQ_4_12(1.2));
@@ -8909,6 +8948,10 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
             MulModifier(&modifier, UQ_4_12(1.2));
         break;
     case ABILITY_PUNK_ROCK:
+        if (gBattleMoves[move].flags & FLAG_SOUND)
+            MulModifier(&modifier, UQ_4_12(1.5));
+        break;
+    case ABILITY_CACOPHONY:
         if (gBattleMoves[move].flags & FLAG_SOUND)
             MulModifier(&modifier, UQ_4_12(1.3));
         break;
@@ -9849,6 +9892,21 @@ static void MulByTypeEffectiveness(u16 *modifier, u16 move, u8 moveType, u8 batt
         if (recordAbilities)
             RecordAbilityBattle(battlerAtk, ABILITY_SCRAPPY);
     }
+    else if ((moveType == TYPE_NORMAL || TYPE_FIGHTING) && gBattleMoves[gCurrentMove].flags & FLAG_SOUND
+    && GetBattlerAbility(battlerAtk) == ABILITY_CACOPHONY && mod == UQ_4_12(0.0))
+    {
+        mod = UQ_4_12(1.0);
+        if (recordAbilities)
+            RecordAbilityBattle(battlerAtk, ABILITY_CACOPHONY);
+    }
+    else if ((moveType == TYPE_DRAGON) && defType == TYPE_FAIRY
+     && GetBattlerAbility(battlerAtk) == ABILITY_MYTHIC_SOUL
+     && mod == UQ_4_12(0.0))
+     {
+        mod = UQ_4_12(1.0);
+        if (recordAbilities)
+            RecordAbilityBattle(battlerAtk, ABILITY_MYTHIC_SOUL);
+     }
 
     if (moveType == TYPE_PSYCHIC && defType == TYPE_DARK && gStatuses3[battlerDef] & STATUS3_MIRACLE_EYED && mod == UQ_4_12(0.0))
         mod = UQ_4_12(1.0);

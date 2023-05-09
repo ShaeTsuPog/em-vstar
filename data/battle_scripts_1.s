@@ -3212,6 +3212,7 @@ BattleScript_EffectRound:
 
 BattleScript_EffectHit::
 BattleScript_HitFromAtkCanceler::
+	jumpifability BS_ATTACKER, ABILITY_VULKANIZE, BattleScript_EffectAbsorb
 	attackcanceler
 BattleScript_HitFromAccCheck::
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE

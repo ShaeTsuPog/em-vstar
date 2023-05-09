@@ -927,6 +927,7 @@ const struct CompressedSpritePalette gMonShinyPaletteTable[] =
     SPECIES_SHINY_PAL(SLOWBRO_MEGA, gMonShinyPalette_SlowbroMega),
     SPECIES_SHINY_PAL(GENGAR_MEGA_X, gMonShinyPalette_GengarMega),
     SPECIES_SHINY_PAL(GENGAR_MEGA_Y, gMonShinyPalette_GengarMegaY),
+    SPECIES_SHINY_PAL(KINGLER_MEGA, gMonShinyPalette_KinglerMega),
     SPECIES_SHINY_PAL(KANGASKHAN_MEGA, gMonShinyPalette_KangaskhanMega),
     SPECIES_SHINY_PAL(PINSIR_MEGA, gMonShinyPalette_PinsirMega),
     SPECIES_SHINY_PAL(GYARADOS_MEGA, gMonShinyPalette_GyaradosMega),
@@ -934,6 +935,9 @@ const struct CompressedSpritePalette gMonShinyPaletteTable[] =
     SPECIES_SHINY_PAL(MEWTWO_MEGA_X, gMonShinyPalette_MewtwoMegaX),
     SPECIES_SHINY_PAL(MEWTWO_MEGA_Y, gMonShinyPalette_MewtwoMegaY),
     SPECIES_SHINY_PAL(AMPHAROS_MEGA, gMonShinyPalette_AmpharosMega),
+    SPECIES_SHINY_PAL(MEGANIUM_MEGA, gMonShinyPalette_MeganiumMega),
+    SPECIES_SHINY_PAL(TYPHLOSION_MEGA, gMonShinyPalette_TyphlosionMega),
+    SPECIES_SHINY_PAL(FERALIGATR_MEGA, gMonShinyPalette_FeraligatrMega),
     SPECIES_SHINY_PAL(STEELIX_MEGA, gMonShinyPalette_SteelixMega),
     SPECIES_SHINY_PAL(SCIZOR_MEGA, gMonShinyPalette_ScizorMega),
     SPECIES_SHINY_PAL(HERACROSS_MEGA, gMonShinyPalette_HeracrossMega),
@@ -950,6 +954,7 @@ const struct CompressedSpritePalette gMonShinyPaletteTable[] =
     SPECIES_SHINY_PAL(MANECTRIC_MEGA, gMonShinyPalette_ManectricMega),
     SPECIES_SHINY_PAL(SHARPEDO_MEGA, gMonShinyPalette_SharpedoMega),
     SPECIES_SHINY_PAL(CAMERUPT_MEGA, gMonShinyPalette_CameruptMega),
+    SPECIES_SHINY_PAL(FLYGON_MEGA, gMonShinyPalette_FlygonMega),
     SPECIES_SHINY_PAL(ALTARIA_MEGA, gMonShinyPalette_AltariaMega),
     SPECIES_SHINY_PAL(BANETTE_MEGA, gMonShinyPalette_BanetteMega),
     SPECIES_SHINY_PAL(ABSOL_MEGA, gMonShinyPalette_AbsolMega),
@@ -963,6 +968,7 @@ const struct CompressedSpritePalette gMonShinyPaletteTable[] =
     SPECIES_SHINY_PAL(GARCHOMP_MEGA, gMonShinyPalette_GarchompMega),
     SPECIES_SHINY_PAL(LUCARIO_MEGA, gMonShinyPalette_LucarioMega),
     SPECIES_SHINY_PAL(ABOMASNOW_MEGA, gMonShinyPalette_AbomasnowMega),
+    SPECIES_SHINY_PAL(RHYPERIOR_MEGA, gMonShinyPalette_RhyperiorMega),
     SPECIES_SHINY_PAL(GALLADE_MEGA, gMonShinyPalette_GalladeMega),
 #endif
 #if P_GEN_5_POKEMON == TRUE

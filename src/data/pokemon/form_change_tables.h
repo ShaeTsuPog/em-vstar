@@ -40,6 +40,11 @@ static const struct FormChange sGengarFormChangeTable[] = {
     {FORM_CHANGE_TERMINATOR},
 };
 
+static const struct FormChange sKinglerFormChangeTable[] = {
+    {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_KINGLER_MEGA, ITEM_KINGLERITE},
+    {FORM_CHANGE_TERMINATOR},
+};
+
 static const struct FormChange sKangaskhanFormChangeTable[] = {
     {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_KANGASKHAN_MEGA, ITEM_KANGASKHANITE},
     {FORM_CHANGE_TERMINATOR},
@@ -63,6 +68,21 @@ static const struct FormChange sAerodactylFormChangeTable[] = {
 static const struct FormChange sMewtwoFormChangeTable[] = {
     {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_MEWTWO_MEGA_X, ITEM_MEWTWONITE_X},
     {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_MEWTWO_MEGA_Y, ITEM_MEWTWONITE_Y},
+    {FORM_CHANGE_TERMINATOR},
+};
+
+static const struct FormChange sMeganiumFormChangeTable[] = {
+    {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_MEGANIUM_MEGA, ITEM_MEGANIUMITE},
+    {FORM_CHANGE_TERMINATOR},
+};
+
+static const struct FormChange sTyphlosionFormChangeTable[] = {
+    {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_TYPHLOSION_MEGA, ITEM_TYPHLOSIONITE},
+    {FORM_CHANGE_TERMINATOR},
+};
+
+static const struct FormChange sFeraligatrFormChangeTable[] = {
+    {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_FERALIGATR_MEGA, ITEM_FERALIGATRITE},
     {FORM_CHANGE_TERMINATOR},
 };
 
@@ -143,6 +163,11 @@ static const struct FormChange sMawileFormChangeTable[] = {
 
 static const struct FormChange sMedichamFormChangeTable[] = {
     {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_MEDICHAM_MEGA, ITEM_MEDICHAMITE},
+    {FORM_CHANGE_TERMINATOR},
+};
+
+static const struct FormChange sFlygonFormChangeTable[] = {
+    {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_FLYGON_MEGA, ITEM_FLYGONITE},
     {FORM_CHANGE_TERMINATOR},
 };
 
@@ -258,6 +283,11 @@ static const struct FormChange sLucarioFormChangeTable[] = {
 
 static const struct FormChange sAbomasnowFormChangeTable[] = {
     {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_ABOMASNOW_MEGA, ITEM_ABOMASITE},
+    {FORM_CHANGE_TERMINATOR},
+};
+
+static const struct FormChange sRhyperiorFormChangeTable[] = {
+    {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_RHYPERIOR_MEGA, ITEM_RHYPERIORITE},
     {FORM_CHANGE_TERMINATOR},
 };
 

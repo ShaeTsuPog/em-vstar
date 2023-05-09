@@ -9567,6 +9567,12 @@ static const union AnimCmd sAnim_GengarMega_1[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd sAnim_KinglerMega_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd sAnim_KangaskhanMega_1[] =
 {
     ANIMCMD_FRAME(0, 1),
@@ -9598,6 +9604,24 @@ static const union AnimCmd sAnim_MEWTWO_MEGA_X_1[] =
 };
 
 static const union AnimCmd sAnim_MEWTWO_MEGA_Y_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_MeganiumMega_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_TyphlosionMega_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_FeraligatrMega_1[] =
 {
     ANIMCMD_FRAME(0, 1),
     ANIMCMD_END,
@@ -9705,6 +9729,12 @@ static const union AnimCmd sAnim_CameruptMega_1[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd sAnim_FlygonMega_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd sAnim_AltariaMega_1[] =
 {
     ANIMCMD_FRAME(0, 1),
@@ -9791,6 +9821,12 @@ static const union AnimCmd sAnim_LucarioMega_1[] =
 };
 
 static const union AnimCmd sAnim_AbomasnowMega_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_RhyperiorMega_1[] =
 {
     ANIMCMD_FRAME(0, 1),
     ANIMCMD_END,
@@ -11477,12 +11513,16 @@ SINGLE_ANIMATION(PidgeotMega);
 SINGLE_ANIMATION(AlakazamMega);
 SINGLE_ANIMATION(SlowbroMega);
 SINGLE_ANIMATION(GengarMega);
+SINGLE_ANIMATION(KinglerMega);
 SINGLE_ANIMATION(KangaskhanMega);
 SINGLE_ANIMATION(PinsirMega);
 SINGLE_ANIMATION(GyaradosMega);
 SINGLE_ANIMATION(AerodactylMega);
 SINGLE_ANIMATION(MEWTWO_MEGA_X);
 SINGLE_ANIMATION(MEWTWO_MEGA_Y);
+SINGLE_ANIMATION(MeganiumMega);
+SINGLE_ANIMATION(TyphlosionMega);
+SINGLE_ANIMATION(FeraligatrMega);
 SINGLE_ANIMATION(AmpharosMega);
 SINGLE_ANIMATION(SteelixMega);
 SINGLE_ANIMATION(ScizorMega);
@@ -11500,6 +11540,7 @@ SINGLE_ANIMATION(MedichamMega);
 SINGLE_ANIMATION(ManectricMega);
 SINGLE_ANIMATION(SharpedoMega);
 SINGLE_ANIMATION(CameruptMega);
+SINGLE_ANIMATION(FlygonMega);
 SINGLE_ANIMATION(AltariaMega);
 SINGLE_ANIMATION(BanetteMega);
 SINGLE_ANIMATION(AbsolMega);
@@ -11516,6 +11557,7 @@ SINGLE_ANIMATION(LopunnyMega);
 SINGLE_ANIMATION(GarchompMega);
 SINGLE_ANIMATION(LucarioMega);
 SINGLE_ANIMATION(AbomasnowMega);
+SINGLE_ANIMATION(RhyperiorMega);
 SINGLE_ANIMATION(GalladeMega);
 #endif
 #if P_GEN_5_POKEMON == TRUE
@@ -12565,12 +12607,14 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[] =
     [SPECIES_SLOWBRO_MEGA] = sAnims_SlowbroMega,
     [SPECIES_GENGAR_MEGA_X] = sAnims_GengarMega,
     [SPECIES_GENGAR_MEGA_Y] = sAnims_GengarMega,
+    [SPECIES_KINGLER_MEGA]  = sAnims_KinglerMega,
     [SPECIES_KANGASKHAN_MEGA] = sAnims_KangaskhanMega,
     [SPECIES_PINSIR_MEGA] = sAnims_PinsirMega,
     [SPECIES_GYARADOS_MEGA] = sAnims_GyaradosMega,
     [SPECIES_AERODACTYL_MEGA] = sAnims_AerodactylMega,
     [SPECIES_MEWTWO_MEGA_X] = sAnims_MEWTWO_MEGA_X,
     [SPECIES_MEWTWO_MEGA_Y] = sAnims_MEWTWO_MEGA_Y,
+    [SPECIES_TYPHLOSION_MEGA] = sAnims_TyphlosionMega,
     [SPECIES_AMPHAROS_MEGA] = sAnims_AmpharosMega,
     [SPECIES_STEELIX_MEGA] = sAnims_SteelixMega,
     [SPECIES_SCIZOR_MEGA] = sAnims_ScizorMega,
@@ -12588,6 +12632,7 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[] =
     [SPECIES_MANECTRIC_MEGA] = sAnims_ManectricMega,
     [SPECIES_SHARPEDO_MEGA] = sAnims_SharpedoMega,
     [SPECIES_CAMERUPT_MEGA] = sAnims_CameruptMega,
+    [SPECIES_FLYGON_MEGA] = sAnims_FlygonMega,
     [SPECIES_ALTARIA_MEGA] = sAnims_AltariaMega,
     [SPECIES_BANETTE_MEGA] = sAnims_BanetteMega,
     [SPECIES_ABSOL_MEGA] = sAnims_AbsolMega,
@@ -12601,6 +12646,7 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[] =
     [SPECIES_GARCHOMP_MEGA] = sAnims_GarchompMega,
     [SPECIES_LUCARIO_MEGA] = sAnims_LucarioMega,
     [SPECIES_ABOMASNOW_MEGA] = sAnims_AbomasnowMega,
+    [SPECIES_RHYPERIOR_MEGA] = sAnims_RhyperiorMega,
     [SPECIES_GALLADE_MEGA] = sAnims_GalladeMega,
 #endif
 #if P_GEN_5_POKEMON == TRUE

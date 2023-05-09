@@ -926,12 +926,17 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_ALAKAZAM_MEGA] = sAlakazamLevelUpLearnset,
     [SPECIES_SLOWBRO_MEGA] = sSlowbroLevelUpLearnset,
     [SPECIES_GENGAR_MEGA_X] = sGengarLevelUpLearnset,
+    [SPECIES_GENGAR_MEGA_Y] = sGengarLevelUpLearnset,
+    [SPECIES_KINGLER_MEGA] = sKinglerLevelUpLearnset,
     [SPECIES_KANGASKHAN_MEGA] = sKangaskhanLevelUpLearnset,
     [SPECIES_PINSIR_MEGA] = sPinsirLevelUpLearnset,
     [SPECIES_GYARADOS_MEGA] = sGyaradosLevelUpLearnset,
     [SPECIES_AERODACTYL_MEGA] = sAerodactylLevelUpLearnset,
     [SPECIES_MEWTWO_MEGA_X] = sMewtwoLevelUpLearnset,
     [SPECIES_MEWTWO_MEGA_Y] = sMewtwoLevelUpLearnset,
+    [SPECIES_MEGANIUM_MEGA] = sMeganiumLevelUpLearnset,
+    [SPECIES_TYPHLOSION_MEGA] = sTyphlosionLevelUpLearnset,
+    [SPECIES_FERALIGATR_MEGA] = sFeraligatrLevelUpLearnset,
     [SPECIES_AMPHAROS_MEGA] = sAmpharosLevelUpLearnset,
     [SPECIES_STEELIX_MEGA] = sSteelixLevelUpLearnset,
     [SPECIES_SCIZOR_MEGA] = sScizorLevelUpLearnset,
@@ -949,6 +954,7 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_MANECTRIC_MEGA] = sManectricLevelUpLearnset,
     [SPECIES_SHARPEDO_MEGA] = sSharpedoLevelUpLearnset,
     [SPECIES_CAMERUPT_MEGA] = sCameruptLevelUpLearnset,
+    [SPECIES_FLYGON_MEGA] = sFlygonLevelUpLearnset,
     [SPECIES_ALTARIA_MEGA] = sAltariaLevelUpLearnset,
     [SPECIES_BANETTE_MEGA] = sBanetteLevelUpLearnset,
     [SPECIES_ABSOL_MEGA] = sAbsolLevelUpLearnset,
@@ -962,6 +968,7 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_GARCHOMP_MEGA] = sGarchompLevelUpLearnset,
     [SPECIES_LUCARIO_MEGA] = sLucarioLevelUpLearnset,
     [SPECIES_ABOMASNOW_MEGA] = sAbomasnowLevelUpLearnset,
+    [SPECIES_RHYPERIOR_MEGA] = sRhyperiorLevelUpLearnset,
     [SPECIES_GALLADE_MEGA] = sGalladeLevelUpLearnset,
 #endif
 #if P_GEN_5_POKEMON == TRUE
@@ -1336,5 +1343,4 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_ENAMORUS_THERIAN] = sEnamorusLevelUpLearnset,
     [SPECIES_BASCULEGION_FEMALE] = sBasculegionLevelUpLearnset,
 #endif
-    [SPECIES_GENGAR_MEGA_Y] = sGengarLevelUpLearnset,
 };

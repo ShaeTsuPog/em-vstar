@@ -3153,7 +3153,6 @@ void SetMoveEffect(bool32 primary, u32 certain)
             CancelMultiTurnMoves(gEffectBattler);
             statusChanged = TRUE;
             break;
-        REPLACE_PSN_WITH_PRZ:
         case STATUS1_PARALYSIS:
             if (battlerAbility == ABILITY_LIMBER)
             {

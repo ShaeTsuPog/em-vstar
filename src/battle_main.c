@@ -4731,8 +4731,8 @@ s8 GetMovePriority(u32 battlerId, u16 move)
 {
     s8 priority;
     u16 ability = GetBattlerAbility(battlerId);
-
     priority = gBattleMoves[move].priority;
+
     if (ability == ABILITY_GALE_WINGS && gBattleMoves[move].type == TYPE_FLYING)
     {
         priority++;
@@ -4751,6 +4751,10 @@ s8 GetMovePriority(u32 battlerId, u16 move)
         priority++;
     }
     else if (ability == ABILITY_QUICK_JABS && gBattleMoves[move].flags & FLAG_IRON_FIST_BOOST)
+    {
+        priority++;
+    }
+    else if (ability == ABILITY_DRILL_RUSH && gBattleMoves[move].drillMove)
     {
         priority++;
     }
@@ -5454,7 +5458,7 @@ static void FreeResetData_ReturnToOvOrDoEvolutions(void)
             IncrementDexNavChain();
         else
             gSaveBlock1Ptr->dexNavChain = 0;
-        
+
         ResetSpriteData();
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK
                                   | BATTLE_TYPE_RECORDED_LINK
@@ -5735,6 +5739,15 @@ void SetTypeBeforeUsingMove(u16 move, u8 battlerAtk)
         gBattleStruct->dynamicMoveType = ateType | F_DYNAMIC_TYPE_2;
         gBattleStruct->ateBoost[battlerAtk] = 1;
     }
+    else if (gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
+            && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
+            && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
+            && gBattleMoves[move].effect != EFFECT_NATURAL_GIFT
+            && ((attackerAbility == ABILITY_VULKANIZE) && (ateType = TYPE_FIRE)))
+            {
+                gBattleStruct->dynamicMoveType = ateType | F_DYNAMIC_TYPE_2;
+                gBattleStruct->ateBoost[battlerAtk] = 1;
+            }
     else if (gBattleMoves[move].type != TYPE_NORMAL
              && gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
              && gBattleMoves[move].effect != EFFECT_WEATHER_BALL

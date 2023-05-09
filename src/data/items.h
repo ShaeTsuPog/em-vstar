@@ -3946,6 +3946,19 @@ const struct Item gItems[] =
         .flingPower = 80,
     },
 
+    [ITEM_KINGLERITE] =
+    {
+        .name = _("Kinglerite"),
+        .itemId = ITEM_KINGLERITE,
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sKingleriteDesc,
+        .pocket = POCKET_BATTLE_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+    },
+
     [ITEM_KANGASKHANITE] =
     {
         .name = _("Kangaskhanite"),
@@ -4018,6 +4031,44 @@ const struct Item gItems[] =
         .price = 0,
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = sMewtwoniteDesc,
+        .pocket = POCKET_BATTLE_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+    },
+
+    [ITEM_MEGANIUMITE] =
+    {
+        .name = _("Meganiumite"),
+        .itemId = ITEM_MEGANIUMITE,
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sMeganiumiteDesc,
+        .pocket = POCKET_BATTLE_ITEMS,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+    },
+
+    [ITEM_TYPHLOSIONITE] =
+    {
+        .name = _("Typhlosionite"),
+        .itemId = ITEM_TYPHLOSIONITE,
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sTyphlosioniteDesc,
+        .pocket = POCKET_BATTLE_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+    },
+
+    [ITEM_FERALIGATRITE] =
+    {
+        .name = _("Feraligatrite"),
+        .itemId = ITEM_FERALIGATRITE,
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sFeraligatriteDesc,
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
@@ -4245,6 +4296,19 @@ const struct Item gItems[] =
         .flingPower = 80,
     },
 
+    [ITEM_FLYGONITE] =
+    {
+        .name = _("Flygonite"),
+        .itemId = ITEM_FLYGONITE,
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sFlygoniteDesc,
+        .pocket = POCKET_BATTLE_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+    },
+
     [ITEM_ALTARIANITE] =
     {
         .name = _("Altarianite"),
@@ -4397,6 +4461,18 @@ const struct Item gItems[] =
         .description = sAbomasiteDesc,
         .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+    },
+
+    [ITEM_RHYPERIORITE] =
+    {
+        .name = _("Rhyperiorite"),
+        .itemId = ITEM_RHYPERIORITE,
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sRhyperioriteDesc,
+        .pocket = POCKET_BATTLE_ITEMS,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
     },

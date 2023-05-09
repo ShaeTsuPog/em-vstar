@@ -932,6 +932,9 @@ const struct CompressedSpriteSheet gMonFrontPicTable[] =
     SPECIES_SPRITE(AERODACTYL_MEGA, gMonFrontPic_AerodactylMega),
     SPECIES_SPRITE(MEWTWO_MEGA_X, gMonFrontPic_MewtwoMegaX),
     SPECIES_SPRITE(MEWTWO_MEGA_Y, gMonFrontPic_MewtwoMegaY),
+    SPECIES_SPRITE(MEGANIUM_MEGA, gMonFrontPic_MeganiumMega),
+    SPECIES_SPRITE(TYPHLOSION_MEGA, gMonFrontPic_TyphlosionMega),
+    SPECIES_SPRITE(FERALIGATR_MEGA, gMonFrontPic_FeraligatrMega),
     SPECIES_SPRITE(AMPHAROS_MEGA, gMonFrontPic_AmpharosMega),
     SPECIES_SPRITE(STEELIX_MEGA, gMonFrontPic_SteelixMega),
     SPECIES_SPRITE(SCIZOR_MEGA, gMonFrontPic_ScizorMega),
@@ -949,6 +952,7 @@ const struct CompressedSpriteSheet gMonFrontPicTable[] =
     SPECIES_SPRITE(MANECTRIC_MEGA, gMonFrontPic_ManectricMega),
     SPECIES_SPRITE(SHARPEDO_MEGA, gMonFrontPic_SharpedoMega),
     SPECIES_SPRITE(CAMERUPT_MEGA, gMonFrontPic_CameruptMega),
+    SPECIES_SPRITE(FLYGON_MEGA, gMonFrontPic_FlygonMega),
     SPECIES_SPRITE(ALTARIA_MEGA, gMonFrontPic_AltariaMega),
     SPECIES_SPRITE(BANETTE_MEGA, gMonFrontPic_BanetteMega),
     SPECIES_SPRITE(ABSOL_MEGA, gMonFrontPic_AbsolMega),
@@ -962,6 +966,7 @@ const struct CompressedSpriteSheet gMonFrontPicTable[] =
     SPECIES_SPRITE(GARCHOMP_MEGA, gMonFrontPic_GarchompMega),
     SPECIES_SPRITE(LUCARIO_MEGA, gMonFrontPic_LucarioMega),
     SPECIES_SPRITE(ABOMASNOW_MEGA, gMonFrontPic_AbomasnowMega),
+    SPECIES_SPRITE(RHYPERIOR_MEGA, gMonFrontPic_RhyperiorMega),
     SPECIES_SPRITE(GALLADE_MEGA, gMonFrontPic_GalladeMega),
 #endif
 #if P_GEN_5_POKEMON == TRUE

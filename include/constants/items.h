@@ -980,8 +980,14 @@
 // Custom Items
 #define ITEM_POKE_REPEL 799
 #define ITEM_GENGARITE_Y 800
+#define ITEM_KINGLERITE 801
+#define ITEM_MEGANIUMITE 802
+#define ITEM_TYPHLOSIONITE 803
+#define ITEM_FERALIGATRITE 804
+#define ITEM_FLYGONITE 805
+#define ITEM_RHYPERIORITE 806
 
-#define ITEMS_COUNT 801
+#define ITEMS_COUNT 807
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

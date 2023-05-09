@@ -246,6 +246,7 @@
 #define FLAG_WIND_MOVE                            (1 << 29)
 #define FLAG_SLICING_MOVE                         (1 << 30)
 #define FLAG_WHIRLY_TOP_BOOST                     (1 << 31)
+//#define FLAG_DRILL_MOVE                           (1 << 32)
 
 // Split defines.
 #define SPLIT_PHYSICAL  0x0

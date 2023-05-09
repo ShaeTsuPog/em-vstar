@@ -349,6 +349,8 @@ struct BattleMove
     u8 split;
     u16 argument;
     u8 zMoveEffect;
+    // Flags
+    u32 drillMove:1;
 };
 
 #define SPINDA_SPOT_WIDTH 16
