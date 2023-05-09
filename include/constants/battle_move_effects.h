@@ -406,10 +406,12 @@
 #define EFFECT_BARB_BARRAGE                 400
 #define EFFECT_REVIVAL_BLESSING             401
 #define EFFECT_FROSTBITE_HIT                402
-// Custom
-#define EFFECT_BLAZING_TERRAIN              403
-#define EFFECT_ROCK_THROW                   404
+#define EFFECT_SNOWSCAPE                    403
 
-#define NUM_BATTLE_MOVE_EFFECTS             405
+// Custom
+#define EFFECT_BLAZING_TERRAIN              404
+#define EFFECT_ROCK_THROW                   405
+
+#define NUM_BATTLE_MOVE_EFFECTS             406
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

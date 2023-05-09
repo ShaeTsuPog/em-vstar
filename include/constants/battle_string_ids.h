@@ -659,6 +659,11 @@
 #define STRINGID_PKMNFROSTBITEHEALED                  657
 #define STRINGID_PKMNFROSTBITEHEALED2                 658
 #define STRINGID_PKMNFROSTBITEHEALEDBY                659
+#define STRINGID_MIRRORHERBCOPIED                     660
+#define STRINGID_STARTEDSNOW                          661
+#define STRINGID_SNOWCONTINUES                        662
+#define STRINGID_SNOWSTOPPED                          663
+#define STRINGID_SNOWWARNINGSNOW                      664
 
 // Custom
 #define STRINGID_EVAPORATEACTIVATES                   660
@@ -736,16 +741,18 @@
 #define B_MSG_STARTED_SANDSTORM 3
 #define B_MSG_STARTED_SUNLIGHT  4
 #define B_MSG_STARTED_HAIL      5
+#define B_MSG_STARTED_SNOW      6
 
 // gRainContinuesStringIds
 #define B_MSG_RAIN_CONTINUES     0
 #define B_MSG_DOWNPOUR_CONTINUES 1
 #define B_MSG_RAIN_STOPPED       2
 
-// gSandStormHailContinuesStringIds / gSandStormHailDmgStringIds/ gSandStormHailEndStringIds
+// gSandStormHailSnowContinuesStringIds / gSandStormHailDmgStringIds/ gSandStormHailSnowEndStringIds
 #define B_MSG_SANDSTORM  0
 #define B_MSG_HAIL       1
 #define B_MSG_BLAZING    2
+#define B_MSG_SNOW       2
 
 // gReflectLightScreenSafeguardStringIds
 #define B_MSG_SIDE_STATUS_FAILED     0
