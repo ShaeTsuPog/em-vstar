@@ -690,29 +690,30 @@ SINGLE_BATTLE_TEST("Mold Breaker ignores Leaf Guard")
     }
 }
 
-SINGLE_BATTLE_TEST("Mold Breaker ignores Marvel Scale", s16 damageBefore, s16 damageAfter)
+SINGLE_BATTLE_TEST("Mold Breaker ignores Marvel Scale", s16 damage)
 {
+
+    u32 ability;
+    PARAMETRIZE { ability = ABILITY_MARVEL_SCALE; }
+    PARAMETRIZE { ability = ABILITY_COMPETITIVE; }
+
     GIVEN {
         PLAYER(SPECIES_PINSIR) { Ability(ABILITY_MOLD_BREAKER); };
-        OPPONENT(SPECIES_MILOTIC) { Ability(ABILITY_MARVEL_SCALE); };
+        OPPONENT(SPECIES_MILOTIC) { Ability(ability); };
     } WHEN {
-        TURN { MOVE(player, MOVE_TACKLE); MOVE(opponent, MOVE_CELEBRATE); }
         TURN { MOVE(player, MOVE_THUNDER_WAVE); MOVE(opponent, MOVE_CELEBRATE); }
         TURN { MOVE(player, MOVE_TACKLE); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_MOLD_BREAKER);
         MESSAGE("Pinsir breaks the mold!");
 
-        MESSAGE("Pinsir used Tackle!");
-        HP_BAR(opponent, captureDamage: &results[i].damageBefore);
-
         MESSAGE("Pinsir used Thunder Wave!");
         STATUS_ICON(opponent, paralysis: TRUE);
 
         MESSAGE("Pinsir used Tackle!");
-        HP_BAR(opponent, captureDamage: &results[i].damageAfter);
-    } THEN {
-        EXPECT_MUL_EQ(results[0].damageBefore, Q_4_12(1.0), results[0].damageAfter);
+        HP_BAR(opponent, captureDamage: &results[i].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[0].damage, Q_4_12(1.0), results[1].damage);
     }
 }
 
