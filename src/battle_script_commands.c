@@ -12882,6 +12882,8 @@ static void Cmd_weatherdamage(void)
                     gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
                 else
                     gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
+            }
+        }
 
         if (gBattleWeather & B_WEATHER_SNOW)
         {

@@ -666,16 +666,16 @@
 #define STRINGID_SNOWWARNINGSNOW                      664
 
 // Custom
-#define STRINGID_EVAPORATEACTIVATES                   660
-#define STRINGID_EVAPORATEINHARSHHEAT                 661
-#define STRINGID_JUICEMAKER                           662
-#define STRINGID_PKMNRAISEDEVASION                    663
-#define STRINGID_BEFUDDLE                             664
-#define STRINGID_TERRAINBECOMESBLAZING                665
-#define STRINGID_PKMNBURNEDBYTERRAIN                  666
-#define STRINGID_BLAZINGTERRAINENDS                   667
+#define STRINGID_EVAPORATEACTIVATES                   665
+#define STRINGID_EVAPORATEINHARSHHEAT                 666
+#define STRINGID_JUICEMAKER                           667
+#define STRINGID_PKMNRAISEDEVASION                    668
+#define STRINGID_BEFUDDLE                             669
+#define STRINGID_TERRAINBECOMESBLAZING                670
+#define STRINGID_PKMNBURNEDBYTERRAIN                  671
+#define STRINGID_BLAZINGTERRAINENDS                   672
 
-#define BATTLESTRINGS_COUNT                           668
+#define BATTLESTRINGS_COUNT                           673
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
